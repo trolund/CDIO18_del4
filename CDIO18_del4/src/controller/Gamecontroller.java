@@ -110,8 +110,7 @@ public class Gamecontroller
 	private void turn(Player p)
 	{
 		Output.msgGUI(list.getFields()[p.getCarPos() - 1].getDescription());
-		cup.getDie1().roll(); 
-		cup.getDie2().roll();
+		cup.roll(); // ryster raflebærger 
 		int sum = cup.getSum(); // sikre at det kun er nødvenrtigt at kalde cup.getSum() en gang! - vigtigt i test mode!
 
 		if(testMode)
