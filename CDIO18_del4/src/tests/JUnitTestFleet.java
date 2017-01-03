@@ -11,6 +11,8 @@ import view.Output;
 
 
 public class JUnitTestFleet {
+	
+	private Output out = new Output();
 
 	@Test
 	public void test() {
@@ -21,7 +23,7 @@ public class JUnitTestFleet {
 		Player kasper = new Player(30000, "Kasper");
 		Fieldlist list = new Fieldlist();
 
-		Output.setcar(18, bijan, list);
+		out.setcar(18, bijan, list);
 		// bijan lander på felt 18
 		list.getFields()[18].landOn(bijan);
 		// bijan køber feltet
@@ -39,7 +41,7 @@ public class JUnitTestFleet {
 		assertEquals(28500, kasper.getAccount().getSum());	// nu må han betale 1000, da bijan ejer 2 fleets
 
 		
-		Output.setcar(21, bijan, list);
+		out.setcar(21, bijan, list);
 		// bijan lander på felt 21
 		list.getFields()[21].landOn(bijan);
 		// bijan køber feltet

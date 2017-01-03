@@ -15,30 +15,30 @@ import model.fields.Fieldlist;
 public class Output 
 {
 
-	public static void winnerPrint(Player p)
+	public void winnerPrint(Player p)
 	{
 		System.out.println(Language.getWinnerText() + " " + p.getName());
 		GUI.showMessage(Language.getWinnerText() + " " + p.getName());
 	}
 
-	public static void oneMoreGame()
+	public void oneMoreGame()
 	{
 		System.out.println(Language.getEndText());
 		GUI.showMessage(Language.getEndText());
 	}
 
-	public static int howManyPlayers()
+	public int howManyPlayers()
 	{
 		return Integer.parseInt(GUI.getUserSelection(Language.getPlayerCountText(), "2","3","4","5","6")); 
 	}
 
-	public static void turnMsg(int nr, Player p, String s)
+	public void turnMsg(int nr, Player p, String s)
 	{
 		GUI.setCar(nr,p.getName());
 		GUI.showMessage(s);
 	}
 
-	public static void drawGameboard(Fieldlist fd)
+	public void drawGameboard(Fieldlist fd)
 	{
 		model.fields.Field[] logicField = fd.getFields();
 		desktop_fields.Field[] guiField = new desktop_fields.Field[logicField.length];
@@ -56,34 +56,34 @@ public class Output
 		GUI.create(guiField);
 	}
 
-	public static boolean taxAction(int price){
+	public boolean taxAction(int price){
 		return GUI.getUserLeftButtonPressed(Language.getMakeYourChoiceMSG(), Language.getPayMSG() + " " + price , Language.getTenPercent());
 	}
 
-	public static void setGUIDice(int die1 , int die2){
+	public void setGUIDice(int die1 , int die2){
 		GUI.setDice(die1,die2);
 	}
 
-	public static void setGUIBalance(Player p){
+	public void setGUIBalance(Player p){
 		GUI.setBalance(p.getName(), p.getAccount().getSum());
 	}
 
-	public static void GUIcreateFields(desktop_fields.Field[] f) {	
+	public void GUIcreateFields(desktop_fields.Field[] f) {	
 		GUI.create(f);
 	}
 
-	public static void setcar(int no, Player p, Fieldlist list){
+	public void setcar(int no, Player p, Fieldlist list){
 		p.moveCarPos(no, list);
 		GUI.setCar(p.getCarPos(),p.getName());
 
 	}
 
-	public static void msgGUI(String s){
+	public void msgGUI(String s){
 		//	GUI.showMessage(s);
 		GUI.getUserButtonPressed(s, Language.rollButName());
 	}
 
-	public static Player[] addplayers(Player[] players, int startSum)
+	public Player[] addplayers(Player[] players, int startSum)
 	{
 		String name = "";
 		players = new Player[Gamecontroller.getNumberOfPlayers()];
@@ -104,46 +104,46 @@ public class Output
 		return players;
 	}
 
-	public static boolean shop(int price, Player p){
+	public boolean shop(int price, Player p){
 		return GUI.getUserLeftButtonPressed(p.getName() + " " + Language.getWillYouBuy() + " " + price, Language.getYesNo()[0], Language.getYesNo()[1]);
 	}
 
-	public static boolean setTestMode(){
+	public boolean setTestMode(){
 		return GUI.getUserLeftButtonPressed(Language.testModeStrings(0),Language.testModeStrings(1),Language.testModeStrings(2));
 	}
 
-	public static void verificationOfPurchase(){
+	public void verificationOfPurchase(){
 		GUI.showMessage(Language.purchaseString());
 		System.out.println("You bought this field");
 	}
 
-	public static void deniedPurchase(){
+	public void deniedPurchase(){
 		GUI.showMessage(Language.dpurchaseString());
 		System.out.println("You didn't buy the field");
 
 	}
 	
-	public static void removeCar(Player p)
+	public void removeCar(Player p)
 	{
 		GUI.removeAllCars(p.getName());
 	}
 	
-	public static void setColor(Player p)
+	public void setColor(Player p)
 	{
 		GUI.setOwner(p.getCarPos(), p.getName());
 	}
 	
-	public static void payedRent(Player p, int rent){
+	public void payedRent(Player p, int rent){
 		GUI.showMessage(p.getName() + ", " + Language.payedRent() + " " + rent );
 		System.out.println("Field is owned, you paid the rent");
 	}
 	
-	public static void ownField(){
+	public void ownField(){
 		GUI.showMessage("It's your own field - nothing happened");
 		System.out.println("It's your own field -nothing happened");
 	}
 	
-	public static void landMSG(Player p,Field f){
+	public void landMSG(Player p,Field f){
 		System.out.println(p.getName() + " has landed on" + f.getClass().getSimpleName() +  "field");
 	}
 }

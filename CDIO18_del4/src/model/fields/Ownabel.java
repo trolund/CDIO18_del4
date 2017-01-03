@@ -3,14 +3,15 @@ package model.fields;
 import model.Player;
 import view.Output;
 
+
 public abstract class Ownabel extends Field
 {	protected int price;
 private Player owner;
 boolean wantToBuy;
 
-public Ownabel (String name, String description, int price)
+public Ownabel (String name, String description, int price, Output o)
 {
-	super(name, description);
+	super(name, description, o);
 	this.price = price;
 }
 
@@ -21,11 +22,11 @@ public void landOn(Player p)
 	if(p.getAccount().getSum()>=price && owner == null)
 	{
 		// can buy
-		wantToBuy = Output.shop(price, p);
+		wantToBuy = out.shop(price, p);
 
 		if(wantToBuy)
 		{
-			Output.setColor(p);
+			out.setColor(p);
 			setOwner(p);
 			if(this instanceof Brewery){
 				p.setLaborcampCount(p.getLaborcampCount() + 1);
@@ -35,18 +36,18 @@ public void landOn(Player p)
 			}
 
 			p.getAccount().withdraw(price);
-			Output.verificationOfPurchase();
+			out.verificationOfPurchase();
 		}
 	}
 	else if(p.getAccount().getSum() < price && owner == null)
 	{
 		// cant affort
-		Output.deniedPurchase();
+		out.deniedPurchase();
 	}
 	else if(p.getAccount().getSum()>=price && owner == null && !wantToBuy)
 	{
 		//Player don't want to buy
-		Output.deniedPurchase();
+		out.deniedPurchase();
 	}
 	else if(owner != null && owner != p)// is owned
 	{
@@ -56,7 +57,7 @@ public void landOn(Player p)
 
 		p.getAccount().withdraw(rent);
 		owner.getAccount().addSum(rent);
-		Output.payedRent(p, rent);
+		out.payedRent(p, rent);
 	}
 	else
 	{

@@ -10,6 +10,7 @@ import view.Output;
 
 public class JUnitTestLaborcamp 
 {
+	private Output out = new Output();
 
 	@Test
 	public void TC01() 
@@ -17,9 +18,9 @@ public class JUnitTestLaborcamp
 		Player[] p = {new Player(30000, "Kasper"), new Player(30000, "Troels")};
 		Fieldlist fdList = new Fieldlist();
 		
-		Output.drawGameboard(fdList);
-		Output.howManyPlayers();
-		Output.addplayers(p, 30000);
+		out.drawGameboard(fdList);
+		out.howManyPlayers();
+		out.addplayers(p, 30000);
 		
 		//You DO NOT buy the field
 		fdList.getFields()[14].landOn(p[0]);
@@ -37,13 +38,15 @@ public class JUnitTestLaborcamp
 	@Test
 	public void TC02() 
 	{
+		
+		
 		Player[] p = {new Player(30000, "Kasper"), new Player(30000, "Troels")};
 		Fieldlist fdList = new Fieldlist();
 		
-		Output.drawGameboard(fdList);
-		Output.howManyPlayers();
-		Output.addplayers(p, 30000);
-		Output.setcar(1, p[0], fdList);
+		out.drawGameboard(fdList);
+		out.howManyPlayers();
+		out.addplayers(p, 30000);
+		out.setcar(1, p[0], fdList);
 
 		//You DO buy the field
 		fdList.getFields()[14].landOn(p[0]);
@@ -60,17 +63,17 @@ public class JUnitTestLaborcamp
 		Player[] p = {new Player(30000, "Kasper"), new Player(30000, "Troels")};
 		Fieldlist fdList = new Fieldlist();
 		
-		Output.drawGameboard(fdList);
-		Output.howManyPlayers();
-		Output.addplayers(p, 30000);
-		Output.setcar(14, p[0], fdList);
+		out.drawGameboard(fdList);
+		out.howManyPlayers();
+		out.addplayers(p, 30000);
+		out.setcar(14, p[0], fdList);
 
 		int exRes = p[1].getAccount().getSum();
 		
 		//You DO buy the fields
 		fdList.getFields()[14].landOn(p[0]);
 		
-		Output.setcar(14, p[0], fdList);
+		out.setcar(14, p[0], fdList);
 		fdList.getFields()[15].landOn(p[0]);
 		
 		fdList.getFields()[14].landOn(p[1]);

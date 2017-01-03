@@ -8,9 +8,9 @@ public class Brewery extends Ownabel
 {
 	private int baseRent;
 
-	public Brewery(String name, String description, int price, int baseRent) 
+	public Brewery(String name, String description, int price, int baseRent, Output o) 
 	{
-		super(name, description, price);
+		super(name, description, price,o);
 		this.baseRent = baseRent;
 	}
 
@@ -19,10 +19,10 @@ public class Brewery extends Ownabel
 	{
 		Dicecup cup = new Dicecup();
 		cup.roll();
-		Output.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
+		out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
 		int sum = cup.getSum();
 		int rent = sum * baseRent * p.getLaborcampCount();
-		Output.msgGUI("Du slog " + cup.getSum()+ " og skal derfor betale"+ rent);
+		out.msgGUI("Du slog " + cup.getSum()+ " og skal derfor betale"+ rent);
 		return rent;
 	}
 

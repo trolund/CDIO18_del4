@@ -7,9 +7,9 @@ public class Plot extends Ownabel
 {
 	private int rent;
 
-	public Plot(String name, String description, int price, int rent) 
+	public Plot(String name, String description, int price, int rent, Output o) 
 	{
-		super(name, description, price);
+		super(name, description, price, o);
 		this.rent = rent;
 	}
 	

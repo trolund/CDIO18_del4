@@ -9,6 +9,8 @@ import model.fields.Fieldlist;
 import view.Output;
 
 public class JUnitTestTerritory {
+	
+	private Output out = new Output();
 
 	@Test
 	public void test() //Spiller lander på felt og køber. 
@@ -16,7 +18,7 @@ public class JUnitTestTerritory {
 		Player [] p = {new Player(30000,"p1"),new Player(30000,"p2")};
 		Fieldlist f = new Fieldlist();
 		
-		Output.setcar(1, p[0], f);
+		out.setcar(1, p[0], f);
 		int exRe = p[0].getAccount().getSum()-1000;
 		f.getFields()[1].landOn(p[0]);
 
@@ -31,7 +33,7 @@ public class JUnitTestTerritory {
 		Player [] p = {new Player(30000,"p1"),new Player(30000,"p2")};
 		Fieldlist f = new Fieldlist();
 		
-		Output.setcar(1, p[0], f);
+		out.setcar(1, p[0], f);
 		
 		int exRe = p[1].getAccount().getSum()-100;
 

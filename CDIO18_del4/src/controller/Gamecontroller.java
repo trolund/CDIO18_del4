@@ -31,21 +31,31 @@ public class Gamecontroller
 {
 	private Player[] players;
 	private Dicecup cup;
-	private Fieldlist list = new Fieldlist();
+	private Fieldlist list;
 	private final int startSum = 30000;
 	private static int numberOfPlayers = 0;
 	private boolean testMode = false;
 	private boolean gameEnded = false;
+	private Output out;
 
 	public static void main(String[] args) 
 	{
 		new Gamecontroller().setup();
 	}
+	
+	public Gamecontroller(){
+		this(new Output());
+	}
+	
+	public Gamecontroller(Output o){
+		out = o;
+		list = new Fieldlist(out);
+	}
 
 	public void setup()
 	{
-		Output.drawGameboard(list);
-		testMode = Output.setTestMode(); 	// Giver spilleren mulighed for at gå i test mode og tildeler til testMode boolean
+		out.drawGameboard(list);
+		testMode = out.setTestMode(); 	// Giver spilleren mulighed for at gå i test mode og tildeler til testMode boolean
 
 		if(testMode)
 		{ // Kode der bliver kørt vis programmet er i test mode!
@@ -56,8 +66,8 @@ public class Gamecontroller
 			cup = new Dicecup();
 		}
 
-		numberOfPlayers = Output.howManyPlayers();
-		players = Output.addplayers(players, startSum);
+		numberOfPlayers = out.howManyPlayers();
+		players = out.addplayers(players, startSum);
 
 
 		update();
@@ -97,7 +107,7 @@ public class Gamecontroller
 
 		if(con == numberOfPlayers - 1)
 		{
-			Output.winnerPrint(p);
+			out.winnerPrint(p);
 			GUI.close();
 		}
 	}
@@ -109,21 +119,21 @@ public class Gamecontroller
 
 	private void turn(Player p)
 	{
-		Output.msgGUI(list.getFields()[p.getCarPos() - 1].getDescription());
+		out.msgGUI(list.getFields()[p.getCarPos() - 1].getDescription());
 		cup.roll(); // ryster raflebærger 
 		int sum = cup.getSum(); // sikre at det kun er nødvenrtigt at kalde cup.getSum() en gang! - vigtigt i test mode!
 
 		if(testMode)
-			Output.setGUIDice(TestData.getLinedata()[0], TestData.getLinedata()[1]);
+			out.setGUIDice(TestData.getLinedata()[0], TestData.getLinedata()[1]);
 		else
-			Output.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
+			out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
 
-		Output.removeCar(p);
-		Output.setcar(sum, p, list);
+		out.removeCar(p);
+		out.setcar(sum, p, list);
 
 		list.getFields()[p.getCarPos()-1].landOn(p);
 
-		Output.setGUIBalance(p);
+		out.setGUIBalance(p);
 
 		winner(p);
 		System.out.println();
