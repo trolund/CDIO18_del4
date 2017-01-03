@@ -40,8 +40,8 @@ public class  Fieldlist
 
 		//Laborcamp type fields is ownable with a price and a rent 
 		//baseRent multiplied by a dice roll and number of owned fields 
-		fields[14] = new Laborcamp(Language.getFieldNames()[14], Language.getFieldType()[3], 2500, 100); //100*sumOfDice
-		fields[15] = new Laborcamp(Language.getFieldNames()[15], Language.getFieldType()[3], 2500, 100); //100*sumOfDice
+		fields[14] = new Brewery(Language.getFieldNames()[14], Language.getFieldType()[3], 2500, 100); //100*sumOfDice
+		fields[15] = new Brewery(Language.getFieldNames()[15], Language.getFieldType()[3], 2500, 100); //100*sumOfDice
 
 		//Tax type fields is not ownable
 		//withdraw a baseRent or (only [17]) chose to pay 10% of accets

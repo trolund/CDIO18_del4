@@ -3,7 +3,7 @@ package model.fields;
 import model.Player;
 import view.Output;
 
-public class Fleet extends Ownable
+public class Fleet extends Ownabel
 {
 private int baseRent;
 
@@ -17,10 +17,6 @@ private int baseRent;
 
 	@Override
 	public int getRent(Player p) {
-		
-		p.setFleetCount(p.getFleetCount() + 1);
-		System.out.println(p + " Fleet count: " + p.getFleetCount());
-		
 		return (int) (baseRent * Math.pow(2, p.getFleetCount() - 1));
 		
 	}

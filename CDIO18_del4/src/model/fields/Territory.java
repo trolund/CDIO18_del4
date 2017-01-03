@@ -3,7 +3,7 @@ package model.fields;
 import model.Player;
 import view.Output;
 
-public class Territory extends Ownable
+public class Territory extends Ownabel
 {
 	private int rent;
 

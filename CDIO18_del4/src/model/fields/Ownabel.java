@@ -3,12 +3,12 @@ package model.fields;
 import model.Player;
 import view.Output;
 
-public abstract class Ownable extends Field
+public abstract class Ownabel extends Field
 {	protected int price;
 	private Player owner;
 	boolean wantToBuy;
 
-	public Ownable (String name, String description, int price)
+	public Ownabel (String name, String description, int price)
 	{
 		super(name, description);
 		this.price = price;
@@ -28,7 +28,13 @@ public abstract class Ownable extends Field
 			{
 				Output.setColor(p);
 				setOwner(p);
-					
+				if(this instanceof Brewery){
+					p.setLaborcampCount(p.getLaborcampCount() + 1);
+				}
+				if(this instanceof Fleet){
+					p.setFleetCount(p.getFleetCount()+1);
+				}
+				
 				p.getAccount().withdraw(price);
 				Output.verificationOfPurchase();
 			}
@@ -47,7 +53,7 @@ public abstract class Ownable extends Field
 		{
 			// Pay rent
 			
-			int rent = getRent(owner);
+			int rent = getRent(p);
 			
 			p.getAccount().withdraw(rent);
 			owner.getAccount().addSum(rent);

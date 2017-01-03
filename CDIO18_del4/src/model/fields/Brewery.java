@@ -4,11 +4,11 @@ import model.Dicecup;
 import model.Player;
 import view.Output;
 
-public class Laborcamp extends Ownable
+public class Brewery extends Ownabel
 {
 	private int baseRent;
 
-	public Laborcamp(String name, String description, int price, int baseRent) 
+	public Brewery(String name, String description, int price, int baseRent) 
 	{
 		super(name, description, price);
 		this.baseRent = baseRent;
@@ -18,14 +18,13 @@ public class Laborcamp extends Ownable
 	@Override
 	public int getRent(Player p) 
 	{
-		p.setLaborcampCount(p.getLaborcampCount() + 1);
-		System.out.println(p + " Labor count: " + p.getLaborcampCount());
-		
 		Dicecup cup = new Dicecup();
 		cup.roll();
-		int sum = cup.getSum();
 		Output.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
-		return sum * baseRent * p.getLaborcampCount();
+		int sum = cup.getSum();
+		int rent = sum * baseRent * p.getLaborcampCount();
+		Output.msgGUI("Du slog " + cup.getSum()+ " og skal derfor betale"+ rent);
+		return rent;
 	}
 
 }
