@@ -24,8 +24,6 @@ public class Tax extends Field {
 	@Override
 	public void landOn(Player p)
 	{
-		System.err.println("Tax");
-		
 		if(taxRate > 0)
 		{
 			if(Output.taxAction(taxAmmount))

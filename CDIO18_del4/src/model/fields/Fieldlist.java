@@ -18,25 +18,25 @@ public class  Fieldlist
 	{
 		//Start field
 		//Refuge type with no bonus
-		fields[0] = new Refuge(Language.getFieldNames()[0], Language.getFieldType()[0], 0);
+		fields[0] = new Parking(Language.getFieldNames()[0], Language.getFieldType()[0], 0);
 
 		//Territory type fields is ownable with a price and a rent
-		fields[1] = new Territory(Language.getFieldNames()[1], Language.getFieldType()[1], 1000, 100);
-		fields[2] = new Territory(Language.getFieldNames()[2], Language.getFieldType()[1], 1500, 300);
-		fields[3] = new Territory(Language.getFieldNames()[3], Language.getFieldType()[1], 2000, 500);
-		fields[4] = new Territory(Language.getFieldNames()[4], Language.getFieldType()[1], 3000, 700);
-		fields[5] = new Territory(Language.getFieldNames()[5], Language.getFieldType()[1], 4000, 1000);
-		fields[6] = new Territory(Language.getFieldNames()[6], Language.getFieldType()[1], 4300,1300);
-		fields[7] = new Territory(Language.getFieldNames()[7], Language.getFieldType()[1], 4750, 1600);
-		fields[8] = new Territory(Language.getFieldNames()[8], Language.getFieldType()[1], 5000, 2000);
-		fields[9] = new Territory(Language.getFieldNames()[9], Language.getFieldType()[1], 5500, 2600);
-		fields[10] = new Territory(Language.getFieldNames()[10], Language.getFieldType()[1], 6000, 3200);
-		fields[11] = new Territory(Language.getFieldNames()[11], Language.getFieldType()[1], 8000, 4000);
+		fields[1] = new Plot(Language.getFieldNames()[1], Language.getFieldType()[1], 1000, 100);
+		fields[2] = new Plot(Language.getFieldNames()[2], Language.getFieldType()[1], 1500, 300);
+		fields[3] = new Plot(Language.getFieldNames()[3], Language.getFieldType()[1], 2000, 500);
+		fields[4] = new Plot(Language.getFieldNames()[4], Language.getFieldType()[1], 3000, 700);
+		fields[5] = new Plot(Language.getFieldNames()[5], Language.getFieldType()[1], 4000, 1000);
+		fields[6] = new Plot(Language.getFieldNames()[6], Language.getFieldType()[1], 4300,1300);
+		fields[7] = new Plot(Language.getFieldNames()[7], Language.getFieldType()[1], 4750, 1600);
+		fields[8] = new Plot(Language.getFieldNames()[8], Language.getFieldType()[1], 5000, 2000);
+		fields[9] = new Plot(Language.getFieldNames()[9], Language.getFieldType()[1], 5500, 2600);
+		fields[10] = new Plot(Language.getFieldNames()[10], Language.getFieldType()[1], 6000, 3200);
+		fields[11] = new Plot(Language.getFieldNames()[11], Language.getFieldType()[1], 8000, 4000);
 		
 		//Refuge type fields is not ownable
 		//adds a bonus
-		fields[12] = new Refuge(Language.getFieldNames()[12], Language.getFieldType()[2], 5000);
-		fields[13] = new Refuge(Language.getFieldNames()[13], Language.getFieldType()[2], 500);
+		fields[12] = new Parking(Language.getFieldNames()[12], Language.getFieldType()[2], 5000);
+		fields[13] = new Parking(Language.getFieldNames()[13], Language.getFieldType()[2], 500);
 
 		//Laborcamp type fields is ownable with a price and a rent 
 		//baseRent multiplied by a dice roll and number of owned fields 

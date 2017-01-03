@@ -12,7 +12,6 @@ public class Brewery extends Ownabel
 	{
 		super(name, description, price);
 		this.baseRent = baseRent;
-		
 	}
 
 	@Override

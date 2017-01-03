@@ -3,11 +3,11 @@ package model.fields;
 import model.Player;
 import view.Output;
 
-public class Territory extends Ownabel
+public class Plot extends Ownabel
 {
 	private int rent;
 
-	public Territory(String name, String description, int price, int rent) 
+	public Plot(String name, String description, int price, int rent) 
 	{
 		super(name, description, price);
 		this.rent = rent;
