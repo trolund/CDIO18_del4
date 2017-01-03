@@ -21,7 +21,7 @@ public class Brewery extends Ownabel
 		cup.roll();
 		Output.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
 		int sum = cup.getSum();
-		int rent = sum * baseRent * p.getLaborcampCount();
+		int rent = sum * baseRent * p.getBreweryCount();
 		Output.msgGUI("Du slog " + cup.getSum()+ " og skal derfor betale"+ rent);
 		return rent;
 	}

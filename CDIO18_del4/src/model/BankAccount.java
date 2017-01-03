@@ -19,34 +19,33 @@ public class BankAccount
 		return String.format("%1$2s %2$2s", getSum(), "kr");
 	}
 
-	public boolean setSum(int sum) 
+	public boolean setSum(int value) 
 	{
-		if(sum >= 0)
+		if(value >= 0)
 		{
-			balance = sum;
+			balance = value;
 			return true;
 		}
 		
 		return false;
 	}
 
-	public boolean addSum(int x) 
+	public boolean addSum(int value) 
 	{
-		balance += x;
-		
-		if (x < 0 && x * (-1) > balance)
+		if (value > 0)
 		{
-			balance = 0; 
+			balance += value;
 			return false;
 		}
+		
 		return true;
 	}	
 
-	public boolean withdraw(int x) 
+	public boolean withdraw(int value) 
 	{
-		if(x > 0)
+		if(value < 0 && value * (-1) > balance)
 		{
-			balance -= x;
+			balance -= value;
 			return true;
 		}
 		else 

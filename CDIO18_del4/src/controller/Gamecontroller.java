@@ -1,5 +1,8 @@
 package controller;
 
+import model.fields.Fieldlist;
+import model.Player;
+
 /*
  * Team 18 - CDIO 3   
  * DTU
@@ -15,118 +18,36 @@ package controller;
  * 
  */
 
-/*
- * Class wrote by: Troels Lund and Kasper Leiszner
- */
-
-import desktop_resources.GUI;
-import model.Dicecup;
-import model.Player;
-import model.fields.Fieldlist;
-import tests.FakeDicecup;
-import tests.TestData;
-import view.Output;
-
 public class Gamecontroller 
 {
-	private Player[] players;
-	private Dicecup cup;
-	private Fieldlist list = new Fieldlist();
-	private final int startSum = 30000;
-	private static int numberOfPlayers = 0;
-	private boolean testMode = false;
-	private boolean gameEnded = false;
+	
+	Fieldlist fdlist = new Fieldlist();
 
-	public static void main(String[] args) 
+	
+	public static void main(String[] args)
 	{
-		new Gamecontroller().setup();
+		Gamecontroller gm = new Gamecontroller(); 
+		Player player = new Player("Kasper");
+		
+		gm.landOn(player, 6);
 	}
-
-	public void setup()
+	
+	public void moveCarPos(int amountOfMoves, Player player) 
 	{
-		Output.drawGameboard(list);
-		testMode = Output.setTestMode(); 	// Giver spilleren mulighed for at gå i test mode og tildeler til testMode boolean
-
-		if(testMode)
-		{ // Kode der bliver kørt vis programmet er i test mode!
-			cup = new FakeDicecup();
+		if(player.getPlayerPos() + amountOfMoves > fdlist.getFields().length)
+		{
+			player.setPlayerPos((player.getPlayerPos() + amountOfMoves) - fdlist.getFields().length);
 		}
 		else
 		{
-			cup = new Dicecup();
-		}
-
-		numberOfPlayers = Output.howManyPlayers();
-		players = Output.addplayers(players, startSum);
-
-
-		update();
-	}
-
-	public void update()
-	{
-		while(!gameEnded)
-		{
-			for(int i=0; i < players.length; i++)
-			{
-				winner(players[i]);
-
-				if(!(players[i].getAccount().getSum() <= 0))
-				{
-					turn(players[i]);
-				}
-				else 
-				{
-					players[i].setBankrupt(true);
-				}
-			}
+			player.setPlayerPos(amountOfMoves + player.getPlayerPos());
 		}
 	}
-
-	private void winner(Player p)
+	
+	public void landOn(Player player, int fieldNumber)
 	{
-		int con = 0;
-
-		for(int i =0; i < players.length; i++)
-		{
-			if(players[i].getBankruptStatus())
-			{
-				con++;
-			}
-		}
-
-		if(con == numberOfPlayers - 1)
-		{
-			Output.winnerPrint(p);
-			GUI.close();
-		}
+		fdlist.getFields()[fieldNumber].landOn(player);
 	}
-
-	public static int getNumberOfPlayers() 
-	{
-		return numberOfPlayers;
-	}
-
-	private void turn(Player p)
-	{
-		Output.msgGUI(list.getFields()[p.getCarPos() - 1].getDescription());
-		cup.roll(); // ryster raflebærger 
-		int sum = cup.getSum(); // sikre at det kun er nødvenrtigt at kalde cup.getSum() en gang! - vigtigt i test mode!
-
-		if(testMode)
-			Output.setGUIDice(TestData.getLinedata()[0], TestData.getLinedata()[1]);
-		else
-			Output.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
-
-		Output.removeCar(p);
-		Output.setcar(sum, p, list);
-
-		list.getFields()[p.getCarPos()-1].landOn(p);
-
-		Output.setGUIBalance(p);
-
-		winner(p);
-		System.out.println();
-	}
+	
 }
 
