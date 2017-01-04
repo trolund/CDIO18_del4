@@ -6,37 +6,34 @@ import view.Output;
 
 public abstract class Ownabel extends Field
 {	
-	
+
 	protected int price;
 	private Player owner;
 	boolean wantToBuy;
 
+	public Ownabel (String name, String description, int price, Output o)
+	{
+		super(name, description, o);
+		this.price = price;
+	}
 
-public Ownabel (String name, String description, int price, Output o)
-{
-	super(name, description, o);
-	this.price = price;
-}
-
-	
 	@Override
 	public void landOn(Player p, Output o)
 	{
-		if(p.getAccount().getSum()>=price && owner == null)
+		if(p.getAccount().getSum()>=price && owner == null) // can buy
 		{	
-			// can buy
 			wantToBuy = o.shop(price, p);
-			
+
 			if(wantToBuy)
 			{
 				o.setColor(p);
 				setOwner(p);
-				
+
 				if(this instanceof Brewery)
 				{
 					p.setBreweryCount(p.getBreweryCount() + 1);
 				}
-				
+
 				if(this instanceof Fleet)
 				{
 					p.setFleetCount(p.getFleetCount()+1);
@@ -46,29 +43,25 @@ public Ownabel (String name, String description, int price, Output o)
 				o.verificationOfPurchase();
 			}
 		}
-		else if(p.getAccount().getSum() < price && owner == null)
+		else if(p.getAccount().getSum() < price && owner == null)	// cant affort
 		{
-			// cant affort
 			o.deniedPurchase();
 		}
-		else if(p.getAccount().getSum()>=price && owner == null && !wantToBuy)
+		else if(p.getAccount().getSum()>=price && owner == null && !wantToBuy)	//Player don't want to buy
 		{
-			//Player don't want to buy
 			o.deniedPurchase();
 		}
-		else if(owner != null && owner != p)// is owned
+		else if(owner != null && owner != p)	// is owned
 		{
-			// Pay rent
-
 			int rent = getRent(p);
 
+			// Pay rent
 			p.getAccount().withdraw(rent);
 			owner.getAccount().addSum(rent);
 			o.payedRent(p, rent);
 		}
-		else
+		else	//It's your own field
 		{
-			//It's your own field
 			System.out.println("It's your own field");
 		}
 	}
@@ -87,5 +80,5 @@ public Ownabel (String name, String description, int price, Output o)
 	public Player getOwner(){
 		return owner;
 	}
-	
+
 }

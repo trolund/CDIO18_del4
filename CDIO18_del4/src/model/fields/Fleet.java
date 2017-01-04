@@ -5,8 +5,8 @@ import view.Output;
 
 public class Fleet extends Ownabel
 {
+	
 	private int baseRent;
-
 
 	public Fleet(String name, String description, int price, int baseRent, Output o) 
 	{
@@ -14,10 +14,9 @@ public class Fleet extends Ownabel
 		this.baseRent = baseRent;
 	}
 
-
 	@Override
-	public int getRent(Player p) {
+	public int getRent(Player p) 
+	{
 		return (int) (baseRent * Math.pow(2, p.getFleetCount() - 1));
-
 	}
 }

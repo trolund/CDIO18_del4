@@ -41,7 +41,7 @@ public class  Fieldlist
 		fields[12] = new Parking(Language.getFieldNames()[12], Language.getFieldType()[2], 5000,o);
 		fields[13] = new Parking(Language.getFieldNames()[13], Language.getFieldType()[2], 500,o);
 
-		//Laborcamp type fields is ownable with a price and a rent 
+		//Brewery type fields is ownable with a price and a rent 
 		//baseRent multiplied by a dice roll and number of owned fields 
 		fields[14] = new Brewery(Language.getFieldNames()[14], Language.getFieldType()[3], 2500, 100,o); //100*sumOfDice
 		fields[15] = new Brewery(Language.getFieldNames()[15], Language.getFieldType()[3], 2500, 100,o); //100*sumOfDice

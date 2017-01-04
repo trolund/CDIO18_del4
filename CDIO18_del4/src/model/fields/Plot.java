@@ -5,6 +5,7 @@ import view.Output;
 
 public class Plot extends Ownabel
 {
+	
 	private int rent;
 
 	public Plot(String name, String description, int price, int rent, Output o) 
@@ -12,7 +13,6 @@ public class Plot extends Ownabel
 		super(name, description, price, o);
 		this.rent = rent;
 	}
-	
 
 	@Override
 	public int getRent(Player p) 
@@ -20,6 +20,7 @@ public class Plot extends Ownabel
 		// ignore player
 		return rent;
 	}
+	
 }
 
 

@@ -9,7 +9,8 @@ import view.Output;
  *
  */
 
-public class Tax extends Field {
+public class Tax extends Field 
+{
 
 	private int taxAmmount;
 	private int taxRate;
@@ -45,4 +46,5 @@ public class Tax extends Field {
 	{
 		return taxAmmount;
 	}
+	
 }
