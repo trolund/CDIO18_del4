@@ -50,7 +50,6 @@ public class Output
 					.setDescription(logicField[i].getDescription())
 					.setRent("" + logicField[i].getValue())
 					.build();
-
 		}
 
 		GUI.create(guiField);
@@ -72,10 +71,9 @@ public class Output
 		GUI.create(f);
 	}
 
-	public void setcar(int no, Player p, Fieldlist list){
-		p.moveCarPos(no, list);
-		GUI.setCar(p.getCarPos(),p.getName());
-
+	public void setcar(int no, Player p, Fieldlist list)
+	{
+		GUI.setCar(p.getPlayerPos(),p.getName());
 	}
 
 	public void msgGUI(String s){
@@ -91,8 +89,8 @@ public class Output
 		for(int i=0; i < players.length; i++)
 		{
 			name = GUI.getUserString(Language.getNameOfPlayer() + " " + (i+1));
-			players[i] = new Player(startSum,name);
-			players[i].setCarPos(1);
+			players[i] = new Player(name);
+			players[i].setPlayerPos(1);
 		}
 
 		for(int i=0; i < players.length; i++)
@@ -130,7 +128,7 @@ public class Output
 	
 	public void setColor(Player p)
 	{
-		GUI.setOwner(p.getCarPos(), p.getName());
+		GUI.setOwner(p.getPlayerPos(), p.getName());
 	}
 	
 	public void payedRent(Player p, int rent){
