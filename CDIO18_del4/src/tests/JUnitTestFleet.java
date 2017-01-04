@@ -6,13 +6,14 @@ import org.junit.Test;
 
 import model.Player;
 import model.fields.Fieldlist;
+import view.FakeOutput;
 import view.Output;
 
 
 
 public class JUnitTestFleet {
 	
-	private Output out = new Output();
+	private Output out = new FakeOutput();
 
 	@Test
 	public void test() {
@@ -21,7 +22,7 @@ public class JUnitTestFleet {
 
 		Player bijan = new Player(20000, "Bijan");
 		Player kasper = new Player(30000, "Kasper");
-		Fieldlist list = new Fieldlist();
+		Fieldlist list = new Fieldlist(out);
 
 		out.setcar(18, bijan, list);
 		// bijan lander på felt 18
