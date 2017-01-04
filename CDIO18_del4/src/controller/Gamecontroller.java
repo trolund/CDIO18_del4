@@ -4,7 +4,7 @@ import model.fields.Fieldlist;
 import model.Player;
 
 /*
- * Team 18 - CDIO 3   
+ * Team 18 - CDIO final   
  * DTU
  * Collaborators:  KasperLeiszner, Bijan Negari, Helene Zgaya, Frederik von Scholten and Troels Lund
  * 
@@ -18,36 +18,28 @@ import model.Player;
  * 
  */
 
-public class Gamecontroller 
-{
-	
+public class Gamecontroller {
+
 	Fieldlist fdlist = new Fieldlist();
 
-	
-	public static void main(String[] args)
-	{
-		Gamecontroller gm = new Gamecontroller(); 
+	public static void main(String[] args) {
+		Gamecontroller gm = new Gamecontroller();
 		Player player = new Player("Kasper");
-		
+
 		gm.landOn(player, 6);
 	}
-	
-	public void moveCarPos(int amountOfMoves, Player player) 
-	{
-		if(player.getPlayerPos() + amountOfMoves > fdlist.getFields().length)
-		{
+
+	public void moveCarPos(int amountOfMoves, Player player) {
+		if (player.getPlayerPos() + amountOfMoves > fdlist.getFields().length) {
 			player.setPlayerPos((player.getPlayerPos() + amountOfMoves) - fdlist.getFields().length);
-		}
-		else
-		{
+			player.getAccount().addSum(4000);
+		} else {
 			player.setPlayerPos(amountOfMoves + player.getPlayerPos());
 		}
 	}
-	
-	public void landOn(Player player, int fieldNumber)
-	{
+
+	public void landOn(Player player, int fieldNumber) {
 		fdlist.getFields()[fieldNumber].landOn(player);
 	}
-	
-}
 
+}
