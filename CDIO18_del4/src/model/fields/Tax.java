@@ -22,7 +22,7 @@ public class Tax extends Field {
 	}
 
 	@Override
-	public void landOn(Player p)
+	public void landOn(Player p, Output o)
 	{
 		if(taxRate > 0)
 		{

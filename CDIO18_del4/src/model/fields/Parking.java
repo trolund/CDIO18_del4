@@ -14,7 +14,7 @@ public class Parking extends Field
 	}
 
 	@Override
-	public void landOn(Player p)
+	public void landOn(Player p, Output o)
 	{	
 		p.getAccount().addSum(bonus);
 	}

@@ -23,6 +23,7 @@ import model.Player;
 
 //numberOfPlayers = out.howManyPlayers();
 //players = out.addplayers(players, startSum);
+// out.drawGameboard(list);
 
 public class Gamecontroller 
 {
@@ -30,10 +31,8 @@ public class Gamecontroller
 	private Player[] players;
 	private Dicecup cup;
 	private Fieldlist list;
-	private final int startSum = 30000;
 	private static int numberOfPlayers = 0;
 	private boolean testMode = false;
-	private boolean gameEnded = false;
 	private Output out;
 	
 	public static void main(String[] args)
@@ -43,14 +42,11 @@ public class Gamecontroller
 	
 	public Gamecontroller(){
 		this(new Output());
-		out.drawGameboard(list);
 	}
 	
 	public Gamecontroller(Output o){
 		out = o;
 		list = new Fieldlist(out);
-		out.drawGameboard(list);
-		testMode = out.setTestMode(); 	// Giver spilleren mulighed for at gå i test mode og tildeler til testMode boolean
 	}
 
 	public void moveCarPos(int amountOfMoves, Player player) 
