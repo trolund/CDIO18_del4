@@ -1,6 +1,7 @@
 package model.fields;
 
 import model.Player;
+import view.Out;
 import view.Output;
 
 
@@ -11,7 +12,7 @@ public abstract class Ownabel extends Field
 	private Player owner;
 	boolean wantToBuy;
 
-	public Ownabel (String name, String description, int price, Output o)
+	public Ownabel (String name, String description, int price, Out o)
 	{
 		super(name, description, o);
 		this.price = price;

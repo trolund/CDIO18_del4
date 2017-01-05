@@ -1,6 +1,7 @@
 package model.fields;
 
 import model.Player;
+import view.Out;
 import view.Output;
 
 /**
@@ -15,9 +16,9 @@ public class Tax extends Field
 	private int taxAmmount;
 	private int taxRate;
 
-	public Tax(String name, String description, int taxAmmount, int taxRate, Output o) 
+	public Tax(String name, String description, int taxAmmount, int taxRate, Out out) 
 	{
-		super(name, description,o);
+		super(name, description,out);
 		this.taxAmmount = taxAmmount;
 		this.taxRate = taxRate;
 	}

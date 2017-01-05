@@ -2,15 +2,16 @@ package model.fields;
 
 import model.Dicecup;
 import model.Player;
+import view.Out;
 import view.Output;
 
 public class Brewery extends Ownabel
 {
 	private int baseRent;
 
-	public Brewery(String name, String description, int price, int baseRent, Output o) 
+	public Brewery(String name, String description, int price, int baseRent, Out out) 
 	{
-		super(name, description, price,o);
+		super(name, description, price,out);
 		this.baseRent = baseRent;
 	}
 

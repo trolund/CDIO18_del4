@@ -1,13 +1,14 @@
 package model.fields;
 
 import model.Player;
+import view.Out;
 import view.Output;
 
 public class Prison extends Field 
 {
-	public Prison(String name, String decsription, Output o)
+	public Prison(String name, String decsription, Out out)
 	{
-		super(name, decsription, o);
+		super(name, decsription, out);
 	}
 	
 	public void landOn(Player player, Output o)

@@ -1,6 +1,7 @@
 package model.fields;
 
 import model.Player;
+import view.Out;
 import view.Output;
 
 public class Parking extends Field
@@ -8,9 +9,9 @@ public class Parking extends Field
 	
 	private int bonus;
 
-	public Parking(String name, String description, int bonus, Output o) 
+	public Parking(String name, String description, int bonus, Out out) 
 	{
-		super(name, description, o);
+		super(name, description, out);
 		this.bonus = bonus;
 	}
 

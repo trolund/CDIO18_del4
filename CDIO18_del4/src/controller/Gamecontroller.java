@@ -2,6 +2,7 @@ package controller;
 
 import model.fields.Fieldlist;
 import tests.FakeDicecup;
+import view.Out;
 import view.Output;
 import model.Dicecup;
 import model.Player;
@@ -33,7 +34,7 @@ public class Gamecontroller
 	private Fieldlist list;
 	private static int numberOfPlayers = 0;
 	private boolean testMode = false;
-	private Output out;
+	private Out out;
 	
 	public static void main(String[] args)
 	{
