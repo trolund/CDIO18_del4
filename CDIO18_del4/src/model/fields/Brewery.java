@@ -18,11 +18,24 @@ public class Brewery extends Ownabel
 	@Override
 	public int getRent(Player p) 
 	{
+		if (this.getOwner().getBreweryCount() > 1) 
+		{
+			baseRent = 10;
+		}
+		else
+		{
+			baseRent = 4;
+		}
+		
 		Dicecup cup = new Dicecup();
+		
+		out.rollDiceText();
 		cup.roll();
 		out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
+		
 		int sum = cup.getSum();
-		int rent = sum * baseRent * p.getBreweryCount();
+		int rent = sum * baseRent;
+		
 		return rent;
 	}
 
