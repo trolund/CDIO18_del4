@@ -101,4 +101,16 @@ public class FakeOutput extends Out {
 		
 	}
 
+	@Override
+	public void rollDiceText() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void shopField() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
