@@ -40,6 +40,8 @@ public abstract class Out {
 
 	public abstract void deniedPurchase();
 
+	public abstract void rollDiceText();
+
 	
 
 }

@@ -23,7 +23,7 @@ public abstract class Ownabel extends Field
 	{
 		if(p.getAccount().getSum()>=price && owner == null) // can buy
 		{	
-			wantToBuy = o.shop(price, p);
+			wantToBuy = o.shopField(price, p);
 
 			if(wantToBuy)
 			{
