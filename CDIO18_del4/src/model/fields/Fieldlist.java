@@ -2,13 +2,6 @@ package model.fields;
 
 import view.Language;
 import view.Out;
-import view.Output;
-
-/**
- * 
- * @author von Scholten
- *
- */
 
 public class  Fieldlist 
 {

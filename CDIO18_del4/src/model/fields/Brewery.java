@@ -3,7 +3,6 @@ package model.fields;
 import model.Dicecup;
 import model.Player;
 import view.Out;
-import view.Output;
 
 public class Brewery extends Ownabel
 {
