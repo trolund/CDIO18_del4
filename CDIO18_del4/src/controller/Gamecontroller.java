@@ -1,5 +1,12 @@
 package controller;
 
+import desktop_resources.GUI;
+import model.Dicecup;
+import model.Player;
+import model.fields.Fieldlist;
+import view.Language;
+import view.Output;
+
 /*
  * Team 18 - CDIO 3   
  * DTU
@@ -19,134 +26,90 @@ package controller;
  * Class wrote by: Troels Lund and Kasper Leiszner
  */
 
-import desktop_resources.GUI;
-import model.Dicecup;
-import model.Player;
-import model.fields.Fieldlist;
-import tests.FakeDicecup;
-import tests.TestData;
-import view.Output;
+public class Gamecontroller {
+	private Player[] player;
+	private Dicecup cup = new Dicecup();
+	private Output out = new Output();
+	private Fieldlist fieldlist = new Fieldlist(out);
 
-public class Gamecontroller 
-{
-	private Player[] players;
-	private Dicecup cup;
-	private Fieldlist list;
-	private final int startSum = 30000;
-	private static int numberOfPlayers = 0;
-	private boolean testMode = false;
-	private boolean gameEnded = false;
-	private Output out;
 
-	public static void main(String[] args) 
-	{
+	public static void main(String[] args) {
 		new Gamecontroller().setup();
 	}
-	
-	public Gamecontroller(){
-		this(new Output());
-	}
-	
-	public Gamecontroller(Output o){
-		out = o;
-		list = new Fieldlist(out);
+
+	public void setup(){
+		player = addPlayer();
+		runGame();
 	}
 
-	public void setup()
-	{
-		out.drawGameboard(list);
-		testMode = out.setTestMode(); 	// Giver spilleren mulighed for at gå i test mode og tildeler til testMode boolean
+	public void runGame(){
+		while(true){
+			for( int i = 0 ; i < player.length ; i++ ){
+				Player p = player[i];
+				turn(p);
 
-		if(testMode)
-		{ // Kode der bliver kørt vis programmet er i test mode!
-			cup = new FakeDicecup();
-		}
-		else
-		{
-			cup = new Dicecup();
-		}
-
-		numberOfPlayers = out.howManyPlayers();
-		players = out.addplayers(players, startSum);
-
-
-		update();
-	}
-
-	public void update()
-	{
-		while(!gameEnded)
-		{
-			for(int i=0; i < players.length; i++)
-			{
-				winner(players[i]);
-
-				if(!(players[i].getAccount().getSum() <= 0))
-				{
-					turn(players[i]);
-				}
-				else 
-				{
-					players[i].setBankrupt(true);
-				}
 			}
 		}
 	}
 
-	private void winner(Player p)
-	{
-		int con = 0;
+	public void turn(Player p){
+		cup.roll();
+		int amountOfMoves = cup.getSum();
+		movePlayer(p, amountOfMoves);
 
-		for(int i =0; i < players.length; i++)
-		{
-			if(players[i].getBankruptStatus())
-			{
-				con++;
+		//land på felt
+
+
+
+	}
+
+
+	public void movePlayer(Player p, int amountOfMoves){
+
+		if(p.getPlayerPos() + amountOfMoves > fieldlist.getFields().length){
+			p.setPlayerPos((p.getPlayerPos() + amountOfMoves)-fieldlist.getFields().length);
+			p.getAccount().setSum(4000);
+		}
+		else{
+			p.setPlayerPos(p.getPlayerPos() + amountOfMoves);
+		}
+	}
+
+	public Player[] addPlayer(){
+
+		Player[] player = new Player[out.howManyPlayers()];
+
+		for( int i = 0 ; i < player.length ; i++ ){
+
+			String name = GUI.getUserString(Language.getNameOfPlayer() + " " + (i + 1)); //input navn fra GUI(skal laves i Output)
+			player[i] = new Player(name, 30000);
+			player[i].setPlayerPos(0);
+			//			GUI.addPlayer(name, player[i].getAccount().getSum());
+			//			GUI.setCar(1, name);
+		}
+
+		return player;
+	}
+
+	public void winner(){
+		int playersAlive = 0;
+		for (int i = 0; i < player.length; i++) {
+			Player p = player[i];
+			boolean bankrupt = p.getBankruptStatus();
+			if(!bankrupt) playersAlive++;
+		}
+		if(playersAlive == 1){
+			for (int i = 0; i < player.length; i++) {
+				Player p = player[i];
+				boolean bankrupt = p.getBankruptStatus();
+				if(!bankrupt) {
+					out.winnerPrint(p);
+					try { Thread.sleep(4000); } catch (InterruptedException e) { }
+					GUI.close();
+				}
 			}
 		}
-
-		if(con == numberOfPlayers - 1)
-		{
-			out.winnerPrint(p);
-			GUI.close();
-		}
 	}
-
-	public static int getNumberOfPlayers()  
-	{
-		return numberOfPlayers;
-	}
-
-	private void turn(Player p)
-	{
-		out.msgGUI(list.getFields()[p.getPlayerPos() - 1].getDescription());
-		cup.roll(); // ryster raflebærger 
-		int sum = cup.getSum(); // sikre at det kun er nødvenrtigt at kalde cup.getSum() en gang! - vigtigt i test mode!
-
-		if(testMode)
-			out.setGUIDice(TestData.getLinedata()[0], TestData.getLinedata()[1]);
-		else
-			out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
-
-		out.removeCar(p);
-		out.setcar(sum, p, list);
-
-		list.getFields()[p.getPlayerPos()-1].landOn(p);
-
-		out.setGUIBalance(p);
-	}
-	
-	public void moveCarPos(int amountOfMoves, Player player) 
-	{
-		if(player.getPlayerPos() + amountOfMoves > list.getFields().length) {
-			player.setPlayerPos((player.getPlayerPos() + amountOfMoves) - list.getFields().length);
-			player.getAccount().addSum(4000);
-		}
-		else
-		{
-			player.setPlayerPos(amountOfMoves + player.getPlayerPos());
-		}
-	}
-	
 }
+
 
