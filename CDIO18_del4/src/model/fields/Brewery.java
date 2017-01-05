@@ -20,11 +20,7 @@ public class Brewery extends Ownabel
 	{
 		if (this.getOwner().getBreweryCount() > 1) 
 		{
-			baseRent = 10;
-		}
-		else
-		{
-			baseRent = 4;
+			baseRent += 6;
 		}
 		
 		Dicecup cup = new Dicecup();
