@@ -56,7 +56,7 @@ public class Output
 		GUI.create(guiField);
 	}
 
-	public boolean taxAction(int price){
+	public boolean taxAction(int price, boolean x){// ignorer boolean bliver brugt i test
 		return GUI.getUserLeftButtonPressed(Language.getMakeYourChoiceMSG(), Language.getPayMSG() + " " + price , Language.getTenPercent());
 	}
 
@@ -73,8 +73,8 @@ public class Output
 	}
 
 	public void setcar(int no, Player p, Fieldlist list){
-		p.moveCarPos(no, list);
-		GUI.setCar(p.getCarPos(),p.getName());
+		p.setPlayerPos(no);
+		GUI.setCar(p.getPlayerPos(),p.getName());
 
 	}
 
@@ -91,8 +91,8 @@ public class Output
 		for(int i=0; i < players.length; i++)
 		{
 			name = GUI.getUserString(Language.getNameOfPlayer() + " " + (i+1));
-			players[i] = new Player(startSum,name);
-			players[i].setCarPos(1);
+			players[i] = new Player(name,startSum);
+			players[i].setPlayerPos(1);
 		}
 
 		for(int i=0; i < players.length; i++)
@@ -130,7 +130,7 @@ public class Output
 	
 	public void setColor(Player p)
 	{
-		GUI.setOwner(p.getCarPos(), p.getName());
+		GUI.setOwner(p.getPlayerPos(), p.getName());
 	}
 	
 	public void payedRent(Player p, int rent){

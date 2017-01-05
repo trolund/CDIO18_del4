@@ -1,70 +1,72 @@
 package model;
 
-import model.fields.Fieldlist;
+import java.util.ArrayList;
 
-public class Player {
+import desktop_fields.Ownable;
+
+public class Player 
+{
 
 	private String name;
 	private BankAccount account;
-	private boolean bankrupt = false;
-	private int carPos = 0;
-	private int laborCount = 0;
+	private boolean bankruptStatus = false;
+	private int playerPos = 0;
+	private int breweryCount = 0;
 	private int fleetCount = 0;
+	private ArrayList<Ownable> ownedFields = new ArrayList<>();
 
-	public Player(int balance, String name) {
+	public Player(String name, int balance) 
+	{
 		this.name = name;
 		account = new BankAccount(balance);
 	}	
+	
+	public ArrayList<Ownable> getOwnedFields() {
+		return ownedFields;
+	}
+	public void addOwnedFields(Ownable ownedField) {
+		this.ownedFields.add(ownedField);
+	}
 
-
-	public BankAccount getAccount() {
+	public BankAccount getAccount() 
+	{
 		return account;
 	}
 
-	public String getName() {
+	public String getName() 
+	{
 		return name;
 	}
 
-
-	public boolean getBankruptStatus() {
-		return bankrupt;
-	}
-
-
-	public void setBankrupt(boolean bankrupt) {
-		this.bankrupt = bankrupt;
-	}
-
-
-	public int getCarPos() {
-		return carPos;
-	}
-
-
-	public void setCarPos(int carPos) {
-		this.carPos = carPos;
-	}
-
-	public void moveCarPos(int carPos, Fieldlist list) 
+	public boolean getBankruptStatus() 
 	{
-		if(this.carPos + carPos > list.getFields().length)
-		{
-			this.carPos = (this.carPos + carPos) - list.getFields().length;
-		}
-		else
-		{
-			this.carPos += carPos;
-		}
+		return bankruptStatus;
 	}
 
-	public void setLaborcampCount(int newCount)
+
+	public void setBankrupt(boolean bankruptStatus) 
 	{
-		laborCount = newCount;
+		this.bankruptStatus = bankruptStatus;
 	}
 
-	public int getLaborcampCount()
+	public int getPlayerPos() 
 	{
-		return laborCount;
+		return playerPos;
+	}
+
+	public void setPlayerPos(int newCarPos) 
+	{
+		this.playerPos = newCarPos;
+	}
+
+	public void setBreweryCount(int newCount)
+	{
+		breweryCount = newCount;
+	}
+
+	public int getBreweryCount()
+	{
+		return breweryCount;
 	}
 
 	public void setFleetCount(int newCount)

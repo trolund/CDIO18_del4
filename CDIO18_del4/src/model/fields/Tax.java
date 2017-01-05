@@ -26,7 +26,7 @@ public class Tax extends Field {
 	{
 		if(taxRate > 0)
 		{
-			if(out.taxAction(taxAmmount))
+			if(out.taxAction(taxAmmount, true))
 			{
 				p.getAccount().withdraw(taxAmmount);
 			}

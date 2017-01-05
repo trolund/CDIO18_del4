@@ -1,18 +1,23 @@
 package model;
 
-public class Die {
+public class Die 
+{
 
 	private int value;
 
-	public void roll() {
+	public void roll() 
+	{
 		value = (int) (Math.random() * 6+1);
 	}
 
-	public int getValue() {
+	public int getValue() 
+	{
 		return value;
 	}
 
-	public void setValue(int value) {
+	public void setValue(int value) 
+	{
 		this.value = value;
 	}	
+	
 }

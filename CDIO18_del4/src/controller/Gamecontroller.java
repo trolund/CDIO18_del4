@@ -112,14 +112,14 @@ public class Gamecontroller
 		}
 	}
 
-	public static int getNumberOfPlayers() 
+	public static int getNumberOfPlayers()  
 	{
 		return numberOfPlayers;
 	}
 
 	private void turn(Player p)
 	{
-		out.msgGUI(list.getFields()[p.getCarPos() - 1].getDescription());
+		out.msgGUI(list.getFields()[p.getPlayerPos() - 1].getDescription());
 		cup.roll(); // ryster raflebærger 
 		int sum = cup.getSum(); // sikre at det kun er nødvenrtigt at kalde cup.getSum() en gang! - vigtigt i test mode!
 
@@ -131,12 +131,22 @@ public class Gamecontroller
 		out.removeCar(p);
 		out.setcar(sum, p, list);
 
-		list.getFields()[p.getCarPos()-1].landOn(p);
+		list.getFields()[p.getPlayerPos()-1].landOn(p);
 
 		out.setGUIBalance(p);
-
-		winner(p);
-		System.out.println();
 	}
+	
+	public void moveCarPos(int amountOfMoves, Player player) 
+	{
+		if(player.getPlayerPos() + amountOfMoves > list.getFields().length) {
+			player.setPlayerPos((player.getPlayerPos() + amountOfMoves) - list.getFields().length);
+			player.getAccount().addSum(4000);
+		}
+		else
+		{
+			player.setPlayerPos(amountOfMoves + player.getPlayerPos());
+		}
+	}
+	
 }
 

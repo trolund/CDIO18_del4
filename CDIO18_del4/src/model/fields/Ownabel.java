@@ -29,7 +29,7 @@ public void landOn(Player p)
 			out.setColor(p);
 			setOwner(p);
 			if(this instanceof Brewery){
-				p.setLaborcampCount(p.getLaborcampCount() + 1);
+				p.setBreweryCount((p.getBreweryCount() + 1));
 			}
 			if(this instanceof Fleet){
 				p.setFleetCount(p.getFleetCount()+1);

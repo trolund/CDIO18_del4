@@ -4,49 +4,41 @@ public class BankAccount
 {
 	private int balance;
 
-	public BankAccount(int balance)
-	{
-		this.balance = balance >= 0 ? balance : 0;
+	public BankAccount(int balance){
+		this.balance = balance > 0 ? balance : 0;
 	}
 
-	public int getSum() 
-	{
+	public int getSum(){
 		return balance;
 	}
 
-	public String sumToString()
+	public boolean setSum(int value) 
 	{
-		return String.format("%1$2s %2$2s", getSum(), "kr");
-	}
-
-	public boolean setSum(int sum) 
-	{
-		if(sum >= 0)
+		if(value >= 0)
 		{
-			balance = sum;
+			balance = value;
 			return true;
 		}
 		
 		return false;
 	}
 
-	public boolean addSum(int x) 
+	public boolean addSum(int value) 
 	{
-		balance += x;
-		
-		if (x < 0 && x * (-1) > balance)
+		if (value > 0)
 		{
-			balance = 0; 
+			balance += value;
 			return false;
 		}
+		
 		return true;
 	}	
 
-	public boolean withdraw(int x) 
+	public boolean withdraw(int value) 
 	{
-		if(x > 0)
+		if(value < 0 && value * (-1) > balance)
 		{
-			balance -= x;
+			balance -= value;
 			return true;
 		}
 		else 
