@@ -31,7 +31,7 @@ public class Gamecontroller
 
 	private Player[] players;
 	private Dicecup cup;
-	private Fieldlist list;
+	private static Fieldlist list;
 	private static int numberOfPlayers = 0;
 	private boolean testMode = false;
 	private Out out;
@@ -68,7 +68,7 @@ public class Gamecontroller
 		return numberOfPlayers;
 	}
 
-	public Fieldlist getList() {
+	public static Fieldlist getList() {
 		return list;
 	}
 	

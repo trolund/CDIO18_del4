@@ -21,6 +21,10 @@ public class Chance extends Field
 	};
 	
 
+	public static Card[] getCards() {
+		return cards;
+	}
+
 	public Chance(String name, String description, Out out)
 	{
 		super(name, description, out);
