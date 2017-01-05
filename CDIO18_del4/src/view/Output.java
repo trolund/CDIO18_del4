@@ -1,7 +1,5 @@
 package view;
 
-import controller.Gamecontroller;
-
 /*
  * Class wrote by: Troels Lund and Kasper Leiszner
  */
@@ -29,13 +27,9 @@ public class Output
 
 	public int howManyPlayers()
 	{
-		return Integer.parseInt(GUI.getUserSelection(Language.getPlayerCountText(), "2","3","4","5","6")); 
-	}
-
-	public void turnMsg(int nr, Player p, String s)
-	{
-		GUI.setCar(nr,p.getName());
-		GUI.showMessage(s);
+		int result = Integer.parseInt(GUI.getUserSelection(Language.getPlayerCountText(), "2","3","4","5","6"));
+		System.out.println(result + "players are made");
+		return result; 
 	}
 
 	public void drawGameboard(Fieldlist fd)
@@ -55,93 +49,96 @@ public class Output
 		GUI.create(guiField);
 	}
 
-	public boolean taxAction(int price){
-		return GUI.getUserLeftButtonPressed(Language.getMakeYourChoiceMSG(), Language.getPayMSG() + " " + price , Language.getTenPercent());
+	public Boolean taxAction(int price)
+	{
+		Boolean result = GUI.getUserLeftButtonPressed(Language.getMakeYourChoiceMSG(), Language.getPayMSG() + " " + price , Language.getTenPercent());
+		System.out.println("You did pay the tax" + result + "If false you payed 10%");
+		return result;
 	}
 
-	public void setGUIDice(int die1 , int die2){
+	public void setGUIDice(int die1 , int die2)
+	{
+		System.out.println("You rolled" + die1 + " " + die2);
 		GUI.setDice(die1,die2);
 	}
 
-	public void setGUIBalance(Player p){
+	public void setGUIBalance(Player p)
+	{
+		System.out.println("Your new balance is " + p.getAccount().getSum());
 		GUI.setBalance(p.getName(), p.getAccount().getSum());
 	}
 
-	public void GUIcreateFields(desktop_fields.Field[] f) {	
-		GUI.create(f);
-	}
-
-	public void setcar(int no, Player p, Fieldlist list)
+	public void setcar(Player p)
 	{
+		System.out.println("Gui car is moved to field number " + p.getPlayerPos());
 		GUI.setCar(p.getPlayerPos(),p.getName());
 	}
 
-	public void msgGUI(String s){
-		//	GUI.showMessage(s);
-		GUI.getUserButtonPressed(s, Language.rollButName());
-	}
-
-	public Player[] addplayers(Player[] players, int startSum)
+	public void msgGUI(String s)
 	{
-		String name = "";
-		players = new Player[Gamecontroller.getNumberOfPlayers()];
-
-		for(int i=0; i < players.length; i++)
-		{
-			name = GUI.getUserString(Language.getNameOfPlayer() + " " + (i+1));
-			players[i] = new Player(name);
-			players[i].setPlayerPos(1);
-		}
-
-		for(int i=0; i < players.length; i++)
-		{
-			GUI.addPlayer(players[i].getName(), players[i].getAccount().getSum());
-			GUI.setCar(1, players[i].getName());
-		}
-
-		return players;
+		System.out.println(s);
+		GUI.showMessage(s);
+	}
+	
+	public void rollDiceText()
+	{
+		GUI.getUserButtonPressed("", Language.rollDiceText());
 	}
 
-	public boolean shop(int price, Player p){
+	public void addPlayersToGUI(Player player)
+	{
+		GUI.addPlayer(player.getName(), player.getAccount().getSum());
+		GUI.setCar(1, player.getName());
+	}
+
+	public boolean shopField(int price, Player p)
+	{
 		return GUI.getUserLeftButtonPressed(p.getName() + " " + Language.getWillYouBuy() + " " + price, Language.getYesNo()[0], Language.getYesNo()[1]);
 	}
 
-	public boolean setTestMode(){
+	public boolean setTestMode()
+	{
 		return GUI.getUserLeftButtonPressed(Language.testModeStrings(0),Language.testModeStrings(1),Language.testModeStrings(2));
 	}
 
-	public void verificationOfPurchase(){
+	public void verificationOfPurchase()
+	{
 		GUI.showMessage(Language.purchaseString());
 		System.out.println("You bought this field");
 	}
 
-	public void deniedPurchase(){
-		GUI.showMessage(Language.dpurchaseString());
+	public void deniedPurchase()
+	{
+		GUI.showMessage(Language.deniedPurchaseString());
 		System.out.println("You didn't buy the field");
-
 	}
 	
 	public void removeCar(Player p)
 	{
 		GUI.removeAllCars(p.getName());
+		System.out.println("All cars got removed in GUI");
 	}
 	
 	public void setColor(Player p)
 	{
 		GUI.setOwner(p.getPlayerPos(), p.getName());
+		System.out.println("Owner was set");
 	}
 	
-	public void payedRent(Player p, int rent){
+	public void payedRent(Player p, int rent)
+	{
 		GUI.showMessage(p.getName() + ", " + Language.payedRent() + " " + rent );
 		System.out.println("Field is owned, you paid the rent");
 	}
 	
-	public void ownField(){
+	public void ownField()
+	{
 		GUI.showMessage("It's your own field - nothing happened");
 		System.out.println("It's your own field -nothing happened");
 	}
 	
-	public void landMSG(Player p,Field f){
+	public void landMSG(Player p,Field f)
+	{
 		System.out.println(p.getName() + " has landed on" + f.getClass().getSimpleName() +  "field");
 	}
 }
