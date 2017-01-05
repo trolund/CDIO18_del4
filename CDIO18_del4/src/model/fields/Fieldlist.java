@@ -12,51 +12,56 @@ import view.Output;
 public class  Fieldlist 
 {
 	//an array of the fieldlist
-	private model.fields.Field[] fields = new Field[22];
+	private model.fields.Field[] fields;
+	private String[] FieldNames = Language.getFieldNames();
+	private String[] FieldDescription = Language.getFieldDecription();
 
 	//list of fields
 	public Fieldlist(Output o)
 	{
-		
-		
-		//Start field
-		//Refuge type with no bonus
-		fields[0] = new Parking(Language.getFieldNames()[0], Language.getFieldType()[0], 0, o);
-
-		//Territory type fields is ownable with a price and a rent
-		fields[1] = new Plot(Language.getFieldNames()[1], Language.getFieldType()[1], 1000, 100,o);
-		fields[2] = new Plot(Language.getFieldNames()[2], Language.getFieldType()[1], 1500, 300,o);
-		fields[3] = new Plot(Language.getFieldNames()[3], Language.getFieldType()[1], 2000, 500,o);
-		fields[4] = new Plot(Language.getFieldNames()[4], Language.getFieldType()[1], 3000, 700,o);
-		fields[5] = new Plot(Language.getFieldNames()[5], Language.getFieldType()[1], 4000, 1000,o);
-		fields[6] = new Plot(Language.getFieldNames()[6], Language.getFieldType()[1], 4300,1300,o);
-		fields[7] = new Plot(Language.getFieldNames()[7], Language.getFieldType()[1], 4750, 1600,o);
-		fields[8] = new Plot(Language.getFieldNames()[8], Language.getFieldType()[1], 5000, 2000,o);
-		fields[9] = new Plot(Language.getFieldNames()[9], Language.getFieldType()[1], 5500, 2600,o);
-		fields[10] = new Plot(Language.getFieldNames()[10], Language.getFieldType()[1], 6000, 3200,o);
-		fields[11] = new Plot(Language.getFieldNames()[11], Language.getFieldType()[1], 8000, 4000,o);
-		
-		//Refuge type fields is not ownable
-		//adds a bonus
-		fields[12] = new Parking(Language.getFieldNames()[12], Language.getFieldType()[2], 5000,o);
-		fields[13] = new Parking(Language.getFieldNames()[13], Language.getFieldType()[2], 500,o);
-
-		//Brewery type fields is ownable with a price and a rent 
-		//baseRent multiplied by a dice roll and number of owned fields 
-		fields[14] = new Brewery(Language.getFieldNames()[14], Language.getFieldType()[3], 2500, 100,o); //100*sumOfDice
-		fields[15] = new Brewery(Language.getFieldNames()[15], Language.getFieldType()[3], 2500, 100,o); //100*sumOfDice
-
-		//Tax type fields is not ownable
-		//withdraw a baseRent or (only [17]) chose to pay 10% of accets
-		fields[16] = new Tax(Language.getFieldNames()[16], Language.getFieldType()[4], 2000, 0,o);
-		fields[17] = new Tax(Language.getFieldNames()[17], Language.getFieldType()[4], 4000, 10,o);
-
-		//Fleet type fields is ownable with a price and a rent 
-		//baseRent multiplied by owned fields 
-		fields[18] = new Fleet(Language.getFieldNames()[18], Language.getFieldType()[5], 4000, 500,o); // Mellem 500 og 4000 rent
-		fields[19] = new Fleet(Language.getFieldNames()[19], Language.getFieldType()[5], 4000, 500,o);
-		fields[20] = new Fleet(Language.getFieldNames()[20], Language.getFieldType()[5], 4000, 500,o);
-		fields[21] = new Fleet(Language.getFieldNames()[21], Language.getFieldType()[5], 4000, 500,o);
+		fields = new model.fields.Field[] 
+			{
+				new Parking(FieldNames[0], FieldDescription[0], 0, o),
+				new Plot(FieldNames[1], FieldDescription[1], 60, 100, o),
+				new Chance(FieldNames[2], FieldDescription[1], o),
+				new Plot(FieldNames[3], FieldDescription[1], 60, 500, o),
+				new Tax(FieldNames[4], FieldDescription[1], 200, 10, o),
+				new Fleet(FieldNames[5], FieldDescription[1], 200, 1000,o),
+				new Plot(FieldNames[6], FieldDescription[1], 4300,1300,o),
+				new Chance(FieldNames[7], FieldDescription[1], o),
+				new Plot(FieldNames[8], FieldDescription[1], 100, 2000,o),
+				new Plot(FieldNames[9], FieldDescription[1], 120, 2600,o),
+				new Parking(FieldNames[10], FieldDescription[1], 0, o),
+				new Plot(FieldNames[11], FieldDescription[1], 140, 4000,o),
+				new Brewery(FieldNames[12], FieldDescription[2], 150, 5000,o),
+				new Plot(FieldNames[13], FieldDescription[2], 140, 500,o),
+				new Plot(FieldNames[14], FieldDescription[3], 140, 100,o),
+				new Fleet(FieldNames[15], FieldDescription[3], 200, 100,o), 
+				new Plot(FieldNames[16], FieldDescription[4], 180, 0,o),
+				new Chance(FieldNames[17], FieldDescription[4], o),
+				new Plot(FieldNames[18], FieldDescription[5], 180, 500,o), 
+				new Plot(FieldNames[19], FieldDescription[5], 180, 500,o),
+				new Parking(FieldNames[20], FieldDescription[5], 0, o),
+				new Plot(FieldNames[21], FieldDescription[5], 220, 500,o),
+				new Chance(FieldNames[21], FieldDescription[5] ,o),
+				new Plot(FieldNames[21], FieldDescription[5], 220, 500,o),
+				new Plot(FieldNames[21], FieldDescription[5], 240, 500,o),
+				new Fleet(FieldNames[21], FieldDescription[5], 200, 500,o),
+				new Plot(FieldNames[21], FieldDescription[5], 260, 500,o),
+				new Plot(FieldNames[21], FieldDescription[5], 260, 500,o),
+				new Brewery(FieldNames[21], FieldDescription[5], 150, 500,o),
+				new Plot(FieldNames[21], FieldDescription[5], 280, 500,o),
+				new Prison(FieldNames[21], FieldDescription[5],o),
+				new Plot(FieldNames[21], FieldDescription[5], 300, 500,o),
+				new Plot(FieldNames[21], FieldDescription[5], 300, 500,o),
+				new Chance(FieldNames[21], FieldDescription[5], o),
+				new Plot(FieldNames[21], FieldDescription[5], 320, 500,o),
+				new Fleet(FieldNames[21], FieldDescription[5], 200, 500,o),
+				new Chance(FieldNames[21], FieldDescription[5], o),
+				new Plot(FieldNames[21], FieldDescription[5], 350, 500,o),
+				new Tax(FieldNames[21], FieldDescription[5], 100, 0,o),
+				new Plot(FieldNames[21], FieldDescription[5], 400, 500,o),
+			};
 	}
 
 	public model.fields.Field[] getFields()

@@ -6,68 +6,107 @@ package view;
 
 public class Language 
 {
-	private static String[] fieldInfo = {
-			"Start",
-			"Tribe Encampment",
-			"Crater",
-			"Mountain",
-			"Cold Desert",
-			"Black cave",
-			"The Werewall",
-			"Mountain village",
-			"South Citadel",
-			"Palace gates",
-			"Tower",
-			"Castle",
-			"Walled city",
-			"Monastery",
-			"Huts in the mountain",
-			"The pit",
-			"Goldmine",
-			"Caravan",
-			"Second Sail",
-			"Sea Grover",
-			"The Buccaneers",
-			"Privateer armade"
-	};
+	private static String[] fieldName = 
+		{
+				"Start",
+				"Rødovrevej",
+				"Prøv lykken",
+				"Hvidovrevej",
+				"Skat",
+				"Øresund",
+				"Roskildevej",
+				"Prøv lykken",
+				"Valby Langgade",
+				"Allegade",
+				"Fængsel",
+				"Frederiksberg Allé",
+				"Tuborg",
+				"Bulowsvej",
+				"Gammel Kongevej",
+				"D.F.D.S",
+				"Bernstorffsvej",
+				"Prøv lykken",
+				"Hellerupvej",
+				"Strandvejen",
+				"Helle",
+				"Trianglen",
+				"Prøv lykken",
+				"Østerbrogade",
+				"Grønningen",
+				"Ø.S.",
+				"Bredgade",
+				"Kgs. Nytorv",
+				"Calsberg",
+				"Østergade",
+				"Gå i fængsel",
+				"Amagertorv",
+				"Vimmelskaftet",
+				"Prøv lykken",
+				"Nygade",
+				"Bornholm",
+				"Prøv lykken",
+				"Frederiksberggade",
+				"Skat",
+				"Rådhuspladsen"
+		};
 
-	private static String[] yesNo = { "Yes", "No" };
-	private static String[] fieldType = { "Start", "Territory", "Refuge", "Labor Camp", "Tax", "Fleet" };
+	private static String[] yesNo = 
+		{ 
+				"Ja", 
+				"Nej" 
+		};
 
-	private static String winnerText = "The winner is";
-	private static String endText = "One more game?";
-	private static String playerCountText = "How many players?";
-	private static String nameOfPlayer = "Name of player";
-	private static String butName = "Roll the dice";
-	private static String makeYourChoice = "Make your choice";
-	private static String purchase = "purchase confirmed";
-	private static String dpurchase = "purchase denied";
-	private static String pay = "Pay";
-	private static String tenPercent = "or pay 10% of your balance";
-	private static String willYouBuy = "will you buy this field?";
-	private static String payedRent = "Field is owned, you paid the rent";
-	private static String ownField = "It's your own field -nothing happened";
-	
-	public static String getPayedRent() {
+	private static String[] fieldDescription = 
+		{ 
+				"Start", 
+				"Territory", 
+				"Refuge", 
+				"Labor Camp", 
+				"Tax", 
+				"Fleet" 
+		};
+
+	private static String testString[] = 
+		{
+				"Test mode options",
+				"Run Test Mode",
+				"Run Normal Game"
+		};
+
+	private static String winnerText = "Vinderen er";
+	private static String endText = "Vil du spille igen?";
+	private static String playerCountText = "Hvor mange spilere er i?";
+	private static String nameOfPlayer = "Navnet på spiller";
+	private static String rollDice = "Kast terningerne";
+	private static String makeYourChoice = "Tag dit valg";
+	private static String purchase = "Købet gik igennem";
+	private static String deniedPurchase = "Købet blev afvist";
+	private static String pay = "Betal";
+	private static String tenPercent = "eller betal 10% af din balance";
+	private static String willYouBuy = "Vil du købe denne grund?";
+	private static String payedRent = "Feltet er ejet, du betalte leje til ejeren";
+	private static String ownField = "Dette er dit eget felt";
+
+	public static String getPayedRent() 
+	{
 		return payedRent;
 	}
-	
-	public static String ownField(){
+
+	public static String ownField()
+	{
 		return ownField;
 	}
 
-	public static void setPayedRent(String payedRent) {
+	public static void setPayedRent(String payedRent) 
+	{
 		Language.payedRent = payedRent;
 	}
 
-	// test mode Strings
-	static String testString[] = {"Test mode options","Run Test Mode","Run Normal Game"};
-
-	public static String[] getFieldType()
+	public static String[] getFieldDecription()
 	{
-		return fieldType;
+		return fieldDescription;
 	}
-	
+
 	public static String[] getYesNo()
 	{
 		return yesNo;
@@ -115,12 +154,12 @@ public class Language
 
 	public static String[] getFieldNames()
 	{
-		return fieldInfo;
+		return fieldName;
 	}
 
-	public static String rollButName()
+	public static String rollDiceText()
 	{
-		return butName;
+		return rollDice;
 	}
 
 	public static String testModeStrings(int x)
@@ -133,11 +172,11 @@ public class Language
 		return purchase;
 	}
 
-	public static String dpurchaseString()
+	public static String deniedPurchaseString()
 	{
-		return dpurchase;
+		return deniedPurchase;
 	}
-	
+
 	public static String payedRent()
 	{
 		return payedRent;
