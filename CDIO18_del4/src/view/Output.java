@@ -10,7 +10,7 @@ import model.Player;
 import model.fields.Field;
 import model.fields.Fieldlist;
 
-public class Output 
+public class Output extends Out
 {
 
 	public void winnerPrint(Player p)
@@ -49,7 +49,7 @@ public class Output
 		GUI.create(guiField);
 	}
 
-	public Boolean taxAction(int price)
+	public boolean taxAction(int price)
 	{
 		Boolean result = GUI.getUserLeftButtonPressed(Language.getMakeYourChoiceMSG(), Language.getPayMSG() + " " + price , Language.getTenPercent());
 		System.out.println("You did pay the tax" + result + "If false you payed 10%");
@@ -140,6 +140,42 @@ public class Output
 	public void landMSG(Player p,Field f)
 	{
 		System.out.println(p.getName() + " has landed on" + f.getClass().getSimpleName() +  "field");
+	}
+
+	@Override
+	public void turnMsg(int nr, Player p, String s) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void GUIcreateFields(desktop_fields.Field[] f) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setcar(int no, Player p, Fieldlist list) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Player[] addplayers(Player[] players, int startSum) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean shop(int price, Player p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void shopField() {
+		// TODO Auto-generated method stub
+		
 	}
 }
 

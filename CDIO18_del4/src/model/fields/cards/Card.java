@@ -11,4 +11,11 @@ public abstract class Card  {
 	}
 
 	public abstract void doCard(Player p);
+
+	@Override
+	public String toString() {
+		return description;
+	}
+	
+	
 }

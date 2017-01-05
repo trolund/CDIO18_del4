@@ -45,7 +45,7 @@ public class Gamecontroller
 		this(new Output());
 	}
 	
-	public Gamecontroller(Output o){
+	public Gamecontroller(Out o){
 		out = o;
 		list = new Fieldlist(out);
 	}
@@ -67,6 +67,12 @@ public class Gamecontroller
 	{
 		return numberOfPlayers;
 	}
+
+	public Fieldlist getList() {
+		return list;
+	}
+	
+	
 
 }
 
