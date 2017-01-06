@@ -32,7 +32,6 @@ public class Gamecontroller {
 	private Player[] player;
 	private Dicecup cup = new Dicecup();
 	private Out out;
-	private Fieldlist fieldlist;
 
 	public static void main(String[] args) 
 	{
@@ -46,7 +45,7 @@ public class Gamecontroller {
 	public Gamecontroller(Out out) //Ved test bruges kun denne konstruktør og ikke den ovenstående.
 	{
 		this.out = out; //
-		fieldlist = new Fieldlist(out);
+		new Fieldlist(out);
 	}
 	
 	public void setup(){ // Sætter spillet op, opretter spillere
@@ -68,7 +67,7 @@ public class Gamecontroller {
 		cup.roll();
 		int amountOfMoves = cup.getSum();
 		movePlayer(p, amountOfMoves);
-		fieldlist.getFields()[p.getPlayerPos()].landOn(p, out); // Kalder landOn for spillerens position i feltlistens array
+		Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out); // Kalder landOn for spillerens position i feltlistens array
 		winner(); 
 
 		//kommunikere med gui mangler
@@ -79,9 +78,9 @@ public class Gamecontroller {
 
 	public void movePlayer(Player p, int amountOfMoves){
 
-		if(p.getPlayerPos() + amountOfMoves > fieldlist.getFields().length){
+		if(p.getPlayerPos() + amountOfMoves > Fieldlist.getFields().length){
 			
-			p.setPlayerPos((p.getPlayerPos() + amountOfMoves)-fieldlist.getFields().length); //Hvis antal ryk og spillerens position overskrider feltlistens længde, trækkes den fra
+			p.setPlayerPos((p.getPlayerPos() + amountOfMoves)-Fieldlist.getFields().length); //Hvis antal ryk og spillerens position overskrider feltlistens længde, trækkes den fra
 			p.getAccount().setSum(4000); //Start bonus
 		}
 		else{
