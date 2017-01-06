@@ -29,20 +29,30 @@ import view.Output;
 public class Gamecontroller {
 	private Player[] player;
 	private Dicecup cup = new Dicecup();
-	private Output out = new Output();
-	private Fieldlist fieldlist = new Fieldlist(out);
+	private Output out;
+	private Fieldlist fieldlist;
 
 
 	public static void main(String[] args) {
-		new Gamecontroller().setup();
+		new Gamecontroller().setup(); //Opretter objekt af gamecontroller og kalder setup
 	}
 
-	public void setup(){
-		player = addPlayer();
-		runGame();
+	public Gamecontroller(){
+		this(new Output()); //Kalder kontruktøren nedenunder. 
+	}
+	
+	public Gamecontroller(Out out) //Ved test bruges kun denne konstruktør og ikke den ovenstående.
+	{
+		this.out = out; //
+		fieldlist = new Fieldlist(out);
+	}
+	
+	public void setup(){ // Sætter spillet op, opretter spillere
+		player = addPlayer(); 
+		runGame(); 
 	}
 
-	public void runGame(){
+	public void runGame(){ // Kører spil med turskift
 		while(true){
 			for( int i = 0 ; i < player.length ; i++ ){
 				Player p = player[i];
@@ -52,12 +62,14 @@ public class Gamecontroller {
 		}
 	}
 
-	public void turn(Player p){
+	public void turn(Player p){ //kører en tur for den aktuelle spiller
 		cup.roll();
 		int amountOfMoves = cup.getSum();
 		movePlayer(p, amountOfMoves);
+		fieldlist.getFields()[p.getPlayerPos()].landOn(p); // Kalder landOn for spillerens position i feltlistens array
+		winner(); 
 
-		//land på felt
+		//kommunikere med gui mangler
 
 
 
@@ -67,8 +79,8 @@ public class Gamecontroller {
 	public void movePlayer(Player p, int amountOfMoves){
 
 		if(p.getPlayerPos() + amountOfMoves > fieldlist.getFields().length){
-			p.setPlayerPos((p.getPlayerPos() + amountOfMoves)-fieldlist.getFields().length);
-			p.getAccount().setSum(4000);
+			p.setPlayerPos((p.getPlayerPos() + amountOfMoves)-fieldlist.getFields().length); //Hvis antal ryk og spillerens position overskrider feltlistens længde, trækkes den fra
+			p.getAccount().setSum(4000); //Start bonus
 		}
 		else{
 			p.setPlayerPos(p.getPlayerPos() + amountOfMoves);
@@ -77,9 +89,9 @@ public class Gamecontroller {
 
 	public Player[] addPlayer(){
 
-		Player[] player = new Player[out.howManyPlayers()];
+		Player[] player = new Player[out.howManyPlayers()]; // Opretter antal spillere fra input i GUI
 
-		for( int i = 0 ; i < player.length ; i++ ){
+		for( int i = 0 ; i < player.length ; i++ ){ 
 
 			String name = GUI.getUserString(Language.getNameOfPlayer() + " " + (i + 1)); //input navn fra GUI(skal laves i Output)
 			player[i] = new Player(name, 30000);
@@ -88,23 +100,23 @@ public class Gamecontroller {
 			//			GUI.setCar(1, name);
 		}
 
-		return player;
+		return player; //
 	}
 
 	public void winner(){
 		int playersAlive = 0;
-		for (int i = 0; i < player.length; i++) {
+		for (int i = 0; i < player.length; i++) { 
 			Player p = player[i];
-			boolean bankrupt = p.getBankruptStatus();
-			if(!bankrupt) playersAlive++;
+			boolean bankrupt = p.getBankruptStatus(); // Tjekker om spillere er bankrupt
+			if(!bankrupt) playersAlive++; //lægger en til hver gang spilleren ikke er bankrupt
 		}
-		if(playersAlive == 1){
-			for (int i = 0; i < player.length; i++) {
+		if(playersAlive == 1){ 
+			for (int i = 0; i < player.length; i++) { // Tjekker HVILKEN spiller der er tilbage
 				Player p = player[i];
 				boolean bankrupt = p.getBankruptStatus();
 				if(!bankrupt) {
 					out.winnerPrint(p);
-					try { Thread.sleep(4000); } catch (InterruptedException e) { }
+					try { Thread.sleep(4000); } catch (InterruptedException e) { } //Prøver at holde pause i 4 sekunder efter vinder er fundet. Ellers laver den exception så programmet ikke crasher
 					GUI.close();
 				}
 			}
