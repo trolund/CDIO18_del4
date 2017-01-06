@@ -4,6 +4,7 @@ import desktop_resources.GUI;
 import model.Dicecup;
 import model.Player;
 import model.fields.Fieldlist;
+import model.fields.Ownabel;
 import view.Language;
 import view.Out;
 import view.Output;
@@ -33,8 +34,8 @@ public class Gamecontroller {
 	private Out out;
 	private Fieldlist fieldlist;
 
-
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		new Gamecontroller().setup(); //Opretter objekt af gamecontroller og kalder setup
 	}
 
@@ -76,10 +77,10 @@ public class Gamecontroller {
 
 	}
 
-
 	public void movePlayer(Player p, int amountOfMoves){
 
 		if(p.getPlayerPos() + amountOfMoves > fieldlist.getFields().length){
+			
 			p.setPlayerPos((p.getPlayerPos() + amountOfMoves)-fieldlist.getFields().length); //Hvis antal ryk og spillerens position overskrider feltlistens længde, trækkes den fra
 			p.getAccount().setSum(4000); //Start bonus
 		}
@@ -103,18 +104,42 @@ public class Gamecontroller {
 
 		return player; //
 	}
+	
+	public void resetOwnedFields(Player player)
+	{
+		if(player.getBankruptStatus()) 
+		{
+			for(int i = 0; i < Fieldlist.getFields().length;i++)
+			{
+				if(Fieldlist.getFields()[i] instanceof Ownabel)
+				{
+					if( ((Ownabel) Fieldlist.getFields()[i]).getOwner() == player )
+					{
+						((Ownabel) Fieldlist.getFields()[i]).setOwner(null);
+						out.setColor(null);
+					}
+				}
+			}
+		}
+	}
 
 	public void winner(){
+		
 		int playersAlive = 0;
+		
 		for (int i = 0; i < player.length; i++) { 
 			Player p = player[i];
 			boolean bankrupt = p.getBankruptStatus(); // Tjekker om spillere er bankrupt
 			if(!bankrupt) playersAlive++; //lægger en til hver gang spilleren ikke er bankrupt
 		}
+		
 		if(playersAlive == 1){ 
+			
 			for (int i = 0; i < player.length; i++) { // Tjekker HVILKEN spiller der er tilbage
+				
 				Player p = player[i];
 				boolean bankrupt = p.getBankruptStatus();
+				
 				if(!bankrupt) {
 					out.winnerPrint(p);
 					try { Thread.sleep(4000); } catch (InterruptedException e) { } //Prøver at holde pause i 4 sekunder efter vinder er fundet. Ellers laver den exception så programmet ikke crasher
