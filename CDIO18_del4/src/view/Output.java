@@ -145,8 +145,10 @@ public class Output extends Out
 	}
 
 	@Override
-	public void removeOwner(int fieldNum) {
-		GUI.setOwner(fieldNum, null);
+	public void removeOwner(int fieldNum) 
+	{
+		//TODO
+		GUI.removeOwner(fieldNum);
 	}
 	
 

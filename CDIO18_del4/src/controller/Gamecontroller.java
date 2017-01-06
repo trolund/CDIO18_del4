@@ -40,7 +40,8 @@ public class Gamecontroller
 		new Gamecontroller().setup(); //Opretter objekt af gamecontroller og kalder setup
 	}
 
-	public Gamecontroller(){
+	public Gamecontroller()
+	{
 		this(new Output()); //Kalder kontruktøren nedenunder. 
 	}
 
@@ -95,21 +96,21 @@ public class Gamecontroller
 
 	}
 
-	public void movePlayer(Player p, int amountOfMoves){
-
-		if(p.getPlayerPos() + amountOfMoves > Fieldlist.getFields().length){
-
+	public void movePlayer(Player p, int amountOfMoves)
+	{
+		if(p.getPlayerPos() + amountOfMoves > Fieldlist.getFields().length)
+		{
 			p.setPlayerPos((p.getPlayerPos() + amountOfMoves)-Fieldlist.getFields().length); //Hvis antal ryk og spillerens position overskrider feltlistens længde, trækkes den fra
 			p.getAccount().addSum(4000); //Start bonus
 		}
-		else{
+		else
+		{
 			p.setPlayerPos(p.getPlayerPos() + amountOfMoves);
 		}
 	}
 
 	public Player[] addPlayer()
 	{
-
 		Player[] player = new Player[out.howManyPlayers()]; // Opretter antal spillere fra input i GUI
 
 		for( int i = 0 ; i < player.length ; i++ )

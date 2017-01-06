@@ -36,7 +36,7 @@ public class BankAccount
 
 	public boolean withdraw(int value) 
 	{
-		if(value < 0 && value * (-1) > balance)
+		if(value > 0 && (value - balance) < 0 )
 		{
 			balance -= value;
 			return true;
