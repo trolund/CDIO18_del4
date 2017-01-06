@@ -13,11 +13,12 @@ import view.Output;
 
 public class Chance extends Field
 {
-	private static int cardCont = 0;
+	private static int cardCount = 0;
 	private static Card[] cards = {
-			new MoveCard("Ryk to felter", 2),
+			new MoveCard("Ryk to felter", 2, false),
 			new BalanceCard("du får 100kr", 100),
 			new FreeJailCard("du kan komme ud fra fægsel eller gemme kortet."),
+			new MoveCard ("ryk til felt 5", 5, true)
 	};
 	
 
@@ -32,12 +33,12 @@ public class Chance extends Field
 	
 	public void landOn(Player p, Out o)
 	{
-		cards[cardCont].doCard(p); // tag kort i bunken.
-		if(cardCont >= cards.length){ // søger for vi ikke kommer ud over array grænser. 
-			cardCont = 0;
+		cards[cardCount].doCard(p); // tag kort i bunken.
+		if(cardCount >= cards.length){ // sørger for vi ikke kommer ud over array grænser. 
+			cardCount = 0;
 		}
 		else {
-		cardCont++; // gør næste kort klar.
+		cardCount++; // gør næste kort klar.
 		}
 	}
 	

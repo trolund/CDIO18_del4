@@ -2,31 +2,29 @@ package model.fields.cards;
 
 import controller.Gamecontroller;
 import model.Player;
+import model.fields.Fieldlist;
 
 public class MoveCard extends Card {
 
 	private int move;
+	private boolean teleport;	//teleport or move care
 	
-	public MoveCard(String description, int moves) {
+	public MoveCard(String description, int moves, boolean teleport) {
 		super(description);
 		this.move = moves;
+		this.teleport = teleport;
 		
 	}
 	
 	public void doCard(Player p){
-		moveCarPos(move, p);
-	}
-
-	
-	public void moveCarPos(int amountOfMoves, Player player) 
-	{
-		if(player.getPlayerPos() + amountOfMoves > Gamecontroller.getList().getFields().length) {
-			player.setPlayerPos((player.getPlayerPos() + amountOfMoves) - Gamecontroller.getList().getFields().length);
-			player.getAccount().addSum(4000);
+		if(teleport){
+			if(move == 24 && p.getPlayerPos() > 24){
+				p.getAccount().addSum(200);
+			}
+			p.setPlayerPos(move);
 		}
-		else
-		{
-			player.setPlayerPos(amountOfMoves + player.getPlayerPos());
-		}
+		else{
+			moveCarPos(move, p);
+		}	
 	}
 }
