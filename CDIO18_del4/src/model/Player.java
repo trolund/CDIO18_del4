@@ -1,5 +1,9 @@
 package model;
 
+import java.util.ArrayList;
+
+import desktop_fields.Ownable;
+
 public class Player 
 {
 
@@ -9,12 +13,20 @@ public class Player
 	private int playerPos = 0;
 	private int breweryCount = 0;
 	private int fleetCount = 0;
+	private ArrayList<Ownable> ownedFields = new ArrayList<>();
 
-	public Player(String name) 
+	public Player(String name, int balance) 
 	{
 		this.name = name;
-		account = new BankAccount(30000);
+		account = new BankAccount(balance);
 	}	
+	
+	public ArrayList<Ownable> getOwnedFields() {
+		return ownedFields;
+	}
+	public void addOwnedFields(Ownable ownedField) {
+		this.ownedFields.add(ownedField);
+	}
 
 	public BankAccount getAccount() 
 	{

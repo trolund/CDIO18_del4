@@ -7,6 +7,13 @@ import view.Output;
 import model.Dicecup;
 import model.Player;
 
+import desktop_resources.GUI;
+import model.Dicecup;
+import model.Player;
+import model.fields.Fieldlist;
+import view.Language;
+import view.Output;
+
 /*
  * Team 18 - CDIO 3   
  * DTU

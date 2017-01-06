@@ -7,8 +7,8 @@ import model.fields.Fieldlist;
 public class FakeOutput extends Out {
 	
 	
-	public boolean taxAction(int taxAmmount){
-		return false;
+	public boolean taxAction(int price, boolean x){
+		return x;
 	}
 
 	@Override

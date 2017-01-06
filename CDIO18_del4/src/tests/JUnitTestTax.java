@@ -12,11 +12,12 @@ import model.Player;;
 public class JUnitTestTax 
 {
 	Output out = new FakeOutput();
+	
 	@Test
 	public void TC01() 
 	{
 		
-		Player p = new Player(30000, "Kasper");
+		Player p = new Player("Kasper");
 		Fieldlist list = new Fieldlist(out);
 		
 		int exRes = p.getAccount().getSum() - 4000;
@@ -32,7 +33,7 @@ public class JUnitTestTax
 	@Test
 	public void TC02() 
 	{
-		Player p = new Player(30000, "Kasper");
+		Player p = new Player("Kasper");
 		Fieldlist list = new Fieldlist(out);
 		
 		int exRes = p.getAccount().getSum() - ((30000 * 10)/100);

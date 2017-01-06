@@ -4,19 +4,12 @@ public class BankAccount
 {
 	private int balance;
 
-	public BankAccount(int balance)
-	{
-		this.balance = balance >= 0 ? balance : 0;
+	public BankAccount(int balance){
+		this.balance = balance > 0 ? balance : 0;
 	}
 
-	public int getSum() 
-	{
+	public int getSum(){
 		return balance;
-	}
-
-	public String sumToString()
-	{
-		return String.format("%1$2s %2$2s", getSum(), "kr");
 	}
 
 	public boolean setSum(int value) 
