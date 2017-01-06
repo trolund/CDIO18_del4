@@ -60,21 +60,31 @@ public class Gamecontroller {
 				Player p = player[i];
 				if(!p.getBankruptStatus())
 				{
+					GUI.showMessage("Det er " + p.getName() + "'s " + "tur");
 					turn(p);
 				}
 			}
 		}
 	}
 
-	public void turn(Player p){ //kører en tur for den aktuelle spiller
+	public void turn(Player p)
+	{ //kører en tur for den aktuelle spiller
+	
 		out.rollDiceText();
+		
 		cup.roll();
+		
 		int amountOfMoves = cup.getSum();
+		
 		out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
+		
 		movePlayer(p, amountOfMoves);
+		
 		out.setcar(p);
 		out.landMSG(p);
+		
 		Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out); // Kalder landOn for spillerens position i feltlistens array
+		
 		goBankrupt(p);
 		winner(); 
 
@@ -126,9 +136,10 @@ public class Gamecontroller {
 		}
 	}
 
-	public void goBankrupt(Player p){
-
-		if(p.getAccount().getSum() <= 0){
+	public void goBankrupt(Player p)
+	{
+		if(p.getAccount().getSum() <= 0)
+		{
 			p.setBankrupt(true);
 			resetOwnedFields(p);
 			GUI.removeCar(p.getPlayerPos(), p.getName());
