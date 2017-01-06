@@ -5,11 +5,6 @@ import model.Player;
 import model.fields.Fieldlist;
 
 public class FakeOutput extends Out {
-	
-	
-	public boolean taxAction(int price, boolean x){
-		return x;
-	}
 
 	@Override
 	public void winnerPrint(Player p) {
@@ -30,15 +25,15 @@ public class FakeOutput extends Out {
 	}
 
 	@Override
-	public void turnMsg(int nr, Player p, String s) {
+	public void drawGameboard(Fieldlist fd) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void drawGameboard(Fieldlist fd) {
+	public boolean taxAction(int price) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
 	@Override
@@ -54,13 +49,7 @@ public class FakeOutput extends Out {
 	}
 
 	@Override
-	public void GUIcreateFields(Field[] f) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setcar(int no, Player p, Fieldlist list) {
+	public void setcar(Player p) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -72,15 +61,9 @@ public class FakeOutput extends Out {
 	}
 
 	@Override
-	public Player[] addplayers(Player[] players, int startSum) {
+	public void addPlayersToGUI(Player player) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean shop(int price, Player p) {
-		// TODO Auto-generated method stub
-		return false;
+		
 	}
 
 	@Override
@@ -108,9 +91,22 @@ public class FakeOutput extends Out {
 	}
 
 	@Override
-	public void shopField() {
+	public boolean shopField(int price, Player p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setColor(Player p) {
 		// TODO Auto-generated method stub
 		
 	}
 
-}
+	@Override
+	public void payedRent(Player p, int rent) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	}

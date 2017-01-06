@@ -24,11 +24,11 @@ public class Tax extends Field
 	}
 
 	@Override
-	public void landOn(Player p, Output o)
+	public void landOn(Player p, Out o)
 	{
 		if(taxRate > 0)
 		{
-			if(out.taxAction(taxAmmount, true))
+			if(out.taxAction(taxAmmount))
 			{
 				p.getAccount().withdraw(taxAmmount);
 			}

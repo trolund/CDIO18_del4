@@ -14,8 +14,6 @@ public abstract class Out {
 
 	public abstract int howManyPlayers();
 
-	public abstract void turnMsg(int nr, Player p, String s);
-
 	public abstract void drawGameboard(Fieldlist fd);
 
 	public abstract boolean taxAction(int price);
@@ -23,16 +21,12 @@ public abstract class Out {
 	public abstract void setGUIDice(int die1 , int die2);
 	
 	public abstract void setGUIBalance(Player p);
-	
-	public abstract void GUIcreateFields(desktop_fields.Field[] f);
 
-	public abstract void setcar(int no, Player p, Fieldlist list);
+	public abstract void setcar(Player p);
 
 	public abstract void msgGUI(String s);
 
-	public abstract Player[] addplayers(Player[] players, int startSum);
-
-	public abstract boolean shop(int price, Player p);
+	public abstract void addPlayersToGUI(Player player);
 
 	public abstract boolean setTestMode();
 
@@ -42,8 +36,9 @@ public abstract class Out {
 
 	public abstract void rollDiceText();
 	
-	public abstract void shopField();
+	public abstract boolean shopField(int price, Player p);
 
+	public abstract void setColor(Player p);
 	
-
+	public abstract void payedRent(Player p, int rent);
 }

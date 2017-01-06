@@ -19,7 +19,7 @@ public abstract class Ownabel extends Field
 	}
 
 	@Override
-	public void landOn(Player p, Output o)
+	public void landOn(Player p, Out o)
 	{
 		if(p.getAccount().getSum()>=price && owner == null) // can buy
 		{	

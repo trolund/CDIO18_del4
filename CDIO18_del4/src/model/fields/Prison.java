@@ -11,7 +11,7 @@ public class Prison extends Field
 		super(name, decsription, out);
 	}
 	
-	public void landOn(Player player, Output o)
+	public void landOn(Player player, Out o)
 	{
 		
 	}

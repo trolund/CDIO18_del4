@@ -30,7 +30,7 @@ public class Chance extends Field
 		super(name, description, out);
 	}
 	
-	public void landOn(Player p, Output o)
+	public void landOn(Player p, Out o)
 	{
 		cards[cardCont].doCard(p); // tag kort i bunken.
 		if(cardCont >= cards.length){ // søger for vi ikke kommer ud over array grænser. 
@@ -63,7 +63,8 @@ public class Chance extends Field
 	      cards[i] = a;
 	    }
 	  }
-	
+
+
 	
 	
 	

@@ -5,6 +5,7 @@ import model.Dicecup;
 import model.Player;
 import model.fields.Fieldlist;
 import view.Language;
+import view.Out;
 import view.Output;
 
 /*
@@ -29,7 +30,7 @@ import view.Output;
 public class Gamecontroller {
 	private Player[] player;
 	private Dicecup cup = new Dicecup();
-	private Output out;
+	private Out out;
 	private Fieldlist fieldlist;
 
 
@@ -66,7 +67,7 @@ public class Gamecontroller {
 		cup.roll();
 		int amountOfMoves = cup.getSum();
 		movePlayer(p, amountOfMoves);
-		fieldlist.getFields()[p.getPlayerPos()].landOn(p); // Kalder landOn for spillerens position i feltlistens array
+		fieldlist.getFields()[p.getPlayerPos()].landOn(p, out); // Kalder landOn for spillerens position i feltlistens array
 		winner(); 
 
 		//kommunikere med gui mangler

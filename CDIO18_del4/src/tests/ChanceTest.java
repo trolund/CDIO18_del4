@@ -15,7 +15,7 @@ public class ChanceTest {
 
 		Out out= new FakeOutput(); 		// sikre vi kommer uden om GUI
 		Gamecontroller gc = new Gamecontroller(out); 
-		Player p = new Player("Kim");
+		Player p = new Player("Kim",30000);
 
 
 	@Test

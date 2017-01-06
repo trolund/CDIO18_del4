@@ -27,7 +27,7 @@ public abstract class Field
 		return description;
 	}
 	
-	public abstract void landOn(Player p, Output o);
+	public abstract void landOn(Player p, Out o);
 
 	public String toString()
 	{

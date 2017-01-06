@@ -142,41 +142,6 @@ public class Output extends Out
 		System.out.println(p.getName() + " has landed on" + f.getClass().getSimpleName() +  "field");
 	}
 
-	@Override
-	public void turnMsg(int nr, Player p, String s) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void GUIcreateFields(desktop_fields.Field[] f) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setcar(int no, Player p, Fieldlist list) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Player[] addplayers(Player[] players, int startSum) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean shop(int price, Player p) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void shopField() {
-		// TODO Auto-generated method stub
-		
-	}
 }
 
 
