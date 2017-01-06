@@ -1,12 +1,5 @@
 package controller;
 
-import model.fields.Fieldlist;
-import tests.FakeDicecup;
-import view.Out;
-import view.Output;
-import model.Dicecup;
-import model.Player;
-
 import desktop_resources.GUI;
 import model.Dicecup;
 import model.Player;
@@ -29,57 +22,106 @@ import view.Output;
  * 
  */
 
-//numberOfPlayers = out.howManyPlayers();
-//players = out.addplayers(players, startSum);
-// out.drawGameboard(list);
+/*
+ * Class wrote by: Troels Lund and Kasper Leiszner
+ */
 
-public class Gamecontroller 
-{
+public class Gamecontroller {
+	private Player[] player;
+	private Dicecup cup = new Dicecup();
+	private Output out;
+	private Fieldlist fieldlist;
 
-	private Player[] players;
-	private Dicecup cup;
-	private static Fieldlist list;
-	private static int numberOfPlayers = 0;
-	private boolean testMode = false;
-	private Out out;
-	
-	public static void main(String[] args)
-	{
-		Gamecontroller gm = new Gamecontroller(); 
+
+	public static void main(String[] args) {
+		new Gamecontroller().setup(); //Opretter objekt af gamecontroller og kalder setup
 	}
-	
+
 	public Gamecontroller(){
-		this(new Output());
+		this(new Output()); //Kalder kontruktøren nedenunder. 
 	}
 	
-	public Gamecontroller(Out o){
-		out = o;
-		list = new Fieldlist(out);
-	}
-
-	public void moveCarPos(int amountOfMoves, Player player) 
+	public Gamecontroller(Out out) //Ved test bruges kun denne konstruktør og ikke den ovenstående.
 	{
-		if(player.getPlayerPos() + amountOfMoves > list.getFields().length) {
-			player.setPlayerPos((player.getPlayerPos() + amountOfMoves) - list.getFields().length);
-			player.getAccount().addSum(4000);
+		this.out = out; //
+		fieldlist = new Fieldlist(out);
+	}
+	
+	public void setup(){ // Sætter spillet op, opretter spillere
+		player = addPlayer(); 
+		runGame(); 
+	}
+
+	public void runGame(){ // Kører spil med turskift
+		while(true){
+			for( int i = 0 ; i < player.length ; i++ ){
+				Player p = player[i];
+				turn(p);
+
+			}
 		}
-		else
-		{
-			player.setPlayerPos(amountOfMoves + player.getPlayerPos());
+	}
+
+	public void turn(Player p){ //kører en tur for den aktuelle spiller
+		cup.roll();
+		int amountOfMoves = cup.getSum();
+		movePlayer(p, amountOfMoves);
+		fieldlist.getFields()[p.getPlayerPos()].landOn(p); // Kalder landOn for spillerens position i feltlistens array
+		winner(); 
+
+		//kommunikere med gui mangler
+
+
+
+	}
+
+
+	public void movePlayer(Player p, int amountOfMoves){
+
+		if(p.getPlayerPos() + amountOfMoves > fieldlist.getFields().length){
+			p.setPlayerPos((p.getPlayerPos() + amountOfMoves)-fieldlist.getFields().length); //Hvis antal ryk og spillerens position overskrider feltlistens længde, trækkes den fra
+			p.getAccount().setSum(4000); //Start bonus
+		}
+		else{
+			p.setPlayerPos(p.getPlayerPos() + amountOfMoves);
 		}
 	}
-	
 
-	public static int getNumberOfPlayers() 
-	{
-		return numberOfPlayers;
+	public Player[] addPlayer(){
+
+		Player[] player = new Player[out.howManyPlayers()]; // Opretter antal spillere fra input i GUI
+
+		for( int i = 0 ; i < player.length ; i++ ){ 
+
+			String name = GUI.getUserString(Language.getNameOfPlayer() + " " + (i + 1)); //input navn fra GUI(skal laves i Output)
+			player[i] = new Player(name, 30000);
+			player[i].setPlayerPos(0);
+			//			GUI.addPlayer(name, player[i].getAccount().getSum());
+			//			GUI.setCar(1, name);
+		}
+
+		return player; //
 	}
 
-	public static Fieldlist getList() {
-		return list;
+	public void winner(){
+		int playersAlive = 0;
+		for (int i = 0; i < player.length; i++) { 
+			Player p = player[i];
+			boolean bankrupt = p.getBankruptStatus(); // Tjekker om spillere er bankrupt
+			if(!bankrupt) playersAlive++; //lægger en til hver gang spilleren ikke er bankrupt
+		}
+		if(playersAlive == 1){ 
+			for (int i = 0; i < player.length; i++) { // Tjekker HVILKEN spiller der er tilbage
+				Player p = player[i];
+				boolean bankrupt = p.getBankruptStatus();
+				if(!bankrupt) {
+					out.winnerPrint(p);
+					try { Thread.sleep(4000); } catch (InterruptedException e) { } //Prøver at holde pause i 4 sekunder efter vinder er fundet. Ellers laver den exception så programmet ikke crasher
+					GUI.close();
+				}
+			}
+		}
 	}
-	
-	
-
 }
+
 
