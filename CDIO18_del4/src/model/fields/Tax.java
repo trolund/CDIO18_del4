@@ -40,6 +40,7 @@ public class Tax extends Field
 		else
 		{
 			p.getAccount().withdraw(taxAmmount);
+			out.msgGUI("You have paid " + taxAmmount + " in tax");
 		}
 	}
 	

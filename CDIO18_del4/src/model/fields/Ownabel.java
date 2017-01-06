@@ -46,7 +46,7 @@ public abstract class Ownabel extends Field
 		}
 		else if(p.getAccount().getSum() < price && owner == null)	// cant affort
 		{
-			o.deniedPurchase();
+			o.msgGUI("Du har ikke nok penge til at købe dette felt");;
 		}
 		else if(p.getAccount().getSum()>=price && owner == null && !wantToBuy)	//Player don't want to buy
 		{
@@ -63,6 +63,7 @@ public abstract class Ownabel extends Field
 		}
 		else	//It's your own field
 		{
+			o.msgGUI("Dette er din egen grund");
 			System.out.println("It's your own field");
 		}
 	}

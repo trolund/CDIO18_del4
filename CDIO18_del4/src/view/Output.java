@@ -70,7 +70,7 @@ public class Output extends Out
 
 	public void setcar(Player p)
 	{
-		System.out.println("Gui car is moved to field number " + p.getPlayerPos()+1);
+		System.out.println("Gui car is moved to field number " + (p.getPlayerPos()+1));
 		GUI.removeCar(p.getPlayerPos()+1, p.getName());
 		GUI.setCar(p.getPlayerPos()+1,p.getName());
 	}
