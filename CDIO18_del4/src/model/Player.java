@@ -1,5 +1,9 @@
 package model;
 
+import java.util.ArrayList;
+
+import model.cards.Card;
+
 public class Player 
 {
 
@@ -9,6 +13,24 @@ public class Player
 	private int playerPos = 0;
 	private int breweryCount = 0;
 	private int fleetCount = 0;
+	private boolean isJailed = false;
+	private ArrayList<Card> jailcards;
+
+	public ArrayList<Card> getJailcards() {
+		return jailcards;
+	}
+
+	public void setJailcards(ArrayList<Card> jailcards) {
+		this.jailcards = jailcards;
+	}
+
+	public boolean isJailed() {
+		return isJailed;
+	}
+
+	public void setJailed(boolean isJailed) {
+		this.isJailed = isJailed;
+	}
 
 	public Player(String name) 
 	{

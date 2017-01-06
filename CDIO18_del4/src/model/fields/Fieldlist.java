@@ -45,7 +45,7 @@ public class Fieldlist
 				new Plot(FieldNames[27], FieldDescription[5], 260, 22,out, 6),
 				new Brewery(FieldNames[28], FieldDescription[5], 150, 4,out),
 				new Plot(FieldNames[29], FieldDescription[5], 280, 24,out, 6),
-				new Prison(FieldNames[30], FieldDescription[5],out),
+				new GoToPrison(FieldNames[30], FieldDescription[5],out),
 				new Plot(FieldNames[31], FieldDescription[5], 300, 26,out, 7),
 				new Plot(FieldNames[32], FieldDescription[5], 300, 26,out, 7),
 				new Chance(FieldNames[33], FieldDescription[5], out),

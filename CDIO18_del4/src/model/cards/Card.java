@@ -1,4 +1,4 @@
-package model.fields.cards;
+package model.cards;
 
 import model.Player;
 

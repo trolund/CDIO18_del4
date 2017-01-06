@@ -4,16 +4,17 @@ import model.Player;
 import view.Out;
 import view.Output;
 
-public class Prison extends Field 
+public class GoToPrison extends Field 
 {
-	public Prison(String name, String decsription, Out out)
+	public GoToPrison(String name, String decsription, Out out)
 	{
 		super(name, decsription, out);
 	}
 	
-	public void landOn(Player player, Out o)
+	public void landOn(Player p, Out o)
 	{
-		
+		p.setJailed(true);
+		p.setPlayerPos(11);
 	}
 	
 	public int getValue()

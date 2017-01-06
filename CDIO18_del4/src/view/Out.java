@@ -46,4 +46,7 @@ public abstract class Out {
 	public abstract void landMSG(Player p);
 	
 	public abstract void removeOwner(int fieldNum);
+	
+	public abstract String Jailaction(Player p, String[] array);
+
 }

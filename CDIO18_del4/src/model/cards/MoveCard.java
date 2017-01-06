@@ -1,6 +1,7 @@
-package model.fields.cards;
+package model.cards;
 
 import controller.Gamecontroller;
+import controller.MoveController;
 import model.Player;
 import model.fields.Fieldlist;
 
@@ -24,7 +25,7 @@ public class MoveCard extends Card {
 			p.setPlayerPos(move);
 		}
 		else{
-			moveCarPos(move, p);
+			new MoveController().moveCarPos(move, p);
 		}	
 	}
 }

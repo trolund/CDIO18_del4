@@ -143,6 +143,10 @@ public class Output extends Out
 		GUI.showMessage(p.getName() + " has landed on " + Fieldlist.getFields()[p.getPlayerPos()].getClass().getSimpleName());
 		System.out.println(p.getName() + " has landed on " + Fieldlist.getFields()[p.getPlayerPos()].getClass().getSimpleName());
 	}
+	
+	public String Jailaction(Player p, String[] array){
+		return GUI.getUserButtonPressed("Vil du slå med terningerne eller betale", array);
+	}
 
 	@Override
 	public void removeOwner(int fieldNum) 
