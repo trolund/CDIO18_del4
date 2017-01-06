@@ -15,8 +15,8 @@ public class Brewery extends Ownabel
 	}
 
 	@Override
-	public int getRent(Player p) 
-	{
+	public int getRent(Player p)	// baseRent er 4. Så man ganger 4 med antal øjne. Men har man begge brewery
+	{								// bliver baseRent 10. Derfor ligger vi 6 til i "if".
 		if (this.getOwner().getBreweryCount() > 1) 
 		{
 			baseRent += 6;
