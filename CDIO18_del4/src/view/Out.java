@@ -4,6 +4,7 @@ import controller.Gamecontroller;
 import desktop_fields.Street;
 import desktop_resources.GUI;
 import model.Player;
+import model.fields.Field;
 import model.fields.Fieldlist;
 
 public abstract class Out {
@@ -41,4 +42,8 @@ public abstract class Out {
 	public abstract void setColor(Player p);
 	
 	public abstract void payedRent(Player p, int rent);
+	
+	public abstract void landMSG(Player p);
+	
+	public abstract void removeOwner(int fieldNum);
 }

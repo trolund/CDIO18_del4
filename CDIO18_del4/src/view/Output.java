@@ -137,10 +137,17 @@ public class Output extends Out
 		System.out.println("It's your own field -nothing happened");
 	}
 	
-	public void landMSG(Player p,Field f)
+	public void landMSG(Player p)
 	{
-		System.out.println(p.getName() + " has landed on" + f.getClass().getSimpleName() +  "field");
+		GUI.showMessage(p.getName() + " has landed on" + Fieldlist.getFields()[p.getPlayerPos()].getClass().getSimpleName() +  "field");
+		System.out.println(p.getName() + " has landed on" + Fieldlist.getFields()[p.getPlayerPos()].getClass().getSimpleName() +  "field");
 	}
+
+	@Override
+	public void removeOwner(int fieldNum) {
+		GUI.setOwner(fieldNum, null);
+	}
+	
 
 }
 
