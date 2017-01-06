@@ -10,7 +10,7 @@ public class Player
 	private int breweryCount = 0;
 	private int fleetCount = 0;
 
-	public Player(String name, int balance) 
+	public Player(String name) 
 	{
 		this.name = name;
 		account = new BankAccount(1500);

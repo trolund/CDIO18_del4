@@ -28,7 +28,8 @@ import view.Output;
  * Class wrote by: Troels Lund and Kasper Leiszner
  */
 
-public class Gamecontroller {
+public class Gamecontroller 
+{
 	private Player[] player;
 	private Dicecup cup = new Dicecup();
 	private Out out;
@@ -54,10 +55,14 @@ public class Gamecontroller {
 		runGame(); 
 	}
 
-	public void runGame(){ // Kører spil med turskift
-		while(!endGame){
-			for( int i = 0 ; i < player.length ; i++ ){
+	public void runGame()
+	{ // Kører spil med turskift
+		while(!endGame)
+		{
+			for( int i = 0 ; i < player.length ; i++ )
+			{
 				Player p = player[i];
+				
 				if(!p.getBankruptStatus())
 				{
 					GUI.showMessage("Det er " + p.getName() + "'s " + "tur");
@@ -95,22 +100,23 @@ public class Gamecontroller {
 		if(p.getPlayerPos() + amountOfMoves > Fieldlist.getFields().length){
 
 			p.setPlayerPos((p.getPlayerPos() + amountOfMoves)-Fieldlist.getFields().length); //Hvis antal ryk og spillerens position overskrider feltlistens længde, trækkes den fra
-			p.getAccount().setSum(4000); //Start bonus
+			p.getAccount().addSum(4000); //Start bonus
 		}
 		else{
 			p.setPlayerPos(p.getPlayerPos() + amountOfMoves);
 		}
 	}
 
-	public Player[] addPlayer(){
+	public Player[] addPlayer()
+	{
 
 		Player[] player = new Player[out.howManyPlayers()]; // Opretter antal spillere fra input i GUI
 
-		for( int i = 0 ; i < player.length ; i++ ){ 
-
+		for( int i = 0 ; i < player.length ; i++ )
+		{ 
 			String name = GUI.getUserString(Language.getNameOfPlayer() + " " + (i + 1)); //input navn fra GUI(skal laves i Output)
 
-			player[i] = new Player(name, 30000);
+			player[i] = new Player(name);
 			player[i].setPlayerPos(0);
 			out.addPlayersToGUI(player[i]);
 		}
@@ -120,7 +126,7 @@ public class Gamecontroller {
 
 	public void resetOwnedFields(Player p)
 	{
-		if(p.getBankruptStatus()) 
+		if(p.getBankruptStatus() == true) 
 		{
 			for(int i = 0; i < Fieldlist.getFields().length;i++)
 			{
@@ -129,7 +135,7 @@ public class Gamecontroller {
 					if( ((Ownabel) Fieldlist.getFields()[i]).getOwner() == p )
 					{
 						((Ownabel) Fieldlist.getFields()[i]).setOwner(null);
-						out.removeOwner(p.getPlayerPos());
+						out.removeOwner(p.getPlayerPos()+1);
 					}
 				}
 			}
@@ -146,29 +152,33 @@ public class Gamecontroller {
 		}
 	}
 
-	public void winner(){
+	public void winner()
+	{
 
 		int playersAlive = 0;
 
-		for (int i = 0; i < player.length; i++) { 
+		for (int i = 0; i < player.length; i++) 
+		{ 
 			Player p = player[i];
 			boolean bankrupt = p.getBankruptStatus(); // Tjekker om spillere er bankrupt
 			if(!bankrupt) playersAlive++; //lægger en til hver gang spilleren ikke er bankrupt
 		}
 
-		if(playersAlive == 1){ 
+		if(playersAlive == 1)
+		{ 
 
-			for (int i = 0; i < player.length; i++) { // Tjekker HVILKEN spiller der er tilbage
+			for (int i = 0; i < player.length; i++) 
+			{ // Tjekker HVILKEN spiller der er tilbage
 
 				Player p = player[i];
 				boolean bankrupt = p.getBankruptStatus();
 
-				if(!bankrupt) {
+				if(!bankrupt) 
+				{
 					out.winnerPrint(p);
 					try { Thread.sleep(4000); } catch (InterruptedException e) { } //Prøver at holde pause i 4 sekunder efter vinder er fundet. Ellers laver den exception så programmet ikke crasher
 					GUI.close();
 					endGame = true;
-
 				}
 			}
 		}

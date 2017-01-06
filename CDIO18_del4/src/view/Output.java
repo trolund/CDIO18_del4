@@ -28,7 +28,7 @@ public class Output extends Out
 	public int howManyPlayers()
 	{
 		int result = Integer.parseInt(GUI.getUserSelection(Language.getPlayerCountText(), "2","3","4","5","6"));
-		System.out.println(result + "players are made");
+		System.out.println(result + " players are made");
 		return result; 
 	}
 
@@ -58,7 +58,7 @@ public class Output extends Out
 
 	public void setGUIDice(int die1 , int die2)
 	{
-		System.out.println("You rolled" + die1 + " " + die2);
+		System.out.println("You rolled " + die1 + " " + die2 + " The sum is " + (die1 + die2));
 		GUI.setDice(die1,die2);
 	}
 
@@ -70,8 +70,9 @@ public class Output extends Out
 
 	public void setcar(Player p)
 	{
-		System.out.println("Gui car is moved to field number " + p.getPlayerPos());
-		GUI.setCar(p.getPlayerPos(),p.getName());
+		System.out.println("Gui car is moved to field number " + p.getPlayerPos()+1);
+		GUI.removeCar(p.getPlayerPos()+1, p.getName());
+		GUI.setCar(p.getPlayerPos()+1,p.getName());
 	}
 
 	public void msgGUI(String s)
@@ -121,7 +122,7 @@ public class Output extends Out
 	
 	public void setColor(Player p)
 	{
-		GUI.setOwner(p.getPlayerPos(), p.getName());
+		GUI.setOwner(p.getPlayerPos()+1, p.getName());
 		System.out.println("Owner was set");
 	}
 	
@@ -134,13 +135,13 @@ public class Output extends Out
 	public void ownField()
 	{
 		GUI.showMessage("It's your own field - nothing happened");
-		System.out.println("It's your own field -nothing happened");
+		System.out.println("It's your own field - nothing happened");
 	}
 	
 	public void landMSG(Player p)
 	{
-		GUI.showMessage(p.getName() + " has landed on" + Fieldlist.getFields()[p.getPlayerPos()].getClass().getSimpleName() +  "field");
-		System.out.println(p.getName() + " has landed on" + Fieldlist.getFields()[p.getPlayerPos()].getClass().getSimpleName() +  "field");
+		GUI.showMessage(p.getName() + " has landed on " + Fieldlist.getFields()[p.getPlayerPos()].getClass().getSimpleName());
+		System.out.println(p.getName() + " has landed on " + Fieldlist.getFields()[p.getPlayerPos()].getClass().getSimpleName());
 	}
 
 	@Override
