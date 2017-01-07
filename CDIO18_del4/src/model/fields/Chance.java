@@ -18,7 +18,7 @@ public class Chance extends Field
 	
 	public void landOn(Player p, Out o)
 	{
-		Deck.cards[Deck.cardCount].doCard(p); // tag kort i bunken.
+		Deck.cards[Deck.cardCount].doCard(p , out); // tag kort i bunken.
 //		Deck.cardCount++; // gør næste kort klar.
 		Deck.cardCount = ++Deck.cardCount % Deck.cards.length;
 	}

@@ -1,16 +1,20 @@
 package model.cards;
 
 import model.Player;
+import view.Out;
 
 public abstract class Card  {
 	
-	String description;	
+	protected String description;
+	protected Out out;
 	
-	public Card(String description) {
+	
+	public Card(String description, Out out) {
 		this.description = description;
+		this.out = out;
 	}
 
-	public abstract void doCard(Player p);
+	public abstract void doCard(Player p, Out out);
 
 	@Override
 	public String toString() {

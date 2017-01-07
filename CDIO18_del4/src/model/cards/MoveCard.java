@@ -10,17 +10,15 @@ public class MoveCard extends Card {
 
 	private int move;
 	private boolean teleport;	//teleport or move care
-	private Out out;
 	
 	public MoveCard(String description, int moves, boolean teleport, Out out) {
-		super(description);
+		super(description, out);
 		this.move = moves;
 		this.teleport = teleport;
-		this.out = out;
 		
 	}
 	
-	public void doCard(Player p){
+	public void doCard(Player p, Out out){
 		out.CardsOut(description);
 		if(teleport){
 			if(move == 24 && p.getPlayerPos() > 24){
