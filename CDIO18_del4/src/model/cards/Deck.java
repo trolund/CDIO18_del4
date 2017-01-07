@@ -2,17 +2,22 @@ package model.cards;
 
 import java.util.Random;
 
+import view.Out;
+
 public class Deck {
 
 	public static int cardCount = 0;
 	public static Card[] cards;
+	public Out out;
+
+	public Deck(Out out){
+		this.out = out;
 	
-	static {
 		cards = new Card[]{
-			new MoveCard("Ryk to felter", 2, false),
+			new MoveCard("Ryk to felter", 2, false, out),
 			new BalanceCard("du får 100kr", 100),
 			new FreeJailCard("du kan komme ud fra fægsel eller gemme kortet."),
-			new MoveCard ("ryk til felt 5", 5, true)
+			new MoveCard ("ryk til felt 5", 5, true, out)
 		};
 		shuffleArray();
 	}

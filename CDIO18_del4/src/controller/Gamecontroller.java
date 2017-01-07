@@ -3,6 +3,7 @@ package controller;
 import desktop_resources.GUI;
 import model.Dicecup;
 import model.Player;
+import model.cards.Deck;
 import model.fields.Fieldlist;
 import model.fields.Ownabel;
 import view.Language;
@@ -34,6 +35,7 @@ public class Gamecontroller
 	private Dicecup cup = new Dicecup();
 	private Out out;
 	private boolean endGame;
+	private Deck deck;
 
 	public static void main(String[] args) 
 	{
@@ -49,6 +51,7 @@ public class Gamecontroller
 	{
 		this.out = out; //
 		new Fieldlist(out);
+		new Deck(out);
 	}
 
 	public void setup(){ // Sætter spillet op, opretter spillere
@@ -63,7 +66,7 @@ public class Gamecontroller
 			for( int i = 0 ; i < player.length ; i++ )
 			{
 				Player p = player[i];
-				
+
 				if(!p.getBankruptStatus())
 				{
 					GUI.showMessage("Det er " + p.getName() + "'s " + "tur");
@@ -75,81 +78,88 @@ public class Gamecontroller
 
 	public void turn(Player p)
 	{ //kører en tur for den aktuelle spiller
-	
+
 		out.rollDiceText();
-		
+
 		if(p.isJailed()){
 			prisonAction(p);
 		}
 		else{
-		cup.roll();
-		
-		int amountOfMoves = cup.getSum();
-		
-		out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
-		
-		movePlayer(p, amountOfMoves);
-		
-		out.setcar(p);
-		out.landMSG(p);
-		
-		Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out); // Kalder landOn for spillerens position i feltlistens array
-		
-		goBankrupt(p);
-		winner(); 
+			cup.roll();
+
+			int amountOfMoves = cup.getSum();
+
+			out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
+
+
+
+			out.removeCar(p);
+			movePlayer(p, amountOfMoves);
+			GUI.setCar(p.getPlayerPos(), p.getName());
+			out.landMSG(p);
+
+			Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out); // Kalder landOn for spillerens position i feltlistens array
+
+			out.setGUIBalance(p);
+			
+			goBankrupt(p);
+			winner(); 
 		}
 	}
-	
+
 	public void prisonAction(Player p){ // metode til at håndtre vis man er i fængsel 
 
 		String[] option = null;
-		
-		if(!(p.getJailcards().isEmpty())){
-			option[1] = "køb dig fri for 50kr";
-			option[2] = "slå dig fri";
-			option[3] = "brug dit chancekort";
+
+		String a = "Køb dig fri for 50kr";
+		String b = "Slå dig fri";
+		String c = "Brug dit chancekort";
+
+		if(!(p.getJailcards().isEmpty())){ // de to mulige menuer:
+			option[1] = a;
+			option[2] = b;
+			option[3] = c;
 		}
 		else{
-			option[1] = "køb dig fri for 50kr";
-			option[2] = "slå dig fri";
+			option[1] = a;
+			option[2] = b;
 		}
-		 
-		
-		switch (out.Jailaction(p, option)){
-        case "køb dig fri for 50kr": 
-        	p.getAccount().withdraw(50);
-        	p.setJailed(false);
-        	cup.roll();
-        	out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
-        	int sum = cup.getSum();
-        	movePlayer(p, sum);
-        	Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out);
-        	;
-                 break;
-        case "slå dig fri": 
-        	out.msgGUI("Slå to ens for at komme fri!");
-        	out.rollDiceText();
-        	cup.roll();
-        	out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
-        	if(cup.getDie1().getValue() == cup.getDie2().getValue()){
-        		p.setJailed(false);
-        		int sum1 = cup.getSum();
-            	movePlayer(p, sum1);
-            	Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out);
-        	}
-        	;
-                 break;
-        case "brug dit chancekort":
-        	p.setJailed(false);
-        	p.getJailcards().remove(0);
-        	cup.roll();
-        	out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
-        	int sum2 = cup.getSum();
-        	movePlayer(p, sum2);
-        	Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out);
-        	;
-                 break;
-    }
+
+		switch (out.Jailaction(p, option)){ // hvad skal der ske når man vægler en af de tre mulighder?:
+		case "Køb dig fri for 50kr": 
+			p.getAccount().withdraw(50);
+			p.setJailed(false);
+			cup.roll();
+			out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
+			int sum = cup.getSum();
+			movePlayer(p, sum);
+			Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out);
+			;
+			break;
+		case "Slå dig fri": 
+			out.msgGUI("Slå to ens for at komme fri!");
+			out.rollDiceText();
+			cup.roll();
+			out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
+			if(cup.getDie1().getValue() == cup.getDie2().getValue()){
+				p.setJailed(false);
+				int sum1 = cup.getSum();
+				movePlayer(p, sum1);
+				Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out);
+			}
+			;
+			break;
+		case "Brug dit chancekort":
+			p.setJailed(false);
+			p.getJailcards().remove(0).setOwner(null);;
+			cup.roll();
+			out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
+			int sum2 = cup.getSum();
+			movePlayer(p, sum2);
+			Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out);
+			;
+			break;
+		}
 	}
 
 	public void movePlayer(Player p, int amountOfMoves)

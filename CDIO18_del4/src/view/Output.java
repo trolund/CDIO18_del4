@@ -70,9 +70,9 @@ public class Output extends Out
 
 	public void setcar(Player p)
 	{
-		System.out.println("Gui car is moved to field number " + (p.getPlayerPos()+1));
-		GUI.removeCar(p.getPlayerPos()+1, p.getName());
-		GUI.setCar(p.getPlayerPos()+1,p.getName());
+		System.out.println(p.getName() + " - Gui car is moved to field number " + (p.getPlayerPos()+1));
+		
+		GUI.setCar(p.getPlayerPos(),p.getName());
 	}
 
 	public void msgGUI(String s)
@@ -116,13 +116,13 @@ public class Output extends Out
 	
 	public void removeCar(Player p)
 	{
-		GUI.removeAllCars(p.getName());
-		System.out.println("All cars got removed in GUI");
+		GUI.removeCar(p.getPlayerPos()+1, p.getName());
+		System.out.println(p.getName() + " cars got removed in GUI");
 	}
 	
 	public void setColor(Player p)
 	{
-		GUI.setOwner(p.getPlayerPos()+1, p.getName());
+		GUI.setOwner(p.getPlayerPos(), p.getName());
 		System.out.println("Owner was set");
 	}
 	
@@ -153,6 +153,10 @@ public class Output extends Out
 	{
 		//TODO
 		GUI.removeOwner(fieldNum);
+	}
+	
+	public void CardsOut(String dis){
+		GUI.displayChanceCard("Chancekort: " + dis );
 	}
 	
 

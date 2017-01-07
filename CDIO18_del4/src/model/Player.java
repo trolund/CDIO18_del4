@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 import model.cards.Card;
+import model.cards.FreeJailCard;
 
 public class Player 
 {
@@ -14,13 +15,13 @@ public class Player
 	private int breweryCount = 0;
 	private int fleetCount = 0;
 	private boolean isJailed = false;
-	private ArrayList<Card> jailcards;
+	private ArrayList<FreeJailCard> jailcards;
 
-	public ArrayList<Card> getJailcards() {
+	public ArrayList<FreeJailCard> getJailcards() {
 		return jailcards;
 	}
 
-	public void setJailcards(ArrayList<Card> jailcards) {
+	public void setJailcards(ArrayList<FreeJailCard> jailcards) {
 		this.jailcards = jailcards;
 	}
 
@@ -88,4 +89,7 @@ public class Player
 	{
 		return fleetCount;
 	}
+	
+	
+	
 }

@@ -48,5 +48,9 @@ public abstract class Out {
 	public abstract void removeOwner(int fieldNum);
 	
 	public abstract String Jailaction(Player p, String[] array);
+	
+	public abstract void removeCar(Player p);
+	
+	public abstract void CardsOut(String dis);
 
 }
