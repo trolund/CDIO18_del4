@@ -15,7 +15,7 @@ public class Player
 	private int breweryCount = 0;
 	private int fleetCount = 0;
 	private boolean isJailed = false;
-	private ArrayList<FreeJailCard> jailcards;
+	private ArrayList<FreeJailCard> jailcards = new ArrayList<FreeJailCard>();
 
 	public ArrayList<FreeJailCard> getJailcards() {
 		return jailcards;

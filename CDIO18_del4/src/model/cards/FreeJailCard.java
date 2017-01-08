@@ -16,6 +16,7 @@ public class FreeJailCard extends Card {
 	public void doCard(Player p, Out out){
 		out.CardsOut(description);
 		setOwner(p);
+		p.getJailcards().add(this);
 	}
 
 	public Player getOwner() {

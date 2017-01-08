@@ -22,10 +22,6 @@ public class Chance extends Field
 //		Deck.cardCount++; // gør næste kort klar.
 		Deck.cardCount = ++Deck.cardCount % Deck.cards.length;
 	}
-	
-	public static void printCards(){
-		System.out.println(Arrays.toString(Deck.cards));
-	}
 
 	@Override
 	public int getValue() {

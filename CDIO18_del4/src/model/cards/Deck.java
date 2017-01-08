@@ -1,5 +1,6 @@
 package model.cards;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import view.Out;
@@ -10,8 +11,8 @@ public class Deck {
 	public static Card[] cards;
 	public Out out;
 
-	public Deck(Out out){
-		this.out = out;
+	public Deck(Out output){
+		this.out = output;
 	
 		cards = new Card[]{
 			new MoveCard("Ryk to felter", 2, false, out),
@@ -33,6 +34,24 @@ public class Deck {
 			cards[i] = a;
 		}
 
+	}
+	
+	
+	
+	public static int getCardCount() {
+		return cardCount;
+	}
+
+	public static void setCardCount(int cardCount) {
+		Deck.cardCount = cardCount;
+	}
+
+	public static Card[] getCards() {
+		return cards;
+	}
+
+	public static void printCards(){
+		System.out.println(Arrays.toString(Deck.cards));
 	}
 
 }
