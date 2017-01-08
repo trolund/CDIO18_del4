@@ -1,11 +1,6 @@
 package view;
 
-import controller.Gamecontroller;
-import desktop_fields.Street;
-import desktop_resources.GUI;
 import model.Player;
-import model.fields.Field;
-import model.fields.Fieldlist;
 
 public abstract class Out {
 	
@@ -15,7 +10,7 @@ public abstract class Out {
 
 	public abstract int howManyPlayers();
 
-	public abstract void drawGameboard(Fieldlist fd);
+	public abstract void drawGameboard();
 
 	public abstract boolean taxAction(int price);
 

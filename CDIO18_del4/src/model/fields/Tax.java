@@ -2,7 +2,6 @@ package model.fields;
 
 import model.Player;
 import view.Out;
-import view.Output;
 
 /**
  * 
@@ -31,16 +30,21 @@ public class Tax extends Field
 			if(out.taxAction(taxAmmount))
 			{
 				p.getAccount().withdraw(taxAmmount);
+				out.msgGUI("You have paid " + taxAmmount + " in tax");
+				System.out.println("You have paid " + taxAmmount + " in tax");
 			}
 			else
 			{
 				p.getAccount().withdraw((taxRate*p.getAccount().getSum())/100);
+				out.msgGUI("You have paid " + (taxRate*p.getAccount().getSum())/100 + " in tax");
+				System.out.println("You have paid " + (taxRate*p.getAccount().getSum())/100 + " in tax");
 			}
 		}
 		else
 		{
 			p.getAccount().withdraw(taxAmmount);
 			out.msgGUI("You have paid " + taxAmmount + " in tax");
+			System.out.println("You have paid " + taxAmmount + " in tax");
 		}
 	}
 	
