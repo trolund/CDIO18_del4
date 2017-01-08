@@ -35,7 +35,6 @@ public class Gamecontroller
 	private Dicecup cup = new Dicecup();
 	private Out out;
 	private boolean endGame;
-	private Deck deck;
 
 	public static void main(String[] args) 
 	{
@@ -91,11 +90,9 @@ public class Gamecontroller
 
 			out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
 
-
-
 			out.removeCar(p);
 			movePlayer(p, amountOfMoves);
-			GUI.setCar(p.getPlayerPos(), p.getName());
+			out.setcar(p);
 			out.landMSG(p);
 
 			Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out); // Kalder landOn for spillerens position i feltlistens array
@@ -107,6 +104,7 @@ public class Gamecontroller
 		}
 	}
 
+	@SuppressWarnings("null")
 	public void prisonAction(Player p){ // metode til at håndtre vis man er i fængsel 
 
 		String[] option = null;

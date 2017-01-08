@@ -7,7 +7,6 @@ package view;
 import desktop_fields.Street;
 import desktop_resources.GUI;
 import model.Player;
-import model.fields.Field;
 import model.fields.Fieldlist;
 
 public class Output extends Out
@@ -32,9 +31,9 @@ public class Output extends Out
 		return result; 
 	}
 
-	public void drawGameboard(Fieldlist fd)
+	public void drawGameboard()
 	{
-		model.fields.Field[] logicField = fd.getFields();
+		model.fields.Field[] logicField = Fieldlist.getFields();
 		desktop_fields.Field[] guiField = new desktop_fields.Field[logicField.length];
 
 		for (int i = 0; i < logicField.length; i++) 
@@ -52,7 +51,7 @@ public class Output extends Out
 	public boolean taxAction(int price)
 	{
 		Boolean result = GUI.getUserLeftButtonPressed(Language.getMakeYourChoiceMSG(), Language.getPayMSG() + " " + price , Language.getTenPercent());
-		System.out.println("You did pay the tax" + result + "If false you payed 10%");
+		System.out.println("You did pay the normal tax " + result + " .If false you payed 10%");
 		return result;
 	}
 
@@ -72,7 +71,7 @@ public class Output extends Out
 	{
 		System.out.println(p.getName() + " - Gui car is moved to field number " + (p.getPlayerPos()+1));
 		
-		GUI.setCar(p.getPlayerPos(),p.getName());
+		GUI.setCar(p.getPlayerPos()+1,p.getName());
 	}
 
 	public void msgGUI(String s)
@@ -122,7 +121,7 @@ public class Output extends Out
 	
 	public void setColor(Player p)
 	{
-		GUI.setOwner(p.getPlayerPos(), p.getName());
+		GUI.setOwner(p.getPlayerPos()+1, p.getName());
 		System.out.println("Owner was set");
 	}
 	

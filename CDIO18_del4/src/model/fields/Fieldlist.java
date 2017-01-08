@@ -53,7 +53,7 @@ public class Fieldlist
 				new Fleet(FieldNames[35], FieldDescription[5], 200, 25,out),
 				new Chance(FieldNames[36], FieldDescription[5], out),
 				new Plot(FieldNames[37], FieldDescription[5], 350, 35,out, 8),
-				new Tax(FieldNames[38], FieldDescription[5], 100, 0,out),
+				new Tax(FieldNames[38], FieldDescription[5], 100, 0, out),
 				new Plot(FieldNames[39], FieldDescription[5], 400, 50,out, 8),
 			};
 	}
