@@ -11,7 +11,7 @@ public class FreeJailCard extends Card {
 	public FreeJailCard(String des, Out out) {
 		super(des, out);
 		this.out = out;
-	}
+	} 
 	
 	public void doCard(Player p, Out out){
 		out.CardsOut(description);
