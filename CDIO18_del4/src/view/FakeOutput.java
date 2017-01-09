@@ -1,8 +1,6 @@
 package view;
 
-import desktop_fields.Field;
 import model.Player;
-import model.fields.Fieldlist;
 
 public class FakeOutput extends Out {
 
@@ -25,7 +23,7 @@ public class FakeOutput extends Out {
 	}
 
 	@Override
-	public void drawGameboard(Fieldlist fd) {
+	public void drawGameboard() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -104,6 +102,36 @@ public class FakeOutput extends Out {
 
 	@Override
 	public void payedRent(Player p, int rent) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void landMSG(Player p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeOwner(int fieldNum) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String Jailaction(Player p, String[] array) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void removeCar(Player p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void CardsOut(String dis) {
 		// TODO Auto-generated method stub
 		
 	}

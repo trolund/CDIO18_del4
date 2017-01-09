@@ -35,9 +35,11 @@ public class Tax extends Field
 			}
 			else
 			{
-				p.getAccount().withdraw((taxRate*p.getAccount().getSum())/100);
-				out.msgGUI("You have paid " + (taxRate*p.getAccount().getSum())/100 + " in tax");
-				System.out.println("You have paid " + (taxRate*p.getAccount().getSum())/100 + " in tax");
+				int value = (taxRate * p.getAccount().getSum()) / 100;
+				
+				out.msgGUI("You have paid " + value + " in tax");
+				System.out.println("You have paid " + value + " in tax");
+				p.getAccount().withdraw(value);
 			}
 		}
 		else

@@ -8,7 +8,7 @@ public class MoveController {
 	
 	public void movePlayer(int amountOfMoves, Player player) 
 	{
-		if(player.getPlayerPos() + amountOfMoves > Fieldlist.getFields().length) {
+		if((player.getPlayerPos() + amountOfMoves) >= Fieldlist.getFields().length) {
 			
 			player.setPlayerPos((player.getPlayerPos() + amountOfMoves) - Fieldlist.getFields().length);
 			player.getAccount().addSum(200);
