@@ -29,6 +29,8 @@ public class Tax extends Field
 		{
 			if(out.taxAction(taxAmmount))
 			{
+				if(taxAmmount > p.getAccount().getSum()){
+				}
 				p.getAccount().withdraw(taxAmmount);
 				out.msgGUI("You have paid " + taxAmmount + " in tax");
 				System.out.println("You have paid " + taxAmmount + " in tax");
