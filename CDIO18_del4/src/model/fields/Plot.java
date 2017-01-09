@@ -31,9 +31,7 @@ public class Plot extends Ownabel
 				}
 			}
 		}
-			
 		return 2*rent;											// Returnerer double rent.
-			
 	}
 	
 	

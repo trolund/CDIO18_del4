@@ -35,6 +35,7 @@ public class Gamecontroller
 	private Dicecup cup = new Dicecup();
 	private Out out;
 	private boolean endGame;
+	private MoveController movecontroller = new MoveController();
 
 	public static void main(String[] args) 
 	{
@@ -87,11 +88,13 @@ public class Gamecontroller
 			cup.roll();
 
 			int amountOfMoves = cup.getSum();
+			
+			
 
 			out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
 
 			out.removeCar(p);
-			movePlayer(p, amountOfMoves);
+			movecontroller.movePlayer(amountOfMoves, p);
 			out.setcar(p);
 			out.landMSG(p);
 
@@ -132,7 +135,7 @@ public class Gamecontroller
 			cup.roll();
 			out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
 			int sum = cup.getSum();
-			movePlayer(p, sum);
+			movecontroller.movePlayer(sum, p);
 			Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out);
 			;
 			break;
@@ -144,7 +147,7 @@ public class Gamecontroller
 			if(cup.getDie1().getValue() == cup.getDie2().getValue()){
 				p.setJailed(false);
 				int sum1 = cup.getSum();
-				movePlayer(p, sum1);
+				movecontroller.movePlayer(sum1, p);
 				Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out);
 			}
 			;
@@ -155,25 +158,25 @@ public class Gamecontroller
 			cup.roll();
 			out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
 			int sum2 = cup.getSum();
-			movePlayer(p, sum2);
+			movecontroller.movePlayer(sum2, p);
 			Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out);
 			;
 			break;
 		}
 	}
 
-	public void movePlayer(Player p, int amountOfMoves)
-	{
-		if(p.getPlayerPos() + amountOfMoves > Fieldlist.getFields().length)
-		{
-			p.setPlayerPos((p.getPlayerPos() + amountOfMoves)-Fieldlist.getFields().length); //Hvis antal ryk og spillerens position overskrider feltlistens længde, trækkes den fra
-			p.getAccount().addSum(4000); //Start bonus
-		}
-		else
-		{
-			p.setPlayerPos(p.getPlayerPos() + amountOfMoves);
-		}
-	}
+//	public void movePlayer(Player p, int amountOfMoves)
+//	{
+//		if(p.getPlayerPos() + amountOfMoves > Fieldlist.getFields().length)
+//		{
+//			p.setPlayerPos((p.getPlayerPos() + amountOfMoves)-Fieldlist.getFields().length); //Hvis antal ryk og spillerens position overskrider feltlistens længde, trækkes den fra
+//			p.getAccount().addSum(4000); //Start bonus
+//		}
+//		else
+//		{
+//			p.setPlayerPos(p.getPlayerPos() + amountOfMoves);
+//		}
+//	}
 
 	public Player[] addPlayer()
 	{

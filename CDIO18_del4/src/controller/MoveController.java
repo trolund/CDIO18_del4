@@ -6,9 +6,10 @@ import model.fields.Fieldlist;
 public class MoveController {
 
 	
-	public void moveCarPos(int amountOfMoves, Player player) 
+	public void movePlayer(int amountOfMoves, Player player) 
 	{
 		if(player.getPlayerPos() + amountOfMoves > Fieldlist.getFields().length) {
+			
 			player.setPlayerPos((player.getPlayerPos() + amountOfMoves) - Fieldlist.getFields().length);
 			player.getAccount().addSum(200);
 		}

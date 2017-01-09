@@ -27,7 +27,7 @@ public class MoveCard extends Card {
 			p.setPlayerPos(move);
 		}
 		else{
-			new MoveController().moveCarPos(move, p);
+			new MoveController().movePlayer(move, p);
 		}	
 		out.removeCar(p);
 		out.setcar(p);
