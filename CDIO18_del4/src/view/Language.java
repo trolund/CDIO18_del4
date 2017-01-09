@@ -1,5 +1,7 @@
 package view;
 
+import model.Player;
+
 /*
  * Class wrote by: Kasper Leiszner
  */
@@ -58,12 +60,14 @@ public class Language
 
 	private static String[] fieldDescription = 
 		{ 
-				"Start", 
-				"Territory", 
-				"Refuge", 
-				"Labor Camp", 
-				"Tax", 
-				"Fleet" 
+				"Start", //[0]
+				"Grund", //[1]
+				"Parkering", //[2]
+				"Bryggeri", //[3]
+				"SKAT", //[4]
+				"Redderi", //[5]
+				"Fængsel", //[6]
+				"Ryk i fængsel" //[7]
 		};
 
 	private static String testString[] = 
@@ -180,5 +184,15 @@ public class Language
 	public static String payedRent()
 	{
 		return payedRent;
+	}
+	
+	public static String whoseTurn(Player p)
+	{
+		return "Det er " + p.getName() + "'s tur";
+	}
+	
+	public static String extraTurn(Player p)
+	{
+		return p.getName() + " slog to ens, og belønnes med en ekstra tur";
 	}
 }

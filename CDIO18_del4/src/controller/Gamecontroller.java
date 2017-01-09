@@ -69,7 +69,7 @@ public class Gamecontroller
 
 				if(!p.getBankruptStatus())
 				{
-					GUI.showMessage("Det er " + p.getName() + "'s " + "tur");
+					out.msgGUI(Language.whoseTurn(p));
 					turn(p);
 				}
 			}
@@ -85,6 +85,7 @@ public class Gamecontroller
 			prisonAction(p);
 		}
 		else{
+			
 			cup.roll();
 
 			int amountOfMoves = cup.getSum();
@@ -99,18 +100,20 @@ public class Gamecontroller
 			Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out); // Kalder landOn for spillerens position i feltlistens array
 
 			out.setGUIBalance(p);
-			
+
 			goBankrupt(p);
 			winner(); 
-			
+
 			if(cup.getDie1().getValue() == cup.getDie2().getValue()){
-				GUI.showMessage(p.getName() + " slog to ens, og belønnes med en ekstra tur");
+				
+				out.msgGUI(Language.extraTurn(p));
+
 				turn(p);
 			}
 		}	
 	}
 
-	
+
 	@SuppressWarnings("null")
 	public void prisonAction(Player p){ // metode til at håndtre vis man er i fængsel 
 
@@ -169,18 +172,18 @@ public class Gamecontroller
 		}
 	}
 
-//	public void movePlayer(Player p, int amountOfMoves)
-//	{
-//		if(p.getPlayerPos() + amountOfMoves > Fieldlist.getFields().length)
-//		{
-//			p.setPlayerPos((p.getPlayerPos() + amountOfMoves)-Fieldlist.getFields().length); //Hvis antal ryk og spillerens position overskrider feltlistens længde, trækkes den fra
-//			p.getAccount().addSum(4000); //Start bonus
-//		}
-//		else
-//		{
-//			p.setPlayerPos(p.getPlayerPos() + amountOfMoves);
-//		}
-//	}
+	//	public void movePlayer(Player p, int amountOfMoves)
+	//	{
+	//		if(p.getPlayerPos() + amountOfMoves > Fieldlist.getFields().length)
+	//		{
+	//			p.setPlayerPos((p.getPlayerPos() + amountOfMoves)-Fieldlist.getFields().length); //Hvis antal ryk og spillerens position overskrider feltlistens længde, trækkes den fra
+	//			p.getAccount().addSum(4000); //Start bonus
+	//		}
+	//		else
+	//		{
+	//			p.setPlayerPos(p.getPlayerPos() + amountOfMoves);
+	//		}
+	//	}
 
 	public Player[] addPlayer()
 	{
