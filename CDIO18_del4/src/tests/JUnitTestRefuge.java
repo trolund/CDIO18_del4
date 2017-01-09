@@ -6,15 +6,17 @@ import org.junit.Test;
 
 import model.Player;
 import model.fields.Fieldlist;
+import view.FakeOutput;
+import view.Out;
 
 public class JUnitTestRefuge {
 
 	@Test
 	public void test() {
-		Player p = new Player(30000,"hej");
-		Fieldlist f = new Fieldlist();
+		Player p = new Player("hej");
+		Out out = new FakeOutput();
 		
-		f.getFields() [12].landOn(p);
+		Fieldlist.getFields() [12].landOn(p, out);
 		assertEquals(35000,p.getAccount().getSum());
 	}
 

@@ -11,7 +11,7 @@ public class JUnitTestPlayer {
 	@Test
 	public void testPLayer() {  
 		
-		Player p = new Player(50 ,"Knud");
+		Player p = new Player("Knud");
 	
 		assertEquals("Knud", p.getName());
 		assertEquals(50, p.getAccount().getSum());
@@ -28,11 +28,7 @@ public class JUnitTestPlayer {
 		p.getAccount().addSum(-500);
 		assertEquals(0, p.getAccount().getSum());
 		
-		
-		
-		
-		
-		Player p2 = new Player(-21 ,"Brian");
+		Player p2 = new Player("Brian");
 		
 		assertEquals(0, p2.getAccount().getSum()); // summen må ikke være negativ 
 		
