@@ -228,7 +228,7 @@ public class Gamecontroller
 		{ 
 			Player p = player[i];
 			boolean bankrupt = p.getBankruptStatus(); // Tjekker om spillere er bankrupt
-			if(!bankrupt) playersAlive++; //lægger en til hver gang spilleren ikke er bankrupt
+			if(!bankrupt) playersAlive++; //ligger en til hver gang spilleren ikke er bankrupt
 		}
 
 		if(playersAlive == 1)
@@ -242,8 +242,7 @@ public class Gamecontroller
 
 				if(!bankrupt) 
 				{
-					out.winnerPrint(p);
-					try { Thread.sleep(4000); } catch (InterruptedException e) { } //Prøver at holde pause i 4 sekunder efter vinder er fundet. Ellers laver den exception så programmet ikke crasher
+					out.msgGUI(Language.getWinnerText() + " " + p.getName()); //Prøver at holde pause i 10 sekunder efter vinder er fundet. Ellers laver den exception så programmet ikke crasher
 					GUI.close();
 					endGame = true;
 				}

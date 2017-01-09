@@ -128,7 +128,7 @@ public class Language
 				"Run Normal Game"
 		};
 
-	private static String winnerText = "Vinderen er";
+	private static String winnerText = "YOYOYOYO! Vinderen af matador-master-badboy-game-2017 er:";
 	private static String endText = "Vil du spille igen?";
 	private static String playerCountText = "Hvor mange spilere er i?";
 	private static String nameOfPlayer = "Navnet på spiller";

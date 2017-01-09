@@ -96,7 +96,7 @@ public class Output extends Out
 		boolean x = GUI.getUserLeftButtonPressed(p.getName() + " " + Language.getWillYouBuy() + " " + price, Language.getYesNo()[0], Language.getYesNo()[1]);
 		
 		
-		return 
+		return x;
 	}
 
 	public boolean setTestMode()
