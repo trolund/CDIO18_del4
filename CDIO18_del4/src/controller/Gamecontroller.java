@@ -114,11 +114,9 @@ public class Gamecontroller
 		}	
 	}
 
-
-	@SuppressWarnings("null")
 	public void prisonAction(Player p){ // metode til at håndtere vis man er i fængsel 
 
-		String[] option = null;
+		String[] option;
 
 		String a = "Køb dig fri for 50kr";
 		String b = "Slå dig fri";
