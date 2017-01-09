@@ -213,6 +213,7 @@ public class Gamecontroller
 	{
 		if(p.getAccount().getSum() <= 0)
 		{
+			
 			p.setBankrupt(true);
 			resetOwnedFields(p);
 			GUI.removeCar(p.getPlayerPos(), p.getName());
@@ -248,6 +249,10 @@ public class Gamecontroller
 				}
 			}
 		}
+	}
+	
+	public Player[] getPlayerArray(){
+		return player;
 	}
 }
 
