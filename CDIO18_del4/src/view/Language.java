@@ -100,6 +100,7 @@ public class Language
 				"Værdien af egen avl fra nyttehaven udgør kr. 200 som De modtager af banken.",
 
 
+
 		};
 
 	private static String[] yesNo = 

@@ -15,10 +15,8 @@ public class Deck {
 		this.out = output;
 	
 		cards = new Card[]{
-			new MoveCard("Ryk to felter", 2, false, out),
-			new BalanceCard("Du får 100kr", 100, out),
-			new FreeJailCard("du kan komme ud fra fægsel eller gemme kortet.", out),
-			new MoveCard ("ryk til felt 5", 5, true, out)
+			
+			
 		};
 		shuffleArray();
 	}

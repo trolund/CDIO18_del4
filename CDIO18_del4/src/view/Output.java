@@ -93,7 +93,10 @@ public class Output extends Out
 
 	public boolean shopField(int price, Player p)
 	{
-		return GUI.getUserLeftButtonPressed(p.getName() + " " + Language.getWillYouBuy() + " " + price, Language.getYesNo()[0], Language.getYesNo()[1]);
+		boolean x = GUI.getUserLeftButtonPressed(p.getName() + " " + Language.getWillYouBuy() + " " + price, Language.getYesNo()[0], Language.getYesNo()[1]);
+		
+		
+		return 
 	}
 
 	public boolean setTestMode()
