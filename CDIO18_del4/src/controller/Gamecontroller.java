@@ -123,7 +123,7 @@ public class Gamecontroller
 			option[2] = c;
 		}
 		else{
-			option = new String[2];
+			option = new String[2]; 
 			option[0] = a;
 			option[1] = b;
 		}
