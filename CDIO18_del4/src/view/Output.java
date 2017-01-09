@@ -116,7 +116,7 @@ public class Output extends Out
 	public void removeCar(Player p)
 	{
 		GUI.removeCar(p.getPlayerPos()+1, p.getName());
-		System.out.println(p.getName() + " cars got removed in GUI");
+		System.out.println(p.getName() + " car got removed in GUI");
 	}
 	
 	public void setColor(Player p)

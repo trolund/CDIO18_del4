@@ -20,6 +20,7 @@ public class MoveCard extends Card {
 	
 	public void doCard(Player p, Out out){
 		out.CardsOut(description);
+		out.removeCar(p);
 		if(teleport){
 			if(move == 24 && p.getPlayerPos() > 24){
 				p.getAccount().addSum(200);
@@ -29,7 +30,7 @@ public class MoveCard extends Card {
 		else{
 			new MoveController().movePlayer(move, p);
 		}	
-		out.removeCar(p);
+		
 		out.setcar(p);
 	}
 }
