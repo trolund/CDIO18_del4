@@ -12,15 +12,9 @@ public class BankAccount
 		return balance;
 	}
 
-	public boolean setSum(int value) 
+	public void setSum(int value) 
 	{
-		if(value >= 0)
-		{
-			balance = value;
-			return true;
-		}
-		
-		return false;
+		balance = value;
 	}
 
 	public boolean addSum(int value) 
@@ -36,7 +30,7 @@ public class BankAccount
 
 	public boolean withdraw(int value) 
 	{
-		if(value > 0 && (value - balance) < 0 )
+		if(value > 0 && (balance - value) > 0 )
 		{
 			balance -= value;
 			return true;
