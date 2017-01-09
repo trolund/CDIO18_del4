@@ -114,13 +114,15 @@ public class Gamecontroller
 		String c = "Brug dit chancekort";
 
 		if(!(p.getJailcards().isEmpty())){ // de to mulige menuer:
-			option[1] = a;
-			option[2] = b;
-			option[3] = c;
+			option = new String[3];
+			option[0] = a;
+			option[1] = b;
+			option[2] = c;
 		}
 		else{
-			option[1] = a;
-			option[2] = b;
+			option = new String[2];
+			option[0] = a;
+			option[1] = b;
 		}
 
 		switch (out.Jailaction(p, option)){ // hvad skal der ske når man vægler en af de tre mulighder?:
