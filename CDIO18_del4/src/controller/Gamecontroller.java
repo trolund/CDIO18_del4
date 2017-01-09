@@ -88,8 +88,6 @@ public class Gamecontroller
 			cup.roll();
 
 			int amountOfMoves = cup.getSum();
-			
-			
 
 			out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
 
@@ -104,9 +102,15 @@ public class Gamecontroller
 			
 			goBankrupt(p);
 			winner(); 
-		}
+			
+			if(cup.getDie1().getValue() == cup.getDie2().getValue()){
+				GUI.showMessage(p.getName() + " slog to ens, og belønnes med en ekstra tur");
+				turn(p);
+			}
+		}	
 	}
 
+	
 	@SuppressWarnings("null")
 	public void prisonAction(Player p){ // metode til at håndtre vis man er i fængsel 
 
