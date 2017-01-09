@@ -79,13 +79,14 @@ public class Gamecontroller
 	public void turn(Player p)
 	{ //kører en tur for den aktuelle spiller
 
-		out.rollDiceText();
+	
 
 		if(p.isJailed()){
 			prisonAction(p);
+			
 		}
 		else{
-			
+			out.rollDiceText();
 			cup.roll();
 
 			int amountOfMoves = cup.getSum();
@@ -115,15 +116,15 @@ public class Gamecontroller
 
 
 	@SuppressWarnings("null")
-	public void prisonAction(Player p){ // metode til at håndtre vis man er i fængsel 
+	public void prisonAction(Player p){ // metode til at håndtere vis man er i fængsel 
 
 		String[] option = null;
 
-		String a = "Køb dig fri for 50kr";
+		String a = "Køb dig fri for 50kr, og slå med terningerne";
 		String b = "Slå dig fri";
 		String c = "Brug dit chancekort";
 
-		if(!(p.getJailcards().isEmpty())){ // de to mulige menuer:
+		if(!(p.getJailcards().isEmpty())){ // Hvis du har et jail-card, får du tre mulige menuer:
 			option = new String[3];
 			option[0] = a;
 			option[1] = b;
@@ -136,7 +137,7 @@ public class Gamecontroller
 		}
 
 		switch (out.Jailaction(p, option)){ // hvad skal der ske når man vægler en af de tre mulighder?:
-		case "Køb dig fri for 50kr": 
+		case "Køb dig fri for 50kr, og slå med terningerne": 
 			p.getAccount().withdraw(50);
 			p.setJailed(false);
 			cup.roll();
