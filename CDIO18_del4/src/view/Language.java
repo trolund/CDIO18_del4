@@ -51,6 +51,56 @@ public class Language
 				"Skat",
 				"Rådhuspladsen"
 		};
+	
+	private static String[] cardDescriptions =
+		{
+				"Ejendomsskatterne er steget. Ekstraudgifterne er: kr. 800 pr. hus, kr. 2.300 pr. hotel.",
+				"Ryk frem til Frederiksberg Allé. Hvis De passerer START, indkassér da kr. 4.000",
+				"Det er Deres fødselsdag. Modtag af hver medspiller kr. 200.",
+				"Ryk tre felter frem",
+				"De modtager Deres aktieudbytte. Modtag kr. 1.000 af banken.",
+				"Grundet dyrtiden har De fået gageforhøjelse. Modtag kr. 1.000.",
+				"Betal for vognvask og smøring kr. 300.",
+				"Deres præmieobligation er udtrukket. De modtager kr. 1.000 af banken.",
+				"Deres præmieobligation er udtrukket. De modtager kr. 1.000 af banken.",
+				"De modtager “Matador-legatet for værdigt trængende” på kr. 40.000. Ved værdigt trængende forstås, at deres formue, dvs. Deres kontante penge + skøder + bygninger, ikke overstige kr. 15.000",
+				"Ryk frem til START.",
+				"Ryk frem til START.",
+				"De skal holde familiefest og fået et tilskud fra hver medspiller på kr. 500.",
+				"Tag ind på Rådhuspladsen.",
+				"Tag med Mols-Linen. Flyt brikken frem, og hvis De passerer “START”, indkassér da kr. 4.000.",
+				"De har købt 4 nye dæk til Deres vogn. Betal kr. 1.000.",
+				"De har fået en parkeringsbøde. Betal kr. 200 i bøde.",
+				"Betal kr. 200 for levering af 2 kasser øl.",
+				"Tag med den nærmeste færge. Flyt brikken frem, og hvis De passerer “START”, indkassér da kr. 4.000.",
+				"Gå i fængsel. Tyk direkte til fængslet. Selv om de passerer “START”, indkasserer de ikke kr. 4.000.",
+				"Gå i fængsel. Tyk direkte til fængslet. Selv om de passerer “START”, indkasserer de ikke kr. 4.000.",
+				"Oliepriserne er steget, og De skal betale: kr. 500 pr. Hus, kr. 2.000 pr. hotel",
+				"Modtag udbytte af Deres aktier – kr. 1000.",
+				"Modtag udbytte af Deres aktier – kr. 1000.",
+				"Ryk brikken frem til det nærmeste rederi og betal lejeren to gange leje han ellers er berettiget til. Hvis selskabet ikke ejes af nogen kan du købe det af banken.",
+				"Ryk frem til Strandvejen. Hvis du passerer start, indkassér kr. 4000.",
+				"Betal deres bilforsikring – kr. 1000.",
+				"De havde en række med elleve rigtige i tipning. Modtag kr. 1000.",
+				"De har vundet i klasselotteriet. Modtag kr. 500.",
+				"De har vundet i klasselotteriet. Modtag kr. 500.",
+				"Ryk frem til Vimmelskaftet. Hvis de passerer start, indkassér da kr. 4000.",
+				"Ryk tre felter tilbage",
+				"Ryk tre felter tilbage",
+				"I anledning af kongens fødselsdag benådes de herved for fængsel. Dette kort kan opbevares indtil De får brug for det eller De kan sælge det.",
+				"I anledning af kongens fødselsdag benådes de herved for fængsel. Dette kort kan opbevares indtil De får brug for det eller De kan sælge det.",
+				"Betal kr. 3000. for reparation af Deres vogn.",
+				"De har solgt nogle gamle møbler på auktion. Modtag kr. 1000 af banken.",
+				"De har været en tur i udlandet og haft mange cigaretter med hjem. Betal told kr. 200.",
+				"Ryk frem til Grønningen. Hvis de passerer start indkassér da kr. 4000.",
+				"Kommunen har eftergivet et kvartals skat. Hæv i banken kr. 3000.",
+				"De har lagt penge ud til et sammenskudsgilde. Mærkværdigvis betaler alle straks. Modtag fra hver medspiller kr. 500.",
+				"De har kørt frem for ”Fuldt stop”. Betal kr. 1000 i bøde.",
+				"De har modtaget deres tandlægeregning. Betal kr. 2000.",
+				"Værdien af egen avl fra nyttehaven udgør kr. 200 som De modtager af banken.",
+
+
+		};
 
 	private static String[] yesNo = 
 		{ 
