@@ -79,11 +79,11 @@ public class Gamecontroller
 	public void turn(Player p)
 	{ //kører en tur for den aktuelle spiller
 
-	
+
 
 		if(p.isJailed()){
 			prisonAction(p);
-			
+
 		}
 		else{
 			out.rollDiceText();
@@ -106,7 +106,7 @@ public class Gamecontroller
 			winner(); 
 
 			if(cup.getDie1().getValue() == cup.getDie2().getValue()){
-				
+
 				out.msgGUI(Language.extraTurn(p));
 
 				turn(p);
@@ -120,7 +120,7 @@ public class Gamecontroller
 
 		String[] option = null;
 
-		String a = "Køb dig fri for 50kr, og slå med terningerne";
+		String a = "Køb dig fri for 50kr";
 		String b = "Slå dig fri";
 		String c = "Brug dit chancekort";
 
@@ -137,16 +137,13 @@ public class Gamecontroller
 		}
 
 		switch (out.Jailaction(p, option)){ // hvad skal der ske når man vægler en af de tre mulighder?:
-		case "Køb dig fri for 50kr, og slå med terningerne": 
+		case "Køb dig fri for 50kr": 
 			p.getAccount().withdraw(50);
 			p.setJailed(false);
-			cup.roll();
-			out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
-			int sum = cup.getSum();
-			movecontroller.movePlayer(sum, p);
-			Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out);
-			;
+			turn(p);
+			
 			break;
+			
 		case "Slå dig fri": 
 			out.msgGUI("Slå to ens for at komme fri!");
 			out.rollDiceText();
@@ -154,21 +151,15 @@ public class Gamecontroller
 			out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
 			if(cup.getDie1().getValue() == cup.getDie2().getValue()){
 				p.setJailed(false);
-				int sum1 = cup.getSum();
-				movecontroller.movePlayer(sum1, p);
-				Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out);
+				turn(p);	// hvis en spiller slår 2 ens, får han sin tur igen, så rykker han fra fængelsfeltet, og kan købe grunde som normalt.
 			}
-			;
 			break;
+			
 		case "Brug dit chancekort":
 			p.setJailed(false);
-			p.getJailcards().remove(0).setOwner(null);;
-			cup.roll();
-			out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
-			int sum2 = cup.getSum();
-			movecontroller.movePlayer(sum2, p);
-			Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out);
-			;
+			p.getJailcards().remove(0).setOwner(null);
+
+			turn(p);		// hvis en spiller bruger jail-card, får han sin tur igen, så rykker han fra fængelsfeltet, og kan købe grunde som normalt.
 			break;
 		}
 	}
