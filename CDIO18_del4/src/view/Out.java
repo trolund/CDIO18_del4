@@ -48,4 +48,5 @@ public abstract class Out {
 	
 	public abstract void CardsOut(String dis);
 
+	public abstract void closeGame();
 }

@@ -160,7 +160,10 @@ public class Output extends Out
 	public void CardsOut(String dis){
 		GUI.displayChanceCard("Chancekort: " + dis );
 	}
-	
+	public void closeGame()
+	{
+		GUI.close();
+	}
 
 }
 

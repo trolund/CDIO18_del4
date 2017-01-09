@@ -244,7 +244,7 @@ public class Gamecontroller
 				if(!bankrupt) 
 				{
 					out.msgGUI(Language.getWinnerText() + " " + p.getName()); //Prøver at holde pause i 10 sekunder efter vinder er fundet. Ellers laver den exception så programmet ikke crasher
-					GUI.close();
+					out.closeGame();
 					endGame = true;
 				}
 			}
