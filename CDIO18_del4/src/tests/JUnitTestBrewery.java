@@ -4,57 +4,50 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import desktop_fields.Brewery;
 import model.Player;
 import model.fields.Fieldlist;
 import model.fields.Ownabel;
 import view.FakeOutput;
 import view.Out;
-import view.Output;
 
-public class JUnitTestBrewery {
+public class JUnitTestBrewery 
+{
 	
 	private Out out = new FakeOutput();
 
 	@Test
-	public void test() //Spiller lander på felt og køber. 
+	public void TC01()
 	{
-		Player [] p = {new Player("p1"),new Player("p2")};
-
+		Player [] p = {new Player("player1"), new Player("player2")};
+		new Fieldlist(out);
 		
-		out.setcar(p[0]);
-		int exRe = p[0].getAccount().getSum()-1000;
+		int exRe = p[0].getAccount().getSum() - 150;
 		Fieldlist.getFields()[12].landOn(p[0],out);
 
 		int Re = p[0].getAccount().getSum();
-		assertEquals(exRe,Re);
 		
+		assertEquals(exRe,Re);
 	}
 	
 	@Test
-	public void test2() //Spiller lander felt eget af anden spiller og betaler afgift
+	public void test2()
 	{ 
-			
 		Player [] p = {new Player("p1"),new Player("p2")};
+		new Fieldlist(out);
 		
-		if(Fieldlist.getFields()[12] instanceof Ownabel){		
+		if(Fieldlist.getFields()[12] instanceof Ownabel)
+		{		
 			Ownabel br = (Ownabel) Fieldlist.getFields()[12];
 			br.setOwner(p[0]);
 		}
 		
-		out.setcar(p[1]);
+		int exRe = p[1].getAccount().getSum();
 		
-		int exRe = p[1].getAccount().getSum()-100;
-
+		Fieldlist.getFields()[12].landOn(p[1], out);
 		
-		Fieldlist.getFields()[1].landOn(p[0]);
-		// spiller 0 køber feltet 
-		
-		f.getFields()[1].landOn(p[1]);
 		int Re = p[1].getAccount().getSum();
 		
-
-		assertEquals(exRe,Re);
+		assertEquals(exRe,Re, 48);
 	}
 
 }
