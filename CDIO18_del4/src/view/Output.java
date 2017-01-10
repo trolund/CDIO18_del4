@@ -164,7 +164,11 @@ public class Output extends Out
 	{
 		GUI.close();
 	}
-
+	
+	public void build(Player p, Out out, String farve){
+		
+	}
+	
 }
 
 

@@ -42,6 +42,15 @@ public class Plot extends Ownabel
 
 	
 	
+	public void upgradePlot(){
+		for(int i = 0; i < house.length; i++){
+			if( !(house[i]) ){
+				house[i] = true;
+			}
+		}
+	}
+	
+	
 
 	}
 

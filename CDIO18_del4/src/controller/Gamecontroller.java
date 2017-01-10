@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import desktop_resources.GUI;
 import model.Dicecup;
 import model.Player;
@@ -7,6 +9,7 @@ import model.cards.Deck;
 import model.fields.Field;
 import model.fields.Fieldlist;
 import model.fields.Ownabel;
+import model.fields.Plot;
 import view.Language;
 import view.Out;
 import view.Output;
@@ -111,6 +114,12 @@ public class Gamecontroller
 
 			goBankrupt(p);
 			winner(); 
+			
+			checkPlots();
+			
+//			if(){
+//				
+//			}
 
 			if(cup.getDie1().getValue() == cup.getDie2().getValue()){
 
@@ -260,6 +269,54 @@ public class Gamecontroller
 	
 	public Player[] getPlayerArray(){
 		return player;
+	}
+	
+	public void checkPlots(Player p, Out out){
+
+		int[] gruppeNumre = new int[8];
+		int[] maxPlot = {2, 2, 3, 3, 3, 3, 3, 3};
+		boolean[] canBuild = new boolean[8];
+
+		for(int i = 0; i < Fieldlist.getFields().length; i++)	// for-loop der kører alle felter igennem.
+		{
+			if(Fieldlist.getFields()[i] instanceof Plot)		// Sorterer alle felter der IKKE er plot fra. Vi tjekker altså om det specifik felt er et Plot-felt.
+			{	
+				Plot plot = (Plot) Fieldlist.getFields()[i];	
+				Ownabel o = (Ownabel) Fieldlist.getFields()[i];
+				if(o.getOwner().equals(p)){
+					gruppeNumre[plot.getGroupNumber()] += 1; 
+				}
+
+			}
+		}
+		
+		for (int i = 0; i < maxPlot.length; i++) {
+			if(gruppeNumre[i] == maxPlot[i]){
+				canBuild[i] = true;
+			}
+		}
+		
+		
+		for (int i = 0; i < canBuild.length; i++) {
+			if(canBuild[i]){
+				boolean x = out.build(p, out, convertToColor(i));	
+			}
+		}
+	}
+	
+	public String convertToColor(int group){
+		switch(group){
+		case 0: return "lyseblå";
+		case 1: return "lyserød";	
+		case 2: return "grøn";	
+		case 3: return "grå";	
+		case 4: return "rød";	
+		case 5: return "hvid";
+		case 6: return "gul";	
+		case 7: return "brun";	
+		}
+		return null;
+		
 	}
 }
 

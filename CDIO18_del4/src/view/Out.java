@@ -49,4 +49,7 @@ public abstract class Out {
 	public abstract void CardsOut(String dis);
 
 	public abstract void closeGame();
+	
+	public abstract void build(Player p, Out out, String farve);
+		
 }
