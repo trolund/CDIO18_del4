@@ -25,6 +25,7 @@ public class Plot extends Ownabel
 			{													
 																// Vi caster felterne til et Plot, så vi kan tilgå groupNumber, og caster igen så vi kan tilgå Owner af felterne.
 																// Og tjekker først om groupNumber er det samme, altså om de er i samme gruppe. Og derefter om ejeren er forskellig.
+				
 				if(((Plot) Fieldlist.getFields()[i]).getGroupNumber() == this.groupNumber && ((Plot) Fieldlist.getFields()[i]).getOwner() != this.getOwner())	
 				{												
 					return rent;								// Returner normal rent.
@@ -39,23 +40,10 @@ public class Plot extends Ownabel
 		return groupNumber;
 	}
 
-	public void buildhouse(){
-		for (int i = 0; i < house.length; i++) {
-			if(!(house[i])){
-				// der kan bygges og der bliver bygget på den første ledige grund.
-				house[i] = true;
-				break;
-			}
-
-			else{
-				// vil du bygge et hotel?
-			} 
-
-		}
-
+	
+	
 
 	}
 
-}
 
 
