@@ -7,7 +7,6 @@ public class Plot extends Ownabel
 {
 	private int groupNumber;
 	private int rent;
-	private boolean[] house = new boolean[6];
 
 	public Plot(String name, String description, int price, int rent, Out out, int groupNumber){
 		super(name, description, price, out);
