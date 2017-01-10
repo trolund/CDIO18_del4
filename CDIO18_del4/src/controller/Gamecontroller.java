@@ -31,7 +31,11 @@ import view.Output;
 
 public class Gamecontroller 
 {
-	private Player[] player;
+	private static Player[] player;
+	public static Player[] getPlayer() {
+		return player;
+	}
+
 	private Dicecup cup = new Dicecup();
 	private Out out;
 	private boolean endGame;
