@@ -6,7 +6,6 @@ import view.Out;
 public class FreeJailCard extends Card {
 	
 	private Player owner;
-	private boolean used = false;
 	
 	public FreeJailCard(String des, Out out) {
 		super(des, out);

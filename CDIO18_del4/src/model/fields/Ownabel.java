@@ -2,8 +2,6 @@ package model.fields;
 
 import model.Player;
 import view.Out;
-import view.Output;
-
 
 public abstract class Ownabel extends Field
 {	

@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 
-import model.cards.Card;
 import model.cards.FreeJailCard;
 
 public class Player 

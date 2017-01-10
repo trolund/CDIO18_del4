@@ -1,14 +1,10 @@
 package tests;
 
-import static org.junit.Assert.*;
-
-
 import org.junit.Test;
 
 import controller.Gamecontroller;
 import model.Player;
 import model.cards.Deck;
-import model.fields.Chance;
 import view.FakeOutput;
 import view.Out;
 

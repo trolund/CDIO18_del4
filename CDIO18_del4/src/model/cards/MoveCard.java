@@ -1,9 +1,7 @@
 package model.cards;
 
-import controller.Gamecontroller;
 import controller.MoveController;
 import model.Player;
-import model.fields.Fieldlist;
 import view.Out;
 
 public class MoveCard extends Card {

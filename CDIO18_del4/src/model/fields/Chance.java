@@ -1,8 +1,5 @@
 package model.fields;
 
-import java.util.Arrays;
-import java.util.Random;
-
 import model.Player;
 import model.cards.Deck;
 import view.Out;

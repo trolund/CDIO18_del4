@@ -7,7 +7,6 @@ package view;
 import desktop_fields.Street;
 import desktop_resources.GUI;
 import model.Player;
-import model.fields.Field;
 import model.fields.Fieldlist;
 
 public class Output extends Out

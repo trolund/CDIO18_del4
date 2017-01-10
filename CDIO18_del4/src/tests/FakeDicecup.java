@@ -18,6 +18,8 @@ public class FakeDicecup extends Dicecup {
 		catch (IOException e) {                          // error message if the file cannot be opened
             System.out.println("Cannot read file " + filename + " in " + System.getProperty("user.dir"));
         }
+		
+		inputfile.close();
 	}
 	
 	// replaces the method with the same name in Raflebaeger

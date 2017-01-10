@@ -1,9 +1,7 @@
 package model.fields;
 
-import desktop_resources.GUI;
 import model.Player;
 import view.Out;
-import view.Output;
 
 public class GoToPrison extends Field 
 {
