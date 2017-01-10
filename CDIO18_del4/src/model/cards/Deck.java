@@ -26,14 +26,14 @@ public class Deck {
 			new BalanceCard(des[6],50,out),
 			new BalanceCard(des[6],50,out),
 			new MoveCard(des[7],0, true, out),
-			new MoveCard(des[7],0, true, out),
-			new BalanceCard(des[8],998989,out),// Skal laves for sig selv, "familiefest", modtag 500 fra alle spillere. 
+			new MoveCard(des[7],0, true, out),	
 			new MoveCard(des[9],39,true,out),
 			new MoveCard(des[10],5,true,out),
 			new BalanceCard(des[11],50,out),
+			new FamillyCard(des[11],25,out),
 			new BalanceCard(des[12],-10,out),
 			new BalanceCard(des[13],-10,out),
-			new BalanceCard(des[14],998989,out),// Ryk til nærmeste færge. modtag 200 ved passering af start
+			new MoveFleetCard(des[14],out),
 			new MoveCard(des[15],11,true,out),
 			new MoveCard(des[15],11,true,out),
 			new BalanceCard(des[16],40, out), // ret til med doCard metode, 

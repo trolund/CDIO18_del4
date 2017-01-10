@@ -4,6 +4,7 @@ import desktop_resources.GUI;
 import model.Dicecup;
 import model.Player;
 import model.cards.Deck;
+import model.fields.Field;
 import model.fields.Fieldlist;
 import model.fields.Ownabel;
 import view.Language;
@@ -103,7 +104,8 @@ public class Gamecontroller
 			out.setcar(p);
 			out.landMSG(p);
 
-			Fieldlist.getFields()[p.getPlayerPos()].landOn(p, out); // Kalder landOn for spillerens position i feltlistens array
+			Field f = Fieldlist.getFields()[p.getPlayerPos()];
+			f.landOn(p, out); // Kalder landOn for spillerens position i feltlistens array
 
 			out.setGUIBalance(p);
 

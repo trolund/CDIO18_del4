@@ -135,6 +135,12 @@ public class FakeOutput extends Out {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void closeGame() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	}
