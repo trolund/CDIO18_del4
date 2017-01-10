@@ -7,6 +7,7 @@ package view;
 import desktop_fields.Street;
 import desktop_resources.GUI;
 import model.Player;
+import model.fields.Field;
 import model.fields.Fieldlist;
 
 public class Output extends Out
@@ -167,6 +168,16 @@ public class Output extends Out
 	
 	public void build(Player p, Out out, String farve){
 		
+	}
+	
+	public String whereToBuild(String[] fArray){
+		String result = GUI.getUserSelection("Hvor vil du bygge?", fArray);
+		return result;
+		
+	}
+	
+	public void BuildHouse(int index, int houseCount){
+		GUI.setHouses(index, houseCount);
 	}
 	
 }

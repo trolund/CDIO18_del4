@@ -8,7 +8,7 @@ import view.Out;
 
 public class Deck {
 
-	public static int cardCount = 0;
+	private static int cardCount = 0;
 	public static Card[] cards;
 	public Out out;
 	private String[] des = Language.getCardDescriptions();

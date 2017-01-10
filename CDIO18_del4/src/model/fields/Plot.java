@@ -7,7 +7,7 @@ public class Plot extends Ownabel
 {
 	private int groupNumber;
 	private int rent;
-	private boolean[] house = new boolean[6];
+	private int housecount = 0;
 
 	public Plot(String name, String description, int price, int rent, Out out, int groupNumber){
 		super(name, description, price, out);
@@ -43,11 +43,13 @@ public class Plot extends Ownabel
 	
 	
 	public void upgradePlot(){
-		for(int i = 0; i < house.length; i++){
-			if( !(house[i]) ){
-				house[i] = true;
-			}
+		if(housecount <= 5){
+			housecount++;
 		}
+	}
+
+	public int getHousecount() {
+		return housecount;
 	}
 	
 	

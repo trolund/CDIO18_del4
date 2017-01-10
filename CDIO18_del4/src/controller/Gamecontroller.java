@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import desktop_resources.GUI;
 import model.Dicecup;
@@ -114,8 +115,7 @@ public class Gamecontroller
 
 			goBankrupt(p);
 			winner(); 
-			
-			checkPlots();
+			checkPlots(p, out);
 			
 //			if(){
 //				
@@ -276,14 +276,14 @@ public class Gamecontroller
 		int[] gruppeNumre = new int[8];
 		int[] maxPlot = {2, 2, 3, 3, 3, 3, 3, 3};
 		boolean[] canBuild = new boolean[8];
+		List<Field> flist = new ArrayList<>(); 
 
 		for(int i = 0; i < Fieldlist.getFields().length; i++)	// for-loop der kører alle felter igennem.
 		{
 			if(Fieldlist.getFields()[i] instanceof Plot)		// Sorterer alle felter der IKKE er plot fra. Vi tjekker altså om det specifik felt er et Plot-felt.
 			{	
-				Plot plot = (Plot) Fieldlist.getFields()[i];	
-				Ownabel o = (Ownabel) Fieldlist.getFields()[i];
-				if(o.getOwner().equals(p)){
+				Plot plot = (Plot) Fieldlist.getFields()[i];
+				if(plot.getOwner() != null && plot.getOwner().equals(p)){
 					gruppeNumre[plot.getGroupNumber()] += 1; 
 				}
 
@@ -299,9 +299,35 @@ public class Gamecontroller
 		
 		for (int i = 0; i < canBuild.length; i++) {
 			if(canBuild[i]){
-				boolean x = out.build(p, out, convertToColor(i));	
+				flist.addAll(getGroup(i));
 			}
 		}
+		
+		if(flist.size() < 1){ 
+			return;
+		}
+		
+		String[] FieldNames = new String[flist.size()];
+		
+		for (int i = 0; i < flist.size(); i++) {
+			FieldNames[i] = flist.get(i).getName();
+		}
+	
+		String result = out.whereToBuild(FieldNames);
+		
+		for (int i = 0; i < Fieldlist.getFields().length; i++) {
+			Field f = Fieldlist.getFields()[i];
+			if(f.getName().equals(result)){
+				if(f instanceof Plot ){
+					Plot plotCast =(Plot) f;
+					plotCast.upgradePlot();
+					out.BuildHouse(i, plotCast.getHousecount());
+				}
+				
+			}
+		}
+		
+		
 	}
 	
 	public String convertToColor(int group){
@@ -317,6 +343,23 @@ public class Gamecontroller
 		}
 		return null;
 		
+	}
+	
+	
+	public List<Field> getGroup(int x){
+		List<Field> flist = new ArrayList<>(); 
+		
+	for (Field f : Fieldlist.getFields()) {
+		if(f instanceof Plot ){
+			Plot p = (Plot) f;
+			if(p.getGroupNumber() == x){
+				flist.add(p);
+			}
+			
+			
+		}
+	}
+		return flist;	
 	}
 }
 

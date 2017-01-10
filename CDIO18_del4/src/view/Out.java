@@ -51,5 +51,9 @@ public abstract class Out {
 	public abstract void closeGame();
 	
 	public abstract void build(Player p, Out out, String farve);
+	
+	public abstract String whereToBuild(String[] fArray);
+	
+	public abstract void BuildHouse(int index, int houseCount);
 		
 }
