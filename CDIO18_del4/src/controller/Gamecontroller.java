@@ -32,7 +32,8 @@ import view.Output;
 public class Gamecontroller 
 {
 	private static Player[] player;
-	public static Player[] getPlayer() {
+	
+	public static  Player[] getPlayer() {
 		return player;
 	}
 
