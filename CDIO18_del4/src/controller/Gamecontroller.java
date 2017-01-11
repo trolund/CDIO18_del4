@@ -335,12 +335,11 @@ public class Gamecontroller
 					Plot plotCast =(Plot) f;
 					plotCast.upgradePlot();
 					
-					if(plotCast.getGroupNumber() >= 5){ // bygger hotel vis der er 5 huse.
+					if(plotCast.getHousecount() >= 5){ // bygger hotel vis der er 5 huse.
 						out.BuildHotel(index, true);
-						
 					}
 					else{
-					out.BuildHouse(index, plotCast.getHousecount()); // bygger huse vis der er mindre end 5 huse.
+						out.BuildHouse(index+1, plotCast.getHousecount()); // bygger huse vis der er mindre end 5 huse.
 					}
 					
 				}
