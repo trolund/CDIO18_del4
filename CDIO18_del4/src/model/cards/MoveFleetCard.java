@@ -23,6 +23,7 @@ public class MoveFleetCard extends Card {
 	public void doCard(Player p, Out out) {
 		int pos = 0;
 		out.removeCar(p);
+		out.CardsOut(description);
 		for (int i = 0; i <= Fieldlist.getFields().length - 1; i++) {
 			int index = (i + p.getPlayerPos()) % 40;
 			Field f = Fieldlist.getFields()[index];
@@ -35,8 +36,8 @@ public class MoveFleetCard extends Card {
 
 				pos = (i + p.getPlayerPos()) % 40;
 
-				if(fleet.getOwner() != null && doubleRent == true){
-					
+				if(fleet.getOwner() != null && doubleRent){
+					p.getAccount().withdraw(fleet.getRent(fleet.getOwner()) * 2);
 				}
 
 				break;
