@@ -11,7 +11,7 @@ public class Parking extends Field {
 	public Parking(String name, String description, int bonus, Out out) {
 		super(name, description, out);
 		this.bonus = bonus;
-		// this.bonus er den bonus attributten der blev oprettet i linje 8
+		// this.bonus sætter attributen der blev oprettet i klassen lig..
 	}
 
 	@Override

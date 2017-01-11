@@ -13,11 +13,9 @@ public class Tax extends Field
 	public Tax(String name, String description, int taxAmmount, int taxRate, Out out) {
 		super(name, description, out);
 		this.taxAmmount = taxAmmount;
-		// this.taxAmmount sætter attributten der blev oprettet i linje 15 lig
-		// denne taxAmmount
+		// this.taxAmmount sætter attributen der blev oprettet i klassen lig..
 		this.taxRate = taxRate;
-		// this.taxRate sætter attributten der blev oprettet i linje 16 lig
-		// denne taRate
+		// this.taxRate sætter attributen der blev oprettet i klassen lig..
 	}
 
 	@Override

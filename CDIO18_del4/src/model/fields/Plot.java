@@ -12,10 +12,9 @@ public class Plot extends Ownabel {
 	public Plot(String name, String description, int price, int rent, Out out, int groupNumber) {
 		super(name, description, price, out);
 		this.rent = rent;
-		// this.rent sætter attributten der blev oprettet i linje 9 lig rent
+		// this.rent sætter attributen der blev oprettet i klassen lig..
 		this.groupNumber = groupNumber;
-		// this.groupNumber sætter attributten der blev oprettet i linje 8 lig
-		// groupNumber
+		// this.groupNumber sætter attributen der blev oprettet i klassen lig..
 	}
 
 	@Override // overrider getRent metoden i Ownable klassen
