@@ -2,12 +2,12 @@ package view;
 
 import model.Player;
 
-public class FakeOutput extends Out {
+public class FakeOutputFalse extends Out {
 
 	@Override
 	public void winnerPrint(Player p) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
