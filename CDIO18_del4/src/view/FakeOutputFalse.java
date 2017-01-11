@@ -160,5 +160,11 @@ public class FakeOutputFalse extends Out {
 
 	}
 
+	@Override
+	public void BuildHotel(int index, boolean hasHotel) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
