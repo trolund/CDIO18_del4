@@ -179,6 +179,11 @@ public class Output extends Out
 		GUI.setHouses(index, houseCount);
 	}
 	
+	public void BuildHotel(int index, boolean hasHotel){
+		GUI.setHotel(index, hasHotel);
+		
+	}
+	
 }
 
 
