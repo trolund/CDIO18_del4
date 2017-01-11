@@ -90,7 +90,6 @@ public class Gamecontroller
 	{ //kører en tur for den aktuelle spiller
 
 
-
 		if(p.isJailed()){
 			prisonAction(p);
 
@@ -111,7 +110,10 @@ public class Gamecontroller
 			Field f = Fieldlist.getFields()[p.getPlayerPos()];
 			f.landOn(p, out); // Kalder landOn for spillerens position i feltlistens array
 
-			out.setGUIBalance(p);
+			for (int i = 0; i < player.length; i++) 
+			{
+				out.setGUIBalance(player[i]);
+			}
 
 			goBankrupt(p);
 			winner(); 
@@ -128,6 +130,8 @@ public class Gamecontroller
 				turn(p);
 			}
 		}	
+		
+		System.out.println();
 	}
 
 	public void prisonAction(Player p){ // metode til at håndtere vis man er i fængsel 
