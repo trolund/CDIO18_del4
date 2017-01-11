@@ -1,14 +1,10 @@
 package model.cards;
 
-import desktop_fields.Ownable;
 import model.Player;
 import model.fields.Field;
 import model.fields.Fieldlist;
 import model.fields.Fleet;
 import view.Out;
-
-
-
 
 public class MoveFleetCard extends Card {
 
