@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import model.Player;
 import model.fields.Fieldlist;
-import model.fields.Ownabel;
+import model.fields.Ownable;
 import view.FakeOutput;
 import view.Out;
 
@@ -35,9 +35,9 @@ public class JUnitTestBrewery
 		Player [] p = {new Player("p1"),new Player("p2")};
 		new Fieldlist(out);
 		
-		if(Fieldlist.getFields()[12] instanceof Ownabel)
+		if(Fieldlist.getFields()[12] instanceof Ownable)
 		{		
-			Ownabel br = (Ownabel) Fieldlist.getFields()[12];
+			Ownable br = (Ownable) Fieldlist.getFields()[12];
 			br.setOwner(p[0]);
 		}
 		

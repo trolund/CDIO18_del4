@@ -20,14 +20,14 @@ public class Chance extends Field
 	{
 		
 		
-		Deck.cards[Deck.cardCount].doCard(p , out); // tag kort i bunken.
+		Deck.cards[Deck.getCardCount()].doCard(p , out); // tag kort i bunken.
 //		Deck.cardCount++; // gør næste kort klar.
-		Deck.cardCount = ++Deck.cardCount % Deck.cards.length;
+//		Deck.setCardCount(++Deck % Deck.cards.length);
 	}
 
 	@Override
 	public int getValue() {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 

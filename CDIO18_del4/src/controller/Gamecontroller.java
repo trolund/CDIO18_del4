@@ -9,7 +9,7 @@ import model.Player;
 import model.cards.Deck;
 import model.fields.Field;
 import model.fields.Fieldlist;
-import model.fields.Ownabel;
+import model.fields.Ownable;
 import model.fields.Plot;
 import view.Language;
 import view.Out;
@@ -213,11 +213,11 @@ public class Gamecontroller
 		{
 			for(int i = 0; i < Fieldlist.getFields().length;i++)
 			{
-				if(Fieldlist.getFields()[i] instanceof Ownabel)
+				if(Fieldlist.getFields()[i] instanceof Ownable)
 				{
-					if( ((Ownabel) Fieldlist.getFields()[i]).getOwner() == p )
+					if( ((Ownable) Fieldlist.getFields()[i]).getOwner() == p )
 					{
-						((Ownabel) Fieldlist.getFields()[i]).setOwner(null);
+						((Ownable) Fieldlist.getFields()[i]).setOwner(null);
 						out.removeOwner(p.getPlayerPos()+1);
 					}
 				}

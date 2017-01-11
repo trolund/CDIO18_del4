@@ -3,14 +3,14 @@ package model.fields;
 import model.Player;
 import view.Out;
 
-public abstract class Ownabel extends Field
+public abstract class Ownable extends Field
 {	
 
 	protected int price;
 	private Player owner;
 	boolean wantToBuy;
 
-	public Ownabel (String name, String description, int price, Out o)
+	public Ownable (String name, String description, int price, Out o)
 	{
 		super(name, description, o);
 		this.price = price;

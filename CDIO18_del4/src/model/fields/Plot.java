@@ -3,7 +3,7 @@ package model.fields;
 import model.Player;
 import view.Out;
 
-public class Plot extends Ownabel
+public class Plot extends Ownable
 {
 	private int groupNumber;
 	private int rent;

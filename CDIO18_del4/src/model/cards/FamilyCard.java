@@ -4,11 +4,11 @@ import controller.Gamecontroller;
 import model.Player;
 import view.Out;
 
-public class FamillyCard extends Card  {
+public class FamilyCard extends Card  {
 	
 	int gift;
 
-	public FamillyCard(String description,int gift, Out out) {
+	public FamilyCard(String description,int gift, Out out) {
 		super(description, out);
 		this.gift = gift;
 	}

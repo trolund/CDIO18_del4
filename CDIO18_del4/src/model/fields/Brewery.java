@@ -4,7 +4,7 @@ import model.Dicecup;
 import model.Player;
 import view.Out;
 
-public class Brewery extends Ownabel
+public class Brewery extends Ownable
 {
 	private int baseRent;
 

@@ -10,7 +10,7 @@ public class Language
 {
 	private static String[] fieldName = 
 		{
-				"Start",
+				"Start",				// felt 0
 				"Rødovrevej",
 				"Prøv lykken",
 				"Hvidovrevej",
@@ -20,7 +20,7 @@ public class Language
 				"Prøv lykken",
 				"Valby Langgade",
 				"Allegade",
-				"Fængsel",
+				"Fængsel",				// felt 10
 				"Frederiksberg Allé",
 				"Tuborg",
 				"Bulowsvej",
@@ -30,7 +30,7 @@ public class Language
 				"Prøv lykken",
 				"Hellerupvej",
 				"Strandvejen",
-				"Helle",
+				"Helle",				//felt 20
 				"Trianglen",
 				"Prøv lykken",
 				"Østerbrogade",
@@ -40,7 +40,7 @@ public class Language
 				"Kgs. Nytorv",
 				"Calsberg",
 				"Østergade",
-				"Gå i fængsel",
+				"Gå i fængsel",			//felt 30
 				"Amagertorv",
 				"Vimmelskaftet",
 				"Prøv lykken",
@@ -49,7 +49,7 @@ public class Language
 				"Prøv lykken",
 				"Frederiksberggade",
 				"Skat",
-				"Rådhuspladsen"
+				"Rådhuspladsen"			// felt 39
 		};
 	
 	public static String[] getCardDescriptions() {
@@ -80,7 +80,7 @@ public class Language
 				"Gå i fængsel. Tyk direkte til fængslet. Selv om de passerer “START”, indkasserer de ikke kr. 200.",
 				"Oliepriserne er steget, og De skal betale: kr. 25 pr. Hus, kr. 100 pr. hotel",
 				"Modtag udbytte af Deres aktier: kr. 50,00.",
-				"Modtag udbytte af Deres aktier: kr. 50,00.", // kommet her til
+				"Modtag udbytte af Deres aktier: kr. 50,00.",
 				"Ryk brikken frem til det nærmeste rederi og betal lejeren to gange leje han ellers er berettiget til. Hvis selskabet ikke ejes af nogen kan du købe det af banken.",
 				"Ryk frem til Strandvejen. Hvis du passerer start, indkassér kr. 200,00.",
 				"Betal deres bilforsikring – kr. 50,00.",

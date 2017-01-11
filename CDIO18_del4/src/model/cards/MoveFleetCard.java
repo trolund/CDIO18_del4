@@ -1,16 +1,22 @@
 package model.cards;
 
+import desktop_fields.Ownable;
 import model.Player;
 import model.fields.Field;
 import model.fields.Fieldlist;
 import model.fields.Fleet;
 import view.Out;
 
+
+
+
 public class MoveFleetCard extends Card {
 
-	public MoveFleetCard(String description, Out out) {
+	private boolean doubleRent;
+	
+	public MoveFleetCard(String description, boolean doubleRent, Out out) {
 		super(description, out);
-		// TODO Auto-generated constructor stub
+		this.doubleRent = doubleRent;
 	}
 
 	@Override
@@ -21,12 +27,18 @@ public class MoveFleetCard extends Card {
 			int index = (i + p.getPlayerPos()) % 40;
 			Field f = Fieldlist.getFields()[index];
 			if (f instanceof Fleet) {
+				Fleet fleet = (Fleet)f;
+				
 				if ((i + p.getPlayerPos()) > Fieldlist.getFields().length) {
 					p.getAccount().addSum(200);
 				}
 
 				pos = (i + p.getPlayerPos()) % 40;
 
+				if(fleet.getOwner() != null && doubleRent == true){
+					// spilleren skal betale double husleje
+				}
+				
 				break;
 			}
 

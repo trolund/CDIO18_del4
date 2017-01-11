@@ -3,7 +3,7 @@ package model.fields;
 import model.Player;
 import view.Out;
 
-public class Fleet extends Ownabel
+public class Fleet extends Ownable
 {
 	
 	private int baseRent;
