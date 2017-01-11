@@ -274,7 +274,7 @@ public class Gamecontroller
 	public void checkPlots(Player p, Out out){
 
 		int[] gruppeNumre = new int[8];
-		int[] maxPlot = {2, 2, 3, 3, 3, 3, 3, 3};
+		int[] maxPlot = {2, 3, 3, 3, 3, 3, 3, 2};
 		boolean[] canBuild = new boolean[8];
 		List<Field> flist = new ArrayList<>(); 
 
@@ -282,38 +282,51 @@ public class Gamecontroller
 		{
 			if(Fieldlist.getFields()[i] instanceof Plot)		// Sorterer alle felter der IKKE er plot fra. Vi tjekker altså om det specifik felt er et Plot-felt.
 			{	
-				Plot plot = (Plot) Fieldlist.getFields()[i];
-				if(plot.getOwner() != null && plot.getOwner().equals(p)){
-					gruppeNumre[plot.getGroupNumber()] += 1; 
+				Plot plot = (Plot) Fieldlist.getFields()[i];	// caster feltet vi ved er et Plot til et Plot ås vi kan få adgang til GroupNumber
+				if(plot.getOwner() != null && plot.getOwner().equals(p)){ // tjekker at plot har en owner og derved ikke er Null og der næst at owneren er den samme som den spiller osm har tur
+					//TODO
+					gruppeNumre[plot.getGroupNumber()-1] += 1;  // tilføjer at du har købt en den type grund til array.
 				}
 
 			}
 		}
 		
-		for (int i = 0; i < maxPlot.length; i++) {
+		for (int i = 0; i < maxPlot.length; i++) { // du kan bygge vis antalet af grunde inde for en type er det samme som hvad du max kan få. 
 			if(gruppeNumre[i] == maxPlot[i]){
 				canBuild[i] = true;
 			}
 		}
 		
 		
-		for (int i = 0; i < canBuild.length; i++) {
+		for (int i = 0; i < canBuild.length; i++) { // adder gruppe til mulig byggegrunde. 
 			if(canBuild[i]){
-				flist.addAll(getGroup(i));
+				
+				//TODO
+				flist.addAll(getGroup(i+1));
 			}
 		}
 		
-		if(flist.size() < 1){ 
+		if(flist.size() < 1){ // vis der ikke er nogle grunde du må bygge på så return. 
 			return;
 		}
+		 
+		String[] FieldNames = new String[flist.size()]; // opretter array.
 		
-		String[] FieldNames = new String[flist.size()];
-		
-		for (int i = 0; i < flist.size(); i++) {
+		for (int i = 0; i < flist.size(); i++) { // sætter navne på felter ind i Navne-array
 			FieldNames[i] = flist.get(i).getName();
 		}
 	
 		String result = out.whereToBuild(FieldNames);
+		int index = 0;
+		
+			
+		for (int i = 0; i < Fieldlist.getFields().length; i++) {
+			if(Fieldlist.getFields()[i].getName().equals(result)) {
+				index = i;
+				break;
+			}
+		}
+		
 		
 		for (int i = 0; i < Fieldlist.getFields().length; i++) {
 			Field f = Fieldlist.getFields()[i];
@@ -321,7 +334,15 @@ public class Gamecontroller
 				if(f instanceof Plot ){
 					Plot plotCast =(Plot) f;
 					plotCast.upgradePlot();
-					out.BuildHouse(i, plotCast.getHousecount());
+					
+					if(plotCast.getGroupNumber() >= 5){ // bygger hotel vis der er 5 huse.
+						out.BuildHotel(index, true);
+						
+					}
+					else{
+					out.BuildHouse(index, plotCast.getHousecount()); // bygger huse vis der er mindre end 5 huse.
+					}
+					
 				}
 				
 			}
