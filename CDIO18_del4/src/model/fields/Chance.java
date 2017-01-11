@@ -1,5 +1,8 @@
 package model.fields;
 
+import java.util.Arrays;
+import java.util.Random;
+
 import model.Player;
 import model.cards.Deck;
 import view.Out;
@@ -15,9 +18,11 @@ public class Chance extends Field
 	
 	public void landOn(Player p, Out o)
 	{
-		Deck.cards[Deck.getCardCount()].doCard(p , out); // tag kort i bunken.
+		
+		
+		Deck.cards[Deck.cardCount].doCard(p , out); // tag kort i bunken.
 //		Deck.cardCount++; // gør næste kort klar.
-		Deck.setCardCount((Deck.getCardCount()+1) % Deck.cards.length); 
+		Deck.cardCount = ++Deck.cardCount % Deck.cards.length;
 	}
 
 	@Override
