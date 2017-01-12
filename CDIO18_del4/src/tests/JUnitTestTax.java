@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import controller.Gamecontroller;
 import model.fields.*;
 import view.FakeOutputFalse;
 import view.FakeOutputTrue;

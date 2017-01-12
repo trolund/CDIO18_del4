@@ -40,7 +40,7 @@ public class Plot extends Ownable
 				}
 			}
 		}
-		return 2 * rent;
+		return 2 * rent * housecount;
 		// Returnerer double rent.
 	}
 	
