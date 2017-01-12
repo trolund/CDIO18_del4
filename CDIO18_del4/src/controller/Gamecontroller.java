@@ -418,7 +418,7 @@ public class Gamecontroller
 					Plot plotCast =(Plot) f;
 					plotCast.upgradePlot();
 					if(plotCast.getHousecount() >= 5){ // bygger hotel vis der er 5 huse.
-						out.BuildHotel(index, true);
+						out.BuildHotel(index+1, true);
 						p.getAccount().withdraw(200);
 					}
 					else{
