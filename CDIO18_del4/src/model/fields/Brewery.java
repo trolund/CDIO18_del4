@@ -8,6 +8,7 @@ public class Brewery extends Ownable
 // Brewery klassen arver (extender) fra Ownable
 {
 	private int baseRent;
+	Dicecup cup = new Dicecup();
 
 	public Brewery(String name, String description, int price, int baseRent, Out out) {
 		super(name, description, price, out);
@@ -27,8 +28,7 @@ public class Brewery extends Ownable
 			baseRent += 6;
 			// kan også skrives: baseRent = baseRent + 6
 		}
-
-		Dicecup cup = new Dicecup();
+		
 		// opretter et nyt Dicecup objekt
 		out.rollDiceText();
 		// besked i GUI (Kast terningerne)
@@ -42,6 +42,11 @@ public class Brewery extends Ownable
 		// sætter rent lig terningernes sum gange baseRent
 
 		return rent;
+	}
+	
+	public Dicecup getDiceCup()
+	{
+		return cup;
 	}
 
 }

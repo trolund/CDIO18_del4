@@ -386,15 +386,6 @@ public class Gamecontroller
 		return 0;
 	}
 	
-	private int findePlacetosell(String result){
-		for (int i = 0; i < Fieldlist.getFields().length; i++) {
-			if(Fieldlist.getFields()[i].getName().equals(result)) {
-				return i;
-			}
-		}
-		return 0;
-	}
-	
 	private String[] GenereNameArraySell(List<Field> flist){
 
 		String[] FieldNames = new String[flist.size()]; // opretter array.
