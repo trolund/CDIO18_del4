@@ -2,6 +2,7 @@ package model.cards;
 
 import controller.MoveController;
 import model.Player;
+import model.fields.Fieldlist;
 import view.Out;
 
 public class MoveCard extends Card {
@@ -22,6 +23,9 @@ public class MoveCard extends Card {
 		if(teleport){
 			if(move == 24 && p.getPlayerPos() > 24){
 				p.getAccount().addSum(200);
+			}
+			if(move == 30){
+				Fieldlist.getFields()[30].landOn(p, out);
 			}
 			p.setPlayerPos(move);
 		}

@@ -17,49 +17,50 @@ public class Deck {
 		this.out = output;
 	
 		cards = new Card[]{
-//			new BalanceCard(des[0],50, out), 		// betal 50 pr. hus og 125 pr. hotel.
-//			new MoveCard(des[1], 11, true, out), 		// teleport til Frederiksberg Allé.
-//			new FamilyCard(des[2], 25, out),			// tager 25 dask fra hver spiller og giver til spilleren der trækker kortet.
-//			new MoveCard(des[3], -3, false, out),		// ryk 3 felter tilbage
-//			new BalanceCard(des[4], 50, out),			// modtag 50 dask.
-//			new BalanceCard(des[5], -15, out),			// modtag 25 dask.
-//			new BalanceCard(des[6], -10, out),			// betal 10 dask.
-//			new BalanceCard(des[7], 100, out),			// modtag 100 dask.
-//			new BalanceCard(des[7], 100, out),			// modtag 100 dask.
-//			new MoveCard(des[8],0, true, out),			// ryk frem til START	
-//			new MoveCard(des[8],0, true, out),			// ryk frem til START
-//			new FamilyCard(des[9], 25, out),			// modtag 25 dask fra hver spiller
-//			new MoveCard(des[10], 39, true, out),		// tag ind på rådhuspladsen
-//			new MoveCard(des[11], 5, true , out),		// ryk til øresundsredderiet
-//			new BalanceCard(des[12], -50, out),			// betal 50 dask
-//			new BalanceCard(des[13], -20, out),			// betal 20 dasko
-//			new MoveFleetCard(des[14], false, out),			// tag med nærmeste redderi :)
-//			new MoveCard(des[15],11, true, out),		// gå i fængsel
-//			new MoveCard(des[16],11, true, out),		// gå i fængsel bra
-//			new BalanceCard(des[16], 25, out), 	// betal 25 pr. hus og 100 pr. hotæl
-//			new BalanceCard(des[17], 50, out),			// modtag 50 dask
-//			new BalanceCard(des[18], 50, out),			// modtag 50 dask
-			new MoveFleetCard(des[18], true, out),		// ryk til nærmeste redderi og betal double husleje
-//			new MoveCard(des[19],0, false, out),
-//			new BalanceCard(des[20], 40, out), 
-//			new MoveCard(des[21],11, true, out),
-//			new BalanceCard(des[22], 10, out),
-//			new MoveCard(des[23], 3, false, out),
-//			new BalanceCard(des[23], 50, out),
-//			new BalanceCard(des[24], -15, out),
-//			new BalanceCard(des[25], 50, out),
-//			new BalanceCard(des[25], 50, out),
-//			new MoveCard(des[26],0, true, out),
-//			new MoveCard(des[26],0, true, out),	
-//			new MoveCard(des[27], 39, true, out),
-//			new MoveCard(des[28], 5, true, out),
-//			new BalanceCard(des[29], 50, out),
-//			new FamilyCard(des[30], 25, out),
-//			new BalanceCard(des[31], -10, out),
-//			new BalanceCard(des[32], -10, out),
-//			new MoveFleetCard(des[33], true, out),
-//			new MoveCard(des[34], 11, true, out),
-//			new MoveCard(des[35], 11, true, out),
+//			new BalanceCard(des[0],50, 125, out), 		// betal 50 pr. hus og 125 pr. hotel.
+			new MoveCard(des[1], 11, true, out), 		// teleport til Frederiksberg Allé.
+			new FamilyCard(des[2], 25, out),			// tager 25 dask fra hver spiller og giver til spilleren der trækker kortet.
+			new MoveCard(des[3], -3, false, out),		// ryk 3 felter tilbage
+			new BalanceCard(des[4], 50, out),			// modtag 50 dask.
+			new BalanceCard(des[5], -15, out),			// modtag 25 dask.
+			new BalanceCard(des[6], -10, out),			// betal 10 dask.
+			new BalanceCard(des[7], 100, out),			// modtag 100 dask.
+			new BalanceCard(des[8], 100, out),			// modtag 100 dask.
+			new MoveCard(des[9],0, true, out),			// ryk frem til START	
+			new MoveCard(des[10],0, true, out),			// ryk frem til START
+			new FamilyCard(des[11], 25, out),			// modtag 25 dask fra hver spiller
+			new MoveCard(des[12], 39, true, out),		// tag ind på rådhuspladsen
+			new MoveCard(des[13], 5, true , out),		// ryk til øresundsredderiet
+			new BalanceCard(des[14], -50, out),			// betal 50 dask
+			new BalanceCard(des[15], -20, out),			// betal 20 dasko
+			new BalanceCard(des[16], -10, out),			// betal 10 dask
+			new MoveFleetCard(des[17], false, out),		// tag med nærmeste redderi :)
+			new MoveCard(des[18], 30, true, out),		// gå i fængsel
+			new MoveCard(des[19], 30, true, out),		// gå i fængsel bra
+	//		new BalanceCard(des[20], 25, 100, out), 	// betal 25 pr. hus og 100 pr. hotæl
+			new BalanceCard(des[21], 50, out),			// modtag 50 dask
+			new BalanceCard(des[22], 50, out),			// modtag 50 dask
+			new MoveFleetCard(des[23], true, out),		// ryk til nærmeste redderi og betal double husleje
+			new MoveCard(des[24], 19, true, out),		// Ryk frem til Strandvejen
+			new BalanceCard(des[25], 50, out),			// modtag dask 50
+			new BalanceCard(des[26], 50, out),			// modtag 50 dask
+			new BalanceCard(des[27], 25, out),			// modtag 25 dask
+			new BalanceCard(des[28], 25, out),			// modtag 25 dask
+			new MoveCard(des[29], 32, true, out),		// ryk til Vimmelskaftet 
+			new MoveCard(des[30], -3, false, out),		// ryk tre felter tilbage
+			new MoveCard(des[31], -3, false, out),		// ryk tre felter tilbage
+			new FreeJailCard(des[32], out),				// FreeJailCard
+			new FreeJailCard(des[33], out),				// FreeJailCard
+			new BalanceCard(des[34], -150, out),		// betal 150 dask	
+			new BalanceCard(des[35], 50, out),			// modtag 50 dask
+			new BalanceCard(des[36], -10, out),			// betal 10 dask
+			new MoveCard(des[37], 24, true, out),		// ryk til grønningen
+			new BalanceCard(des[38], 150, out),			// modtag 150 dask
+			new BalanceCard(des[39], -10, out),
+			new BalanceCard(des[40], -10, out),
+			new MoveFleetCard(des[41], true, out),
+			new MoveCard(des[42], 11, true, out),
+			new MoveCard(des[43], 11, true, out),
 		};
 		shuffleArray();
 	}

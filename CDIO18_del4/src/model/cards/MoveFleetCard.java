@@ -34,6 +34,7 @@ public class MoveFleetCard extends Card {
 
 				if(fleet.getOwner() != null && doubleRent){
 					p.getAccount().withdraw(fleet.getRent(fleet.getOwner()) * 2);
+					fleet.getOwner().getAccount().addSum(fleet.getRent(fleet.getOwner()) * 2);
 				}
 
 				break;
