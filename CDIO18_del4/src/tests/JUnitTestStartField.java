@@ -7,7 +7,7 @@ import org.junit.Test;
 import controller.MoveController;
 import model.Player;
 import model.fields.Fieldlist;
-import view.FakeOutput;
+import view.FakeOutputTrue;
 import view.Out;
 
 public class JUnitTestStartField 
@@ -17,7 +17,7 @@ public class JUnitTestStartField
 	public void TC01() 
 	{
 		Player player = new Player("Kasper");
-		Out out = new FakeOutput();
+		Out out = new FakeOutputTrue();
 		MoveController moveCon = new MoveController();
 		new Fieldlist(out);
 

@@ -115,7 +115,7 @@ public class Gamecontroller
 				out.setGUIBalance(player[i]);
 			}
 
-			goBankrupt(p);
+			goBankrupt();
 			winner(); 
 			checkPlots(p, out);
 			
@@ -229,14 +229,17 @@ public class Gamecontroller
 		}
 	}
 
-	public void goBankrupt(Player p)
+	public void goBankrupt()
 	{
-		if(p.getAccount().getSum() <= 0)
+		for (int i = 0; i < player.length; i++) 
 		{
-			
-			p.setBankrupt(true);
-			resetOwnedFields(p);
-			GUI.removeCar(p.getPlayerPos(), p.getName());
+			if(player[i].getAccount().getSum() <= 0)
+			{
+				
+				player[i].setBankrupt(true);
+				resetOwnedFields(player[i]);
+				GUI.removeCar(player[i].getPlayerPos(), player[i].getName());
+			}
 		}
 	}
 
