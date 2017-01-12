@@ -52,7 +52,7 @@ public abstract class Ownable extends Field
 		}
 		else if(owner != null && owner != p)	// is owned
 		{
-			int rent = getRent(p);
+			int rent = getRent(owner);
 
 			// Pay rent
 			p.getAccount().withdraw(rent);

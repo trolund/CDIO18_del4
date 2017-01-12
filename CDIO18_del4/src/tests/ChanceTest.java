@@ -5,12 +5,12 @@ import org.junit.Test;
 import controller.Gamecontroller;
 import model.Player;
 import model.cards.Deck;
-import view.FakeOutput;
+import view.FakeOutputTrue;
 import view.Out;
 
 public class ChanceTest {
 
-		Out out = new FakeOutput(); 		// sikre vi kommer uden om GUI
+		Out out = new FakeOutputTrue(); 		// sikre vi kommer uden om GUI
 		Gamecontroller gc = new Gamecontroller(out); 
 		Player p = new Player("Kim");
 
