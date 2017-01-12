@@ -166,5 +166,23 @@ public class FakeOutputFalse extends Out {
 		
 	}
 
+	@Override
+	public boolean sellOrBuy() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String whereToSell(String[] fArray) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean shopOrNot() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 }
