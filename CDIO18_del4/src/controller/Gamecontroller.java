@@ -285,7 +285,7 @@ public class Gamecontroller
 			return;
 		}
 		
-		if(out.sellOrBuy()){
+		if(out.shopOrNot()){
 			if(out.sellOrBuy()){
 
 				String result = out.whereToBuild(GenereNameArray(flist)); // spørg i GUI
