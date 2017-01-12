@@ -20,11 +20,11 @@ import view.Output;
  * DTU
  * Collaborators:  KasperLeiszner, Bijan Negari, Helene Zgaya, Frederik von Scholten and Troels Lund
  * 
- *							   ___                               _  ___  
- *							  / _ \_ __ _   _ _ __  _ __   ___  / |( _ ) 
- *							 / /_\/ '__| | | | '_ \| '_ \ / _ \ | |/ _ \ 
- *							/ /_\\| |  | |_| | |_) | |_) |  __/ | | (_) |
- *							\____/|_|   \__,_| .__/| .__/ \___| |_|\___/ 
+ *							   ___                               _  ___  	__   __    ___
+ *							  / _ \_ __ _   _ _ __  _ __   ___  / |( _ ) 	\ \_/ /  /  _  \
+ *							 / /_\/ '__| | | | '_ \| '_ \ / _ \ | |/ _ \ 	 \   /  |  / \  |
+ *							/ /_\\| |  | |_| | |_) | |_) |  __/ | | (_) |     | |   |  \_/  |
+ *							\____/|_|   \__,_| .__/| .__/ \___| |_|\___/      |_|    \ ___ / 
  *							                 |_|   |_|                   
  * 
  * 
@@ -115,7 +115,7 @@ public class Gamecontroller
 				out.setGUIBalance(player[i]);
 			}
 
-			goBankrupt();
+			goBankrupt(p);
 			winner(); 
 			checkPlots(p, out);
 			
@@ -229,16 +229,14 @@ public class Gamecontroller
 		}
 	}
 
-	public void goBankrupt()
+	public void goBankrupt(Player p)
 	{
-		for (int i = 0; i < player.length; i++) 
+		if(p.getAccount().getSum() <= 0)
 		{
-			if(player[i].getAccount().getSum() <= 0)
-			{
-				player[i].setBankrupt(true);
-				resetOwnedFields(player[i]);
-				GUI.removeCar(player[i].getPlayerPos(), player[i].getName());
-			}
+			
+			p.setBankrupt(true);
+			resetOwnedFields(p);
+			GUI.removeCar(p.getPlayerPos(), p.getName());
 		}
 	}
 
