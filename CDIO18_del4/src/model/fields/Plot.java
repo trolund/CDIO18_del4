@@ -59,6 +59,14 @@ public class Plot extends Ownable
 			// øger housecount hver gang upgradePlot metoden kører
 		}
 	}
+	
+	public void downgradePlot() {
+		if (!(housecount <= 0)) {
+			
+			housecount--;
+		
+		}
+	}
 
 	public int getHousecount() { // get metode
 		return housecount;

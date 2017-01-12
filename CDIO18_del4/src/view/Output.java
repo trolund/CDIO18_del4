@@ -170,9 +170,13 @@ public class Output extends Out
 	}
 	
 	public String whereToBuild(String[] fArray){
-		String result = GUI.getUserSelection("Hvor vil du bygge?", fArray);
+		String result = GUI.getUserSelection("Hvor vil du bygge? - Det vil koste dig 200kr at bygge", fArray);
 		return result;
-		
+	}
+	
+	public String whereToSell(String[] fArray){
+		String result = GUI.getUserSelection("Hvad for en bygning vil du sælge?", fArray);
+		return result;
 	}
 	
 	public void BuildHouse(int index, int houseCount){
@@ -181,6 +185,26 @@ public class Output extends Out
 	
 	public void BuildHotel(int index, boolean hasHotel){
 		GUI.setHotel(index, hasHotel);
+		
+	}
+	
+	public boolean sellOrBuy(){
+		return GUI.getUserLeftButtonPressed("Vil du købe eller sælg husse?", "køb", "sælg");
+		
+	}
+	
+	public String convertToColor(int group){
+		switch(group){
+		case 0: return "lyseblå";
+		case 1: return "lyserød";	
+		case 2: return "grøn";	
+		case 3: return "grå";	
+		case 4: return "rød";	
+		case 5: return "hvid";
+		case 6: return "gul";	
+		case 7: return "brun";	
+		}
+		return null;
 		
 	}
 	

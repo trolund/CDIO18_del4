@@ -277,10 +277,39 @@ public class Gamecontroller
 	
 	public void checkPlots(Player p, Out out){
 
+		int[] gruppeNumre = GenereBuyedFieldArray(p); // udfylder gruppenumre med data om havd spilleren ejer
+		List<Field> flist = addPlotsToList(gruppeNumre); // tjekker om spiller ejer alle grunde i en gruppe, og giver tilbage en liste med fields som han kan bygge på.
+
+		
+		if(flist.size() < 1){ // vis der ikke er nogle grunde i flist - STOP her. 
+			return;
+		}
+	
+		if(out.sellOrBuy()){
+			
+		String result = out.whereToBuild(GenereNameArray(flist)); // spørg i GUI
+		
+		int index = findeIndexofField(result); // finder index for placering af field der skal bygges på.
+		
+		buyhouse(p,result,index);
+		
+		}
+		else{
+			
+		String result = out.whereToSell(GenereNameArraySell(flist));
+		
+		int index = findeIndexofField(result);
+		
+		sellhouse(p,result,index);
+		
+		}
+		
+		
+	}
+	
+	private int[] GenereBuyedFieldArray(Player p){
+
 		int[] gruppeNumre = new int[8];
-		int[] maxPlot = {2, 3, 3, 3, 3, 3, 3, 2};
-		boolean[] canBuild = new boolean[8];
-		List<Field> flist = new ArrayList<>(); 
 
 		for(int i = 0; i < Fieldlist.getFields().length; i++)	// for-loop der kører alle felter igennem.
 		{
@@ -294,13 +323,20 @@ public class Gamecontroller
 
 			}
 		}
+		return gruppeNumre;
+	}
+	
+	private List<Field>  addPlotsToList(int[] gruppeNumre){
+		
+		List<Field> flist = new ArrayList<>();
+		int[] maxPlot = {2, 3, 3, 3, 3, 3, 3, 2};
+		boolean[] canBuild = new boolean[8];
 		
 		for (int i = 0; i < maxPlot.length; i++) { // du kan bygge vis antalet af grunde inde for en type er det samme som hvad du max kan få. 
 			if(gruppeNumre[i] == maxPlot[i]){
 				canBuild[i] = true;
 			}
 		}
-		
 		
 		for (int i = 0; i < canBuild.length; i++) { // adder gruppe til mulig byggegrunde. 
 			if(canBuild[i]){
@@ -310,27 +346,70 @@ public class Gamecontroller
 			}
 		}
 		
-		if(flist.size() < 1){ // vis der ikke er nogle grunde du må bygge på så return. 
-			return;
-		}
-		 
+		return flist;
+		
+	}
+	
+	private String[] GenereNameArray(List<Field> flist){
+		
 		String[] FieldNames = new String[flist.size()]; // opretter array.
+		
 		
 		for (int i = 0; i < flist.size(); i++) { // sætter navne på felter ind i Navne-array
 			FieldNames[i] = flist.get(i).getName();
 		}
+		return FieldNames;
+	}
 	
-		String result = out.whereToBuild(FieldNames);
-		int index = 0;
-		
-			
-		for (int i = 0; i < Fieldlist.getFields().length; i++) {
-			if(Fieldlist.getFields()[i].getName().equals(result)) {
-				index = i;
-				break;
+	public List<Field> getGroup(int x){
+		List<Field> flist = new ArrayList<>(); 
+		for (Field f : Fieldlist.getFields()) {
+			if(f instanceof Plot ){
+				Plot p = (Plot) f;
+				if(p.getGroupNumber() == x){
+					flist.add(p);
+				}
 			}
 		}
-		
+		return flist;	
+	}
+
+	private int findeIndexofField(String result){
+		for (int i = 0; i < Fieldlist.getFields().length; i++) {
+			if(Fieldlist.getFields()[i].getName().equals(result)) {
+				return i;
+			}
+		}
+		return 0;
+	}
+	
+	private int findePlacetosell(String result){
+		for (int i = 0; i < Fieldlist.getFields().length; i++) {
+			if(Fieldlist.getFields()[i].getName().equals(result)) {
+				return i;
+			}
+		}
+		return 0;
+	}
+	
+	private String[] GenereNameArraySell(List<Field> flist){
+
+		String[] FieldNames = new String[flist.size()]; // opretter array.
+
+
+		for (int i = 0; i < flist.size(); i++) { // sætter navne på felter ind i Navne-array
+			if(flist.get(i) instanceof Plot){
+				Plot p =(Plot) flist.get(i);
+				if(p.getHousecount() > 0){
+					FieldNames[i] = flist.get(i).getName();
+
+				}
+			}
+		}
+		return FieldNames;
+	}
+	
+	private void buyhouse(Player p, String result, int index){
 		
 		for (int i = 0; i < Fieldlist.getFields().length; i++) {
 			Field f = Fieldlist.getFields()[i];
@@ -338,12 +417,13 @@ public class Gamecontroller
 				if(f instanceof Plot ){
 					Plot plotCast =(Plot) f;
 					plotCast.upgradePlot();
-					
 					if(plotCast.getHousecount() >= 5){ // bygger hotel vis der er 5 huse.
 						out.BuildHotel(index, true);
+						p.getAccount().withdraw(200);
 					}
 					else{
 						out.BuildHouse(index+1, plotCast.getHousecount()); // bygger huse vis der er mindre end 5 huse.
+						p.getAccount().withdraw(200);
 					}
 					
 				}
@@ -354,36 +434,31 @@ public class Gamecontroller
 		
 	}
 	
-	public String convertToColor(int group){
-		switch(group){
-		case 0: return "lyseblå";
-		case 1: return "lyserød";	
-		case 2: return "grøn";	
-		case 3: return "grå";	
-		case 4: return "rød";	
-		case 5: return "hvid";
-		case 6: return "gul";	
-		case 7: return "brun";	
-		}
-		return null;
-		
-	}
 	
-	
-	public List<Field> getGroup(int x){
-		List<Field> flist = new ArrayList<>(); 
+private void sellhouse(Player p, String result, int index){
 		
-	for (Field f : Fieldlist.getFields()) {
-		if(f instanceof Plot ){
-			Plot p = (Plot) f;
-			if(p.getGroupNumber() == x){
-				flist.add(p);
+		for (int i = 0; i < Fieldlist.getFields().length; i++) {
+			Field f = Fieldlist.getFields()[i];
+			if(f.getName().equals(result)){
+				if(f instanceof Plot ){
+					Plot plotCast =(Plot) f;
+					plotCast.downgradePlot();
+					if(plotCast.getHousecount() >= 5){ // bygger hotel vis der er 5 huse.
+						out.BuildHotel(index, false);
+						p.getAccount().addSum(200);
+						out.BuildHouse(index+1, plotCast.getHousecount());
+					}
+					else{
+						out.BuildHouse(index+1, plotCast.getHousecount()); // bygger huse vis der er mindre end 5 huse.
+						p.getAccount().addSum(200);
+					}
+					
+				}
+				
 			}
-			
-			
 		}
-	}
-		return flist;	
+		
+		
 	}
 }
 

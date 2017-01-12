@@ -57,5 +57,9 @@ public abstract class Out {
 	public abstract void BuildHouse(int index, int houseCount);
 	
 	public abstract void BuildHotel(int index, boolean hasHotel);
+	
+	public abstract boolean sellOrBuy();
+	
+	public abstract String whereToSell(String[] fArray);
 		
 }
