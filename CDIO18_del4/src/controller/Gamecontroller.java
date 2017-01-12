@@ -235,7 +235,6 @@ public class Gamecontroller
 		{
 			if(player[i].getAccount().getSum() <= 0)
 			{
-				
 				player[i].setBankrupt(true);
 				resetOwnedFields(player[i]);
 				GUI.removeCar(player[i].getPlayerPos(), player[i].getName());
