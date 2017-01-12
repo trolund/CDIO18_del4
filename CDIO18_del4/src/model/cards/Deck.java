@@ -56,11 +56,10 @@ public class Deck {
 			new BalanceCard(des[36], -10, out),			// betal 10 dask
 			new MoveCard(des[37], 24, true, out),		// ryk til grønningen
 			new BalanceCard(des[38], 150, out),			// modtag 150 dask
-			new BalanceCard(des[39], -10, out),
-			new BalanceCard(des[40], -10, out),
-			new MoveFleetCard(des[41], true, out),
-			new MoveCard(des[42], 11, true, out),
-			new MoveCard(des[43], 11, true, out),
+			new FamilyCard(des[39], 25, out),			// fra hver spiller, modtag 25 dask
+			new BalanceCard(des[40], -50, out),			// betal 50 dask i bøde bro
+			new BalanceCard(des[41], 10, out),			// betal 10 dask
+			new BalanceCard(des[42], 100, out),			// modtag dask 100 af banken
 		};
 		shuffleArray();
 	}
