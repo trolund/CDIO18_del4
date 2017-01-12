@@ -15,7 +15,12 @@ public class BalanceCard extends Card {
 	@Override
 	public void doCard(Player p, Out out) {
 		out.CardsOut(description);
+		if(BalanceModifier <0){
+			p.getAccount().withdraw(BalanceModifier * (-1));
+		}
+		else{
 		p.getAccount().addSum(BalanceModifier);
+		}
 		out.setGUIBalance(p);
 	}
 	
