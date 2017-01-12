@@ -61,5 +61,7 @@ public abstract class Out {
 	public abstract boolean sellOrBuy();
 	
 	public abstract String whereToSell(String[] fArray);
+	
+	public abstract boolean shopOrNot();
 		
 }

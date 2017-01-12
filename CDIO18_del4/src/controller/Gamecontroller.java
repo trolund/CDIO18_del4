@@ -284,26 +284,27 @@ public class Gamecontroller
 		if(flist.size() < 1){ // vis der ikke er nogle grunde i flist - STOP her. 
 			return;
 		}
-	
+		
 		if(out.sellOrBuy()){
-			
-		String result = out.whereToBuild(GenereNameArray(flist)); // spørg i GUI
-		
-		int index = findeIndexofField(result); // finder index for placering af field der skal bygges på.
-		
-		buyhouse(p,result,index);
-		
+			if(out.sellOrBuy()){
+
+				String result = out.whereToBuild(GenereNameArray(flist)); // spørg i GUI
+
+				int index = findeIndexofField(result); // finder index for placering af field der skal bygges på.
+
+				buyhouse(p,result,index);
+
+			}
+			else{
+
+				String result = out.whereToSell(GenereNameArraySell(flist));
+
+				int index = findeIndexofField(result);
+
+				sellhouse(p,result,index);
+
+			}
 		}
-		else{
-			
-		String result = out.whereToSell(GenereNameArraySell(flist));
-		
-		int index = findeIndexofField(result);
-		
-		sellhouse(p,result,index);
-		
-		}
-		
 		
 	}
 	

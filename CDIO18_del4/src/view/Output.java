@@ -193,6 +193,11 @@ public class Output extends Out
 		
 	}
 	
+	public boolean shopOrNot(){
+		return GUI.getUserLeftButtonPressed("vil du handle eller ej?", "ja", "nej");
+		
+	}
+	
 	public String convertToColor(int group){
 		switch(group){
 		case 0: return "lyseblå";
