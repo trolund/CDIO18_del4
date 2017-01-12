@@ -14,7 +14,15 @@ public class BankAccount
 
 	public void setSum(int value) 
 	{
-		balance = value;
+		if(value < 0)
+		{
+			balance = 0;
+		}
+		else
+		{
+			balance = value;
+		}
+		
 	}
 
 	public boolean addSum(int value) 

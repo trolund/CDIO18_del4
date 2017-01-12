@@ -12,58 +12,14 @@ public class JUnitTestDie {
 	public void dieTest() {
 
 		Die die1 = new Die();
-
-		int c1 = 0;
-		int c2 = 0;
-		int c3 = 0;
-		int c4 = 0;
-		int c5 = 0;
-		int c6 = 0;
+		int[] terningSide = new int[7];
 
 		for(int i = 0; i <= 10000; i++)
 		{
 			die1.roll();
-			
-			switch (die1.getValue())
-			{
-
-
-			case 1:
-				c1++;
-				break;
-
-			case 2:
-				c2++;
-				break;
-
-			case 3:
-				c3++;
-				break;
-
-			case 4:
-				c4++;
-				break;
-
-			case 5:
-				c5++;
-				break;
-
-			case 6:
-				c6++;
-				break;
-
-
-			}
-
+			++terningSide[die1.getValue()];
 		}
-
-		System.out.println("count of 1 eyes: " +c1);
-		System.out.println("count of 2 eyes: " +c2);
-		System.out.println("count of 3 eyes: " +c3);
-		System.out.println("count of 4 eyes: " +c4);
-		System.out.println("count of 5 eyes: " +c5);
-		System.out.println("count of 6 eyes: " +c6);
-
+		
 		int test = die1.getValue();
 		boolean x = false;
 
@@ -73,12 +29,12 @@ public class JUnitTestDie {
 		}
 
 		assertEquals(x, true);
-		assertEquals(c1, 1666, 166);
-		assertEquals(c2, 1666, 166);
-		assertEquals(c3, 1666, 166);
-		assertEquals(c4, 1666, 166);
-		assertEquals(c5, 1666, 166);
-		assertEquals(c6, 1666, 166);
+		
+		for (int i = 1; i < terningSide.length; i++) 
+		{
+			System.out.println("Count of " + i + " eyes: " + terningSide[i]);
+			assertEquals(terningSide[i], 1666, 166);
+		}
 	}
 
 }
