@@ -7,9 +7,7 @@ import org.junit.Test;
 import model.Player;
 import model.fields.Brewery;
 import model.fields.Fieldlist;
-import model.fields.Ownable;
 import view.FakeOutputTrue;
-import view.FakeOutputFalse;
 import view.Out;
 
 public class JUnitTestBrewery 
@@ -41,11 +39,10 @@ public class JUnitTestBrewery
 		{		
 			Brewery br = (Brewery) Fieldlist.getFields()[12];
 			br.setOwner(p[0]);
-			
-			Fieldlist.getFields()[12].landOn(p[1], outTrue);
+			br.landOn(p[1], outTrue);
 
 			int Re = p[1].getAccount().getSum();
-			int exRe = p[1].getAccount().getSum() - (br.getDiceCup().getSum() * 4);
+			int exRe = 1500 - (4 * br.getDiceCup().getSum());
 			
 			assertEquals(exRe, Re);
 		}
