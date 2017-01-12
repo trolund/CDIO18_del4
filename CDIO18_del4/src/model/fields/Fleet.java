@@ -19,7 +19,7 @@ public class Fleet extends Ownable
 	@Override
 	public int getRent(Player p) // get metode
 	{
-		return (int) (baseRent * Math.pow(2, p.getFleetCount() - 1));
+		return (int) (baseRent * Math.pow(2, (p.getFleetCount() - 1)));
 		// returnere Fleet-feltets rent vha. formlen
 	}
 }
