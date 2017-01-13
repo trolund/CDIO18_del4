@@ -279,7 +279,7 @@ public class Gamecontroller
 	
 	public void checkPlots(Player p, Out out){
 
-		int[] gruppeNumre = GenereBuyedFieldArray(p); // udfylder gruppenumre med data om havd spilleren ejer
+		int[] gruppeNumre = generateBoughtFieldArray(p); // udfylder gruppenumre med data om havd spilleren ejer
 		List<Field> flist = addPlotsToList(gruppeNumre); // tjekker om spiller ejer alle grunde i en gruppe, og giver tilbage en liste med fields som han kan bygge på.
 
 		
@@ -310,7 +310,7 @@ public class Gamecontroller
 		
 	}
 	
-	private int[] GenereBuyedFieldArray(Player p){
+	private int[] generateBoughtFieldArray(Player p){
 
 		int[] gruppeNumre = new int[8];
 

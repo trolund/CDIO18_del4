@@ -30,7 +30,7 @@ public class ChanceTest {
 		System.out.println(p.getPlayerPos());
 		
 		for (int i = 0; i < 21; i++) {
-			Deck.getCards()[0].doCard(p, out); //kort 0 rykker to pladser 
+			Deck.getCards()[0].doCard(p); //kort 0 rykker to pladser 
 			System.out.println(p.getPlayerPos());
 		}
 		
