@@ -290,20 +290,20 @@ public class Gamecontroller
 		if(out.shopOrNot()){
 			if(out.sellOrBuy()){
 
-				String result = out.whereToBuild(GenereNameArray(flist)); // spørg i GUI
+				String result = out.whereToBuild(generateNameArray(flist)); // spørg i GUI
 
-				int index = findeIndexofField(result); // finder index for placering af field der skal bygges på.
+				int index = findIndexOfField(result); // finder index for placering af field der skal bygges på.
 
-				buyhouse(p,result,index);
+				buyHouse(p,result,index);
 
 			}
 			else{
 
-				String result = out.whereToSell(GenereNameArraySell(flist));
+				String result = out.whereToSell(generateNameArraySell(flist));
 
-				int index = findeIndexofField(result);
+				int index = findIndexOfField(result);
 
-				sellhouse(p,result,index);
+				sellHouse(p,result,index);
 
 			}
 		}
@@ -353,7 +353,7 @@ public class Gamecontroller
 		
 	}
 	
-	private String[] GenereNameArray(List<Field> flist){
+	private String[] generateNameArray(List<Field> flist){
 		
 		String[] FieldNames = new String[flist.size()]; // opretter array.
 		
@@ -377,7 +377,7 @@ public class Gamecontroller
 		return flist;	
 	}
 
-	private int findeIndexofField(String result){
+	private int findIndexOfField(String result){
 		for (int i = 0; i < Fieldlist.getFields().length; i++) {
 			if(Fieldlist.getFields()[i].getName().equals(result)) {
 				return i;
@@ -386,7 +386,7 @@ public class Gamecontroller
 		return 0;
 	}
 	
-	private String[] GenereNameArraySell(List<Field> flist){
+	private String[] generateNameArraySell(List<Field> flist){
 
 		String[] FieldNames = new String[flist.size()]; // opretter array.
 
@@ -403,7 +403,7 @@ public class Gamecontroller
 		return FieldNames;
 	}
 	
-	private void buyhouse(Player p, String result, int index){
+	private void buyHouse(Player p, String result, int index){
 		
 		for (int i = 0; i < Fieldlist.getFields().length; i++) {
 			Field f = Fieldlist.getFields()[i];
@@ -429,7 +429,7 @@ public class Gamecontroller
 	}
 	
 	
-private void sellhouse(Player p, String result, int index){
+private void sellHouse(Player p, String result, int index){
 		
 		for (int i = 0; i < Fieldlist.getFields().length; i++) {
 			Field f = Fieldlist.getFields()[i];
