@@ -12,7 +12,7 @@ public class FreeJailCard extends Card {
 		this.out = out;
 	} 
 	
-	public void doCard(Player p, Out out){
+	public void doCard(Player p){
 		out.CardsOut(description);
 		setOwner(p);
 		p.getJailcards().add(this);

@@ -14,7 +14,7 @@ public abstract class Card  {
 		this.out = out;
 	}
 
-	public abstract void doCard(Player p, Out out);
+	public abstract void doCard(Player p);
 
 	@Override
 	public String toString() {

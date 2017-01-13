@@ -14,7 +14,7 @@ public class FamilyCard extends Card  {
 	}
 
 	@Override
-	public void doCard(Player p, Out out) {
+	public void doCard(Player p) {
 		out.CardsOut(description);
 		for (int i = 0; i < Gamecontroller.getPlayer().length; i++) {
 			Gamecontroller.getPlayer()[i].getAccount().withdraw(gift);

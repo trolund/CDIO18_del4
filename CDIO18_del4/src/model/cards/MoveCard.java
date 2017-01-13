@@ -17,7 +17,7 @@ public class MoveCard extends Card {
 		
 	}
 	
-	public void doCard(Player p, Out out){
+	public void doCard(Player p){
 		out.CardsOut(description);
 		out.removeCar(p);
 		if(teleport){

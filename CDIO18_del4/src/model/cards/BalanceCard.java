@@ -13,7 +13,7 @@ public class BalanceCard extends Card {
 	}
 
 	@Override
-	public void doCard(Player p, Out out) {
+	public void doCard(Player p) {
 		out.CardsOut(description);
 		if(BalanceModifier <0){
 			p.getAccount().withdraw(BalanceModifier * (-1));

@@ -16,7 +16,7 @@ public class MoveFleetCard extends Card {
 	}
 
 	@Override
-	public void doCard(Player p, Out out) {
+	public void doCard(Player p) {
 		int pos = 0;
 		out.removeCar(p);
 		out.CardsOut(description);
