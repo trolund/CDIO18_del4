@@ -405,8 +405,7 @@ public class Gamecontroller
 	
 	private void buyHouse(Player p, String result, int index){
 		
-		for (int i = 0; i < Fieldlist.getFields().length; i++) {
-			Field f = Fieldlist.getFields()[i];
+			Field f = Fieldlist.getFields()[index];
 			if(f.getName().equals(result)){
 				if(f instanceof Plot ){
 					Plot plotCast =(Plot) f;
@@ -423,9 +422,6 @@ public class Gamecontroller
 				}
 				
 			}
-		}
-		
-		
 	}
 	
 	
