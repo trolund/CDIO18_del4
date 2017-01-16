@@ -42,7 +42,7 @@ public class Deck {
 			new BalanceCard(des[22], 50, out),			// modtag 50 dask
 			new MoveFleetCard(des[23], true, out),		// ryk til nærmeste redderi og betal double husleje
 			new MoveCard(des[24], 19, true, out),		// Ryk frem til Strandvejen
-			new BalanceCard(des[25], 50, out),			// modtag dask 50
+			new BalanceCard(des[25], -50, out),			// betal dask 50
 			new BalanceCard(des[26], 50, out),			// modtag 50 dask
 			new BalanceCard(des[27], 25, out),			// modtag 25 dask
 			new BalanceCard(des[28], 25, out),			// modtag 25 dask
