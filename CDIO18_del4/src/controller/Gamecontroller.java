@@ -49,17 +49,17 @@ public class Gamecontroller
 
 	public static void main(String[] args) 
 	{
-		new Gamecontroller().setup(); //Opretter objekt af gamecontroller og kalder setup
+		new Gamecontroller(new Output()).setup(); //Opretter objekt af gamecontroller og kalder setup
 	}
 
-	public Gamecontroller()
-	{
-		this(new Output()); //Kalder kontruktøren nedenunder. 
-	}
+//	public Gamecontroller()
+//	{
+//		this(new Output()); //Kalder kontruktøren nedenunder. 
+//	}
 
 	public Gamecontroller(Out out) //Ved test bruges kun denne konstruktør og ikke den ovenstående.
 	{
-		this.out = out; //
+		this.out = out; 
 		new Fieldlist(out);
 		new Deck(out);
 	}
@@ -154,12 +154,13 @@ public class Gamecontroller
 			option[1] = b;
 		}
 
-		switch (out.Jailaction(p, option)){ // hvad skal der ske når man vægler en af de tre mulighder?:
+		switch (out.Jailaction(p, option))
+		{ // hvad skal der ske når man vægler en af de tre mulighder?:
+		
 		case "Køb dig fri for 50kr": 
 			p.getAccount().withdraw(50);
 			p.setJailed(false);
 			turn(p);
-			
 			break;
 			
 		case "Slå dig fri": 
@@ -167,7 +168,9 @@ public class Gamecontroller
 			out.rollDiceText();
 			cup.roll();
 			out.setGUIDice(cup.getDie1().getValue(), cup.getDie2().getValue());
-			if(cup.getDie1().getValue() == cup.getDie2().getValue()){
+			
+			if(cup.getDie1().getValue() == cup.getDie2().getValue())
+			{
 				p.setJailed(false);
 				turn(p);	// hvis en spiller slår 2 ens, får han sin tur igen, så rykker han fra fængelsfeltet, og kan købe grunde som normalt.
 			}

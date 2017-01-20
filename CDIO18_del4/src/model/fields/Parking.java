@@ -22,6 +22,7 @@ public class Parking extends Field {
 
 	}
 
+	@Override
 	public int getValue() // get metode returnere bonus
 	{
 		return bonus;
